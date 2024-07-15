@@ -123,12 +123,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-print(BASE_DIR)
+
 STATIC_URL = '/static-he/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static-root")
-print(STATIC_ROOT)
 STATICFILES_DIRS = ( os.path.join(BASE_DIR, "static"),)
-print(BASE_DIR)
+
 # Toggle whether data caching is on 
 # (slower update, but faster webpage load time)
 
