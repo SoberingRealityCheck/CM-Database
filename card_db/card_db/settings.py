@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'db',
-        
+        'ENFORCE_SCHEMA': False,
     }
 }
 
