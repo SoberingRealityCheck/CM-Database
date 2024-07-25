@@ -8,20 +8,12 @@ Requirements to run:
 currently looking at using a different environment for our mongodb compatibility with:
 
 ```
-sgiref           3.8.1
-bson              0.5.8
-dataclasses       0.6
+python            3.9.18
 Django            4.0.10
 djongo            [1.3.6](https://github.com/bslocombe/djongo/tree/master)
-pip               24.1.2
 pymongo           3.12.1
-python-dateutil   2.9.0.post0
 pytz              2022.2.1
-setuptools        70.1.1
-six               1.16.0
 sqlparse          0.4.2
-typing_extensions 4.12.2
-wheel             0.43.0
 ```
 
 Current status:
