@@ -7,9 +7,9 @@ Requirements to run:
 
 Current status:
 -
-Accessing sql database & statics works while settings.py is set to ```Debug=True```.
+Accessing sql database & statics works while settings.py is set to ```Debug=True``` and the server is run via ```python .../CM-Database/manage.py runserver```.
 
-```Debug=False``` passes that functionality to Apache, which is currently not implemented because I have no clue how to use it. That is a problem for next week...
+```Debug=False``` and ```systemctl start httpd``` passes that functionality to the Apache service. This only works when run on HEP11 as it is the only machine configured to work properly with our code (for now).
 
 IMPORTANT:
 -
