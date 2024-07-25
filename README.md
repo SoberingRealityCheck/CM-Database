@@ -5,7 +5,7 @@ Requirements to run:
 - Python 3.11.x
 - Django 5.x
 
-currently looking at using a different environment with:
+currently looking at using a different environment for our mongodb compatibility with:
 
 ```
 sgiref           3.8.1
