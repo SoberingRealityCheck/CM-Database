@@ -5,6 +5,25 @@ Requirements to run:
 - Python 3.11.x
 - Django 5.x
 
+currently looking at using a different environment with:
+
+```
+sgiref           3.8.1
+bson              0.5.8
+dataclasses       0.6
+Django            4.0.10
+djongo            [1.3.6](https://github.com/bslocombe/djongo/tree/master)
+pip               24.1.2
+pymongo           3.12.1
+python-dateutil   2.9.0.post0
+pytz              2022.2.1
+setuptools        70.1.1
+six               1.16.0
+sqlparse          0.4.2
+typing_extensions 4.12.2
+wheel             0.43.0
+```
+
 Current status:
 -
 Accessing sql database & statics works while settings.py is set to ```Debug=True``` and the server is run via ```python .../CM-Database/manage.py runserver```.
