@@ -13,7 +13,7 @@ print("IMPORT DIRECTORY:", IMPORT_DIR)
 def upload_json(filename):
     client = pymongo.MongoClient('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.12')
     db = client.db
-    collection = db.cm_db_cm_test_results
+    collection = db.cm_db_cm_test_result
     requesting = []
     filepath = os.path.join(IMPORT_DIR, filename)
     with open(filepath, 'r+') as f:
