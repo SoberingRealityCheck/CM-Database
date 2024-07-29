@@ -1,0 +1,148 @@
+{% extends "qie_cards/base.html" %}
+
+{% block title %}{{card.barcode}}{% endblock %}
+{% block head %}
+<style>
+    .forced{
+      color:#2C3E50;
+      background-color:#2ECC71;
+    }
+    .warn{
+      color:#2C3E50;
+      background-color:#F1C40F;
+    }
+    .okay{
+      color:#2ECC71;
+    }
+    .bad{
+      color:#2C3E50;
+      background-color:#E74C3C;
+    }
+    .comments{
+      margin-left:50px;
+      background:#27ae60;
+      width: 400px;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      border-radius: 4px;
+    }
+    .hide{
+      display: none;
+    }
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row" align="left" style="padding-left:50px;">
+    <h3>{{test}} Overview</h3>
+    <div id="breakLine" style="height:2px;width:25%;background-color:#E74C3C"></div>
+</div><br>
+
+<!-- Card Info Table -->
+<table id="cardinfo" class="table" style="margin-left:50px; font-size:30px;" cellspacing="0" width="50%">
+    <tbody>
+        <div id="accordion" class="collapse">
+        <tr>
+            <td>Barcode:</td>
+            <td>{{card.barcode}}</td>
+            <td>-----</td>
+        </tr>
+        <tr>
+            <td>Unique ID:</td>
+            <td>{{card.get_uid_mac}}</td>
+            <td>({{card.get_uid_flipped}})</td>
+        </tr>
+        <tr>
+            <td>Bridge FW:</td>
+            <td>{{card.get_bridge_ver_hex}}</td>
+            <td>({{card.get_bridge_ver}})</td>
+        </tr>
+        <tr>
+            <td>Igloo FW:</td>
+            <td>{{card.get_igloo_ver_hex}}</td>
+            <td>({{card.get_igloo_ver}})</td>
+        </tr>
+        </div>
+    </tbody>
+</table>
+
+<div class="row" style="padding-left:25px;">
+    <div class="col-md-12">
+        <h3>{{test}}</h3>
+        {% for attempt, data in attempts %}
+        <br>
+        <div class="row">
+            <div style="float:left;width:60%">
+                <h4 class="{{attempt.get_css_class}}">Attempt: {{attempt.attempt_number}} ({{attempt.get_status}})</h4>
+            </div>
+            <div style="float:left">
+                <form action="" method="post" id="overwrite_form">
+                    {% csrf_token %}
+                    <input value="" id="password" name="secret" hidden>
+                    <button onclick="submitOverwrite()" type="submit" class="btn btn-primary" value="{{attempt.pk}}" name="overwrite_pass">
+                        {% if not attempt.overwrite_pass %}
+                        Force Pass
+                        {% else %}
+                        Remove Force Pass
+                        {% endif %}
+                    </button>
+                </form> 
+            </div>
+        </div>
+        <div style="padding-left:50px;">
+            <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:60%;">
+                <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Tests Passed</th>
+                        <th>Tests Failed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> {{attempt.tester}} </td>
+                        <td> {{attempt.date_tested}} </td>
+                        <td> {{attempt.num_passed}} </td>
+                        <td> {{attempt.num_failed}} </td>
+                    </tr>
+                    <tr>
+                        <td><b>Comments:</b></td>
+                        <td colspan="3"> {{attempt.comments | default:"None"}} </td>
+                    </tr>
+                    <tr>
+                        <td><b>Image:</b></td> 
+                        <td colspan="3">{% if attempt.has_image %}<a href="../media/{{attempt.image}}">{{attempt.image}}</a>
+                                        {% else %} No image {% endif %}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Log Files:</b></td>
+                        <td colspan="3">{% if attempt.has_log %}<a href="../media/{{attempt.log_file}}">{{attempt.log_file}}</a>
+                                        {% else %} No file {% endif %}</td>
+                    </tr>
+                </tbody>
+            </table>
+            {% if attempt.has_image %}
+            {% for image in attempt.get_images %}
+            <a href="../media/{{attempt.image}}/{{image}}"><img src="../media/{{attempt.image}}/{{image}}" style="width:10%"></a>
+            {% endfor %}
+            {% endif %}
+        <button class="btn btn-primary" onclick="document.getElementById('data_{{attempt.attempt_number}}').classList.toggle('hide')">Show Data</button>
+        <p style="white-space: pre-wrap;" class="hide" id="data_{{attempt.attempt_number}}"> {{data}} </p>
+        </div>
+        <br/>
+        {% endfor %}
+    </div>
+</div>
+<br/>
+<script>
+function submitOverwrite(){
+    var pass = window.prompt("Tell me a secret:","Secret...");
+    document.getElementById("password").value = pass;
+    document.getElementById("overwrite_form").submit();
+}
+</script>
+{% endblock %}
