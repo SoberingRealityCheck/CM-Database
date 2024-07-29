@@ -20,10 +20,10 @@ from django.views.generic import RedirectView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('cards/', include('qie_cards.card_urls', namespace='cards')),
-    path('rm/', include('qie_cards.rm_urls')),
-    path('cu/', include('qie_cards.cu_urls')),
-    path('sipm/', include('qie_cards.sipm_urls')),
+    path('cards/', include('cm_db.card_urls', namespace='cards')),
+    #path('rm/', include('cm_db.rm_urls')),
+    #path('cu/', include('cm_db.cu_urls')),
+    #path('sipm/', include('cm_db.sipm_urls')),
     path('', RedirectView.as_view(pattern_name='cards:catalog',permanent=False)),
     re_path(r'^admin', admin.site.urls),
 ]

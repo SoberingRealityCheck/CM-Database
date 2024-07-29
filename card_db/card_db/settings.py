@@ -33,13 +33,14 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'qie_cards.apps.QieCardsConfig',
+    'cm_db.apps.QieCardsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cm_db'
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'db',
-        'ENFORCE_SCHEMA': False,
     }
 }
 

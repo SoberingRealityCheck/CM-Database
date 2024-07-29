@@ -264,7 +264,7 @@ class Test_Form(forms.ModelForm):
                 'setup','metadata','call','teardown'
                 )
 
-class CM_Test_Results(models.Model):
+class CM_Test_Result(models.Model):
     _id = models.ObjectIdField()
     created = models.CharField(max_length=20, default="")
     duration = models.CharField(max_length=20, unique=False, default="")

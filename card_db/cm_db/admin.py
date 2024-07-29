@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import QieCard, Attempt, Tester, Test, Location, ReadoutModule, QieShuntParams, RMBiasVoltage, CalibrationUnit, SipmControlCard
-
+#from .models import QieCard, Attempt, Tester, Test, Location, ReadoutModule, QieShuntParams, RMBiasVoltage, CalibrationUnit, SipmControlCard
+from .models import CM_Test_Result
 # This file describes the layout of the admin pages.
 
-
+'''
 class AttemptInLine(admin.StackedInline):
     """ Provides the inline layout for Attempts """
     
@@ -133,3 +133,4 @@ class SipmAdmin(admin.ModelAdmin):
 admin.site.register(QieShuntParams)
 admin.site.register(Tester)
 admin.site.register(RMBiasVoltage)
+'''

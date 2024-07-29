@@ -5,9 +5,9 @@ import datetime
 from os import listdir, path
 import json
 
-from .models import QieCard, Tester, Test, Attempt, Location, QieShuntParams 
-import qie_cards.custom.filters as filters
-
+#from .models import CM_Test_Result, Tester, Test, Attempt, Location, CMShuntParams 
+import cm_db.custom.filters as filters
+from .models import CM_Test_Result
 # Create your views here.
 
 from django.utils import timezone
@@ -16,11 +16,11 @@ from card_db.settings import MEDIA_ROOT, CACHE_DATA
 
 
 class CatalogView(generic.ListView):
-    """ This displays a list of all QIE cards """
+    """ This displays a list of all CM cards """
     
-    template_name = 'qie_cards/catalog.html'
-    context_object_name = 'barcode_list'
-    cards = QieCard.objects.all().order_by('barcode')
+    template_name = 'cm_db/catalog.html'
+    context_object_name = 'chip_number_list'
+    cards = CM_Test_Result.objects.all().order_by('chip_number')
     #num_cards = len(cards)
     def get_queryset(self):
         return self.cards
@@ -28,13 +28,13 @@ class CatalogView(generic.ListView):
         return len(self.cards)
 
 def catalog(request):
-    """ This displays a list of all QIE cards """
-    cards = QieCard.objects.all().order_by('barcode')
+    """ This displays a list of all CM cards """
+    cards = CM_Test_Result.objects.all().order_by('chip_number')
     count = len(cards)
 
-    return render(request, 'qie_cards/catalog.html', {'barcode_list': cards,
+    return render(request, 'cm_db/catalog.html', {'chip_number_list': cards,
                                                       'total_count': count})
-
+'''
 def summary(request):
     """ This displays a summary of the cards """
     if CACHE_DATA:
@@ -47,7 +47,7 @@ def summary(request):
         print("JSON Loaded")
     else:
         print("Loading Cards")
-        cards = list(QieCard.objects.all().order_by('barcode'))
+        cards = list(CM_Test_Result.objects.all().order_by('chip_number'))
         print("Loaded Cards")
         print("Loading Tests")
         tests = list(Test.objects.all())
@@ -59,49 +59,49 @@ def summary(request):
         cardStat = filters.getCardTestStates(cards, tests, attempts)
         print("Got 'em!")
     
-    return render(request, 'qie_cards/summary.html', {'cards': cardStat})
+    return render(request, 'cm_db/summary.html', {'cards': cardStat})
 
 
 def calibration(request, card):
     """ This displays the calibration overview for a card """
     if len(card) > 7:
         try:
-            p = QieCard.objects.get(uid__endswith=card)
-        except QieCard.DoesNotExist:
-            raise Http404("QIE card with unique id " + str(card) + " does not exist")
+            p = CM_Test_Result.objects.get(uid__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = QieCard.objects.get(barcode__endswith=card)
-        except QieCard.DoesNotExist:
-            raise Http404("QIE card with barcode " + str(card) + " does not exist")
+            p = CM_Test_Result.objects.get(chip_number__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            raise Http404("CM card with chip_number " + str(card) + " does not exist")
 
-    calibrations = p.qieshuntparams_set.all().order_by("group")
+    calibrations = p.CMshuntparams_set.all().order_by("group")
 
-    return render(request, 'qie_cards/calibration.html', {'card': p, 'cals': list(calibrations)})
+    return render(request, 'cm_db/calibration.html', {'card': p, 'cals': list(calibrations)})
 
 def calResults(request, card, group):
     """ This displays the calibration results for a card """
     if len(card) > 7:
         try:
-            p = QieCard.objects.get(uid__endswith=card)
-        except QieCard.DoesNotExist:
-            raise Http404("QIE card with unique id " + str(card) + " does not exist")
+            p = CM_Test_Result.objects.get(uid__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = QieCard.objects.get(barcode__endswith=card)
-        except QieCard.DoesNotExist:
-            raise Http404("QIE card with barcode " + str(card) + " does not exist")
-    calibration = p.qieshuntparams_set.get(group=group)
+            p = CM_Test_Result.objects.get(chip_number__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            raise Http404("CM card with chip_number " + str(card) + " does not exist")
+    calibration = p.CMshuntparams_set.get(group=group)
 
     if str(calibration.results) != "default.png":
         conn = sqlite3.connect(path.join(MEDIA_ROOT, str(calibration.results)))
         c = conn.cursor()
-        c.execute("select * from qieshuntparams")
+        c.execute("select * from CMshuntparams")
         data = []
         for item in c:
             temp = { "id":str(item[0]),
-                     "serial":str(p.barcode),
-                     "qie":str(item[2]),
+                     "serial":str(p.chip_number),
+                     "CM":str(item[2]),
                      "capID":str(item[3]),
                      "range":str(item[4]),
                      "shunt":str(item[5]),
@@ -110,7 +110,7 @@ def calResults(request, card, group):
                      "offset":str(item[9]),
                     }
             data.append(temp)
-    return render(request, 'qie_cards/cal_results.html', {'card': p,
+    return render(request, 'cm_db/cal_results.html', {'card': p,
                                                           'data': data,
                                                          })
 
@@ -118,15 +118,15 @@ def calPlots(request, card, group):
     """ This displays the calibration plots for a card """
     if len(card) > 7:
         try:
-            p = QieCard.objects.get(uid__endswith=card)
-        except QieCard.DoesNotExist:
-            raise Http404("QIE card with unique id " + str(card) + " does not exist")
+            p = CM_Test_Result.objects.get(uid__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = QieCard.objects.get(barcode__endswith=card)
-        except QieCard.DoesNotExist:
-            raise Http404("QIE card with barcode " + str(card) + " does not exist")
-    calibration = p.qieshuntparams_set.get(group=group)
+            p = CM_Test_Result.objects.get(chip_number__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            raise Http404("CM card with chip_number " + str(card) + " does not exist")
+    calibration = p.CMshuntparams_set.get(group=group)
 
     files = []
 
@@ -135,13 +135,13 @@ def calPlots(request, card, group):
             files.append(path.join(calibration.plots.url, path.basename(f)))
     else:
         files.append("No Data!")
-    return render(request, 'qie_cards/cal_plots.html', {'card': p,
+    return render(request, 'cm_db/cal_plots.html', {'card': p,
                                                         'plots': files,
                                                          })
 class TestersView(generic.ListView):
     """ This displays the users and email addresses """
     
-    template_name = 'qie_cards/testers.html'
+    template_name = 'cm_db/testers.html'
     context_object_name = 'tester_list'
     def get_queryset(self):
         return Tester.objects.all().order_by('username')
@@ -150,7 +150,7 @@ class TestersView(generic.ListView):
 class TestDetailsView(generic.ListView):
     """ This displays the tests and their descriptions """
 
-    template_name = 'qie_cards/test-details.html'
+    template_name = 'cm_db/test-details.html'
     context_object_name = 'test_list'
     def get_queryset(self):
         return Test.objects.all().order_by('name')
@@ -171,7 +171,7 @@ def stats(request):
         for test in tests:
             attempts.extend(list(test.attempt_set.all())) 
                 
-        cards = list(QieCard.objects.all().order_by("barcode"))
+        cards = list(CM_Test_Result.objects.all().order_by("chip_number"))
 
         testFailedStats = filters.getFailedCardStats(cards, tests, attempts)
         testPassedStats = filters.getPassedCardStats(cards, tests, attempts)
@@ -181,22 +181,22 @@ def stats(request):
                       'remaining': testRemStats,
                      }
 
-    return render(request, 'qie_cards/stats.html', statistics)
+    return render(request, 'cm_db/stats.html', statistics)
 
 def detail(request, card):
     """ This displays the overview of tests for a card """
     if len(card) > 7:
         try:
-            p = QieCard.objects.get(uid__endswith=card)
-        except QieCard.DoesNotExist:
-            #raise Http404("QIE card with unique id " + str(card) + " does not exist")
-            return render(request, 'qie_cards/error.html')
+            p = CM_Test_Result.objects.get(uid__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            #raise Http404("CM card with unique id " + str(card) + " does not exist")
+            return render(request, 'cm_db/error.html')
     else:
         try:
-            p = QieCard.objects.get(barcode__endswith=card)
-        except QieCard.DoesNotExist:
-            #raise Http404("QIE card with barcode " + str(card) + " does not exist")
-            return render(request, 'qie_cards/error.html')
+            p = CM_Test_Result.objects.get(chip_number__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            #raise Http404("CM card with chip_number " + str(card) + " does not exist")
+            return render(request, 'cm_db/error.html')
 
     if p.readout_module < 0:    rm = "Not Installed"
     else:                       rm = p.readout_module
@@ -259,7 +259,7 @@ def detail(request, card):
         if len(Location.objects.filter(card=p)) < 10:
             Location.objects.create(geo_loc=request.POST.get("location"), card=p)
 
-    return render(request, 'qie_cards/detail.html', {'card': p,
+    return render(request, 'cm_db/detail.html', {'card': p,
                                                      'rm' : rm,
                                                      'rm_slot' : rm_slot,
                                                      'cu' : cu,
@@ -269,21 +269,21 @@ def detail(request, card):
                                                     })
 
 #class CatalogView(generic.ListView):
-#    """ This displays a list of all QIE cards """
+#    """ This displays a list of all CM cards """
 #    
-#    template_name = 'qie_cards/catalog.html'
-#    context_object_name = 'barcode_list'
+#    template_name = 'cm_db/catalog.html'
+#    context_object_name = 'chip_number_list'
 #    def get_queryset(self):
-#        return QieCard.objects.all().order_by('barcode')
+#        return CM_Test_Result.objects.all().order_by('chip_number')
 #
 def error(request): 
-    """ This displays an error for incorrect barcode or unique id """
-    return render(request, 'qie_cards/error.html')
+    """ This displays an error for incorrect chip_number or unique id """
+    return render(request, 'cm_db/error.html')
 
 class PlotView(generic.ListView):
     """ This displays various plots of data """
     
-    template_name = 'qie_cards/plots.html'
+    template_name = 'cm_db/plots.html'
     context_object_name= 'tests'
     def get_queryset(self):
         return list(Test.objects.all())
@@ -292,18 +292,18 @@ def testDetail(request, card, test):
     """ This displays details about a specific test for a card """
     if len(card) > 7:
         try:
-            p = QieCard.objects.get(uid__endswith=card)
-        except QieCard.DoesNotExist:
-            raise Http404("QIE card with unique id " + str(card) + " does not exist")
+            p = CM_Test_Result.objects.get(uid__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = QieCard.objects.get(barcode__endswith=card)
-        except QieCard.DoesNotExist:
-            raise Http404("QIE card with barcode " + str(card) + " does not exist")
+            p = CM_Test_Result.objects.get(chip_number__endswith=card)
+        except CM_Test_Result.DoesNotExist:
+            raise Http404("CM card with chip_number " + str(card) + " does not exist")
     try:
         curTest = Test.objects.get(name=test)
-    except QieCard.DoesNotExist:
-        raise Http404("QIE card does not exist")
+    except CM_Test_Result.DoesNotExist:
+        raise Http404("CM card does not exist")
     
     if(request.POST.get('overwrite_pass')):
         if(request.POST.get('secret') == "pseudo" or request.POST.get('secret') == "pseudopod"):
@@ -333,7 +333,7 @@ def testDetail(request, card, test):
 
     firstTest = []
 
-    return render(request, 'qie_cards/testDetail.html', {'card': p,
+    return render(request, 'cm_db/testDetail.html', {'card': p,
                                                          'test': curTest,
                                                          'attempts': attemptData
                                                          })
@@ -341,7 +341,7 @@ def testDetail(request, card, test):
 
 def fieldView(request):
     """ This displays details about tests on a card """ 
-    options = ["barcode",
+    options = ["chip_number",
                "readout_module",
                "calibration_unit",
                "uid",
@@ -362,7 +362,7 @@ def fieldView(request):
                 fields.append(field)
 
 
-    cards = list(QieCard.objects.all().order_by("barcode"))
+    cards = list(CM_Test_Result.objects.all().order_by("chip_number"))
     items = []
     # Info for "Card Status"
     cache = path.join(MEDIA_ROOT, "cached_data/summary.json")
@@ -399,6 +399,6 @@ def fieldView(request):
 
         items.append(item)
 
-    return render(request, 'qie_cards/fieldView.html', {'fields': fields, "items": items, "options": options})
+    return render(request, 'cm_db/fieldView.html', {'fields': fields, "items": items, "options": options})
 
-
+'''
