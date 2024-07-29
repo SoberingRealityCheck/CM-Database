@@ -19,7 +19,7 @@ from card_db.settings import MEDIA_ROOT, CACHE_DATA
 class CatalogView(generic.ListView):
     """ This displays a list of all QIE cards """
     
-    template_name = 'qie_cards/catalog.html'
+    template_name = 'cm_db/catalog.html'
     context_object_name = 'barcode_list'
     cards = QieCard.objects.all().order_by('barcode')
     #num_cards = len(cards)
@@ -33,7 +33,7 @@ def catalog(request):
     cards = QieCard.objects.all().order_by('barcode')
     count = len(cards)
 
-    return render(request, 'qie_cards/catalog.html', {'barcode_list': cards,
+    return render(request, 'cm_db/catalog.html', {'barcode_list': cards,
                                                       'total_count': count})
 
 def summary(request):
@@ -60,7 +60,7 @@ def summary(request):
         cardStat = filters.getCardTestStates(cards, tests, attempts)
         print "Got 'em!"
     
-    return render(request, 'qie_cards/summary.html', {'cards': cardStat})
+    return render(request, 'cm_db/summary.html', {'cards': cardStat})
 
 
 def calibration(request, card):
@@ -78,7 +78,7 @@ def calibration(request, card):
 
     calibrations = p.qieshuntparams_set.all().order_by("group")
 
-    return render(request, 'qie_cards/calibration.html', {'card': p, 'cals': list(calibrations)})
+    return render(request, 'cm_db/calibration.html', {'card': p, 'cals': list(calibrations)})
 
 def calResults(request, card, group):
     """ This displays the calibration results for a card """
@@ -111,7 +111,7 @@ def calResults(request, card, group):
                      "offset":str(item[9]),
                     }
             data.append(temp)
-    return render(request, 'qie_cards/cal_results.html', {'card': p,
+    return render(request, 'cm_db/cal_results.html', {'card': p,
                                                           'data': data,
                                                          })
 
@@ -136,13 +136,13 @@ def calPlots(request, card, group):
             files.append(path.join(calibration.plots.url, path.basename(f)))
     else:
         files.append("No Data!")
-    return render(request, 'qie_cards/cal_plots.html', {'card': p,
+    return render(request, 'cm_db/cal_plots.html', {'card': p,
                                                         'plots': files,
                                                          })
 class TestersView(generic.ListView):
     """ This displays the users and email addresses """
     
-    template_name = 'qie_cards/testers.html'
+    template_name = 'cm_db/testers.html'
     context_object_name = 'tester_list'
     def get_queryset(self):
         return Tester.objects.all().order_by('username')
@@ -151,7 +151,7 @@ class TestersView(generic.ListView):
 class TestDetailsView(generic.ListView):
     """ This displays the tests and their descriptions """
 
-    template_name = 'qie_cards/test-details.html'
+    template_name = 'cm_db/test-details.html'
     context_object_name = 'test_list'
     def get_queryset(self):
         return Test.objects.all().order_by('name')
@@ -182,7 +182,7 @@ def stats(request):
                       'remaining': testRemStats,
                      }
 
-    return render(request, 'qie_cards/stats.html', statistics)
+    return render(request, 'cm_db/stats.html', statistics)
 
 def detail(request, card):
     """ This displays the overview of tests for a card """
@@ -191,13 +191,13 @@ def detail(request, card):
             p = QieCard.objects.get(uid__endswith=card)
         except QieCard.DoesNotExist:
             #raise Http404("QIE card with unique id " + str(card) + " does not exist")
-            return render(request, 'qie_cards/error.html')
+            return render(request, 'cm_db/error.html')
     else:
         try:
             p = QieCard.objects.get(barcode__endswith=card)
         except QieCard.DoesNotExist:
             #raise Http404("QIE card with barcode " + str(card) + " does not exist")
-            return render(request, 'qie_cards/error.html')
+            return render(request, 'cm_db/error.html')
 
     if p.readout_module < 0:    rm = "Not Installed"
     else:                       rm = p.readout_module
@@ -260,7 +260,7 @@ def detail(request, card):
         if len(Location.objects.filter(card=p)) < 10:
             Location.objects.create(geo_loc=request.POST.get("location"), card=p)
 
-    return render(request, 'qie_cards/detail.html', {'card': p,
+    return render(request, 'cm_db/detail.html', {'card': p,
                                                      'rm' : rm,
                                                      'rm_slot' : rm_slot,
                                                      'cu' : cu,
@@ -272,19 +272,19 @@ def detail(request, card):
 #class CatalogView(generic.ListView):
 #    """ This displays a list of all QIE cards """
 #    
-#    template_name = 'qie_cards/catalog.html'
+#    template_name = 'cm_db/catalog.html'
 #    context_object_name = 'barcode_list'
 #    def get_queryset(self):
 #        return QieCard.objects.all().order_by('barcode')
 #
 def error(request): 
     """ This displays an error for incorrect barcode or unique id """
-    return render(request, 'qie_cards/error.html')
+    return render(request, 'cm_db/error.html')
 
 class PlotView(generic.ListView):
     """ This displays various plots of data """
     
-    template_name = 'qie_cards/plots.html'
+    template_name = 'cm_db/plots.html'
     context_object_name= 'tests'
     def get_queryset(self):
         return list(Test.objects.all())
@@ -334,7 +334,7 @@ def testDetail(request, card, test):
 
     firstTest = []
 
-    return render(request, 'qie_cards/testDetail.html', {'card': p,
+    return render(request, 'cm_db/testDetail.html', {'card': p,
                                                          'test': curTest,
                                                          'attempts': attemptData
                                                          })
@@ -400,6 +400,6 @@ def fieldView(request):
 
         items.append(item)
 
-    return render(request, 'qie_cards/fieldView.html', {'fields': fields, "items": items, "options": options})
+    return render(request, 'cm_db/fieldView.html', {'fields': fields, "items": items, "options": options})
 
 
