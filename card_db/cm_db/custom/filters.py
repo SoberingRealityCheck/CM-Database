@@ -1,5 +1,5 @@
-from ..models import QieCard, Tester, Test, Attempt, Location
-
+#from ..models import QieCard, Tester, Test, Attempt, Location
+'''
 def attemptTotalState(attempts):
     status = "default"
     forced = False
@@ -266,3 +266,4 @@ def getPassedCardStats(cards, tests, attempts):
     cardStats["percentage"] = round( float(len(cardStats["cards"]))/len(cards) * 100, 1)
             
     return cardStats
+'''

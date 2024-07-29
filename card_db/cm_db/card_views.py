@@ -34,7 +34,7 @@ def catalog(request):
 
     return render(request, 'cm_db/catalog.html', {'chip_number_list': cards,
                                                       'total_count': count})
-'''
+
 def summary(request):
     """ This displays a summary of the cards """
     if CACHE_DATA:
@@ -401,4 +401,3 @@ def fieldView(request):
 
     return render(request, 'cm_db/fieldView.html', {'fields': fields, "items": items, "options": options})
 
-'''
