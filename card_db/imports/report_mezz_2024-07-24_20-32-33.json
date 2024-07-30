@@ -2342,5 +2342,5 @@
   "status": "?? econ_i2c.py.orig\u0000?? test_mezzanine/tmp.py\u0000?? test_radiation/conftest.py.orig\u0000?? test_vectors/\u0000?? utils/align.py.orig\u0000?? utils/io.py.orig\u0000",
   "firmware_name": "econ-mezz-tester-kria.bit\u0000",
   "firmware_git_desc": "9e5953f-dirty",
-  "chip_number": 5555
+  "chip_number": "999"
 }
