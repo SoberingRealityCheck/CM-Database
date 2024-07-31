@@ -19,7 +19,7 @@ Accessing sql database & statics works while settings.py is set to ```Debug=True
 
 IMPORTANT:
 -
-Along with the code in this repo there is also a 21.6 GB 'media' folder that contains... images of the chips, i think? I can't tell what is accessing it.
+Along with the code in this repo there is also a 21.6 GB 'media' folder that contains several different sorts of files related to the old QIE database. And a great photo of an anteater. I can't tell what is accessing it.
 
 If you run into issues and need to scp that to your local device, the directory is located on hep01 under the filepath ```/hep01-data1/hep06-copy/django/testing_database_he/media```.
 
