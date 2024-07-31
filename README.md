@@ -36,4 +36,4 @@ in terminal:
 to start the server in one window.
 If you want to interact directly with the server, open a seperate window and use ```mongosh``` to start a mongoDB shell.
 ```use db``` will put you into the CM database, and ```show collections``` will show you the currently stored variables. 
-```var myCursor = cm_db_cm_test_result.find()``` creates a cursor that you can inspect with ```myCursor``` to read the stored data. 
+```var myCursor = db.cm_db_cm_test_result.find()``` creates a cursor that you can inspect with ```myCursor``` to read the stored data. 
