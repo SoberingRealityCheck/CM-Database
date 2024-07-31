@@ -2,11 +2,6 @@ WEBSITE!
 -
 Requirements to run:
 -
-- Python 3.11.x
-- Django 5.x
-
-currently looking at using a different environment for our mongodb compatibility with:
-
 ```
 python            3.9.18
 Django            4.0.10
@@ -31,3 +26,14 @@ If you run into issues and need to scp that to your local device, the directory 
 Should be placed next to your github repo folder in a folder named 'QIE_media' for the program to locate it. 
 
 Not including it in the github repo because github did not like it when i tried to push a 86,000 file commit... 
+
+
+
+Activating and Using MongoDB on HEP11:
+-
+in terminal:
+```sudo mongod```
+to start the server in one window.
+If you want to interact directly with the server, open a seperate window and use ```mongosh``` to start a mongoDB shell.
+```use db``` will put you into the CM database, and ```show collections``` will show you the currently stored variables. 
+```var myCursor = cm_db_cm_test_result.find()``` creates a cursor that you can inspect with ```myCursor``` to read the stored data. 
