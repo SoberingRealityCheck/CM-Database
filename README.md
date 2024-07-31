@@ -25,7 +25,7 @@ If you run into issues and need to scp that to your local device, the directory 
 
 Should be placed next to your github repo folder in a folder named 'QIE_media' for the program to locate it. 
 
-Not including it in the github repo because github did not like it when i tried to push a 86,000 file commit... 
+Not including it in the github repo because github did not like it when i tried to push a 86,000 file commit... and I figured whoever is running this in the future wouldn't like it either ;)
 
 
 Starting the server:
