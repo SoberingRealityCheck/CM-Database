@@ -28,12 +28,18 @@ Should be placed next to your github repo folder in a folder named 'QIE_media' f
 Not including it in the github repo because github did not like it when i tried to push a 86,000 file commit... 
 
 
-
-Activating and Using MongoDB on HEP11:
+Starting the server:
 -
-in terminal:
-```sudo mongod```
-to start the server in one window.
+Open a terminal window. Run ```mongod``` to start the mongoDB server.
+In a seperate terminal window, run ```sudo systemctl start httpd``` to start Apache.
+visiting ```http://hep11/hgcal/cm``` in a browser window should now display the Django homepage.
+
+Interacting with the MongoDB Server:
+-
 If you want to interact directly with the server, open a seperate window and use ```mongosh``` to start a mongoDB shell.
 ```use db``` will put you into the CM database, and ```show collections``` will show you the currently stored variables. 
 ```var myCursor = db.cm_db_cm_test_result.find()``` creates a cursor that you can inspect with ```myCursor``` to read the stored data. 
+
+Debugging:
+-
+Apache error log is located in the default spot, under ```/etc/httpd/logs/error_log```. You may not be able to access the folder but you can read the file directly with sudo. 
