@@ -253,7 +253,11 @@ def detail(request, card):
             if not p.comments == "":
                 comment += "\n"
             comment += str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute) + ": " + request.POST.get('comment')
-            p.comments += comment
+            tempcomments = p.comments
+            if not tempcomments:
+                tempcomments = ""
+            tempcomments += comment
+            p.comments = tempcomments
             p.save()
 
         if(request.POST.get('location_add')):

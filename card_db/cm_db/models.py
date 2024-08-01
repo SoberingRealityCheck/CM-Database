@@ -299,7 +299,7 @@ class CM_Test_Result(models.Model):
     status = models.CharField(max_length=200, unique=False, default="")
     firmware_name = models.CharField(max_length=50, unique=False, default="")
     chip_number = models.CharField(max_length=50, unique=False, default="null")
-    
+    comments = models.CharField(max_length=5000, unique=False, default="") 
     objects = models.DjongoManager()
     
     '''
