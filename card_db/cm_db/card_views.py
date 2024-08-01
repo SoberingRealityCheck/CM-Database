@@ -261,7 +261,7 @@ def detail(request, card):
                 Location.objects.create(geo_loc=request.POST.get("location"), card=p)
 
         return render(request, 'cm_db/detail.html', {'card': p,
-                                                         'rm' : tests,
+                                                         'rm' : "PLACEHOLDER",
                                                          'rm_slot' : "PLACEHOLDER",
                                                          'cu' : "PLACEHOLDER",
                                                          'attempts':attempts,

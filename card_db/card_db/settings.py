@@ -33,14 +33,14 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'cm_db.apps.cm_dbConfig',
+    #'cm_db.apps.cm_dbConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'cm_db' 
 ]
 
 MIDDLEWARE = [
