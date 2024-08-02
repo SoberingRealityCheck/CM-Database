@@ -11,15 +11,15 @@
     </style>
 {% endblock %}
 
-{% block title %}HE QIE Card Test Database{% endblock %}
+{% block title %}HE CM Card Test Database{% endblock %}
 {% block catalog %}class="active"{% endblock %}
 
 {% block content %}
 <div class="row" align="left" style="padding-left:50px;">
 	<h3>
-        QIE Card Catalog
+        CM Card Catalog
         <div class="divider"></div>
-        Number of QIE Cards: {{total_count}}
+        Number of CM Cards: {{total_count}}
     </h3>
     <div id="breakLine" style="height:2px;width:50%;background-color:#E74C3C"></div>
 </div>
@@ -28,11 +28,11 @@
 <div class="row" style="padding-left:50px;padding-right:50px">
     <div class="splitColumns">
       <ul>
-{% if filename_url_list %}
+{% if identifier_list %}
 <div class="row">
 	<div align="center"><ul>
-	{% for card in filename_url_list %}
-	<li style="font-size:18px"><a href="{{card.filename_url}}/">{{card.filename_url}}</a></li>
+	{% for card in identifier_list %}
+	<li style="font-size:18px"><a href="{{card}}/">{{card}}</a></li>
 	{%endfor%}
 	</ul></div>
 </div>

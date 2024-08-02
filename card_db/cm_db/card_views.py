@@ -19,8 +19,9 @@ class CatalogView(generic.ListView):
     """ This displays a list of all CM cards """
     
     template_name = 'cm_db/catalog.html'
-    context_object_name = 'filename_url_list'
-    cards = CM_Card.objects.all().order_by('filename_url')
+    context_object_name = 'identifier_list'
+    #cards = CM_Card.objects.all().order_by('identifier')
+    cards = CM_Card.objects.values_list("identifier",flat = True)
     #num_cards = len(cards)
     def get_queryset(self):
         return self.cards
@@ -29,10 +30,11 @@ class CatalogView(generic.ListView):
 
 def catalog(request):
     """ This displays a list of all CM cards """
-    cards = CM_Card.objects.all().order_by('filename_url')
+    cards = CM_Card.objects.values_list('identifier', flat=True).distinct()
+    print(cards)
     count = len(cards)
 
-    return render(request, 'cm_db/catalog.html', {'filename_url_list': cards,
+    return render(request, 'cm_db/catalog.html', {'identifier_list': cards,
                                                       'total_count': count})
 
 def summary(request):
@@ -188,105 +190,97 @@ def detail(request, card):
     """ This displays the overview of tests for a card """
     if len(card) > 7:
         try:
-            p_results = CM_Card.objects.filter(filename_url = card)
+            p = CM_Card.objects.filter(filename_url = card)
         except CM_Card.DoesNotExist:
             #raise Http404("CM card with unique id " + str(card) + " does not exist")
             return render(request, 'cm_db/error.html')
     else:
         try:
             #p_results = CM_Card.objects.get(identifier__endswith=card)
-            p_results = CM_Card.objects.all().filter(identifier = card)
-            print("p results:",p_results) 
+            p = CM_Card.objects.all().filter(identifier = card)[0]
+            print("p results:",p) 
         except CM_Card.DoesNotExist:
             #raise Http404("CM card with identifier " + str(card) + " does not exist")
             return render(request, 'cm_db/error.html')
-    for p in p_results:
-        print("chip number:", p.identifier)
-        '''
-        locations = Location.objects.filter(card=p)
-        '''
-        attempts = []
-        status = {}    
-        tests = p.test_outcomes
+    testnames = []
+    attempts = []
+    status = {"total":0, "passed":0}
+    test_overview = []
+    failedAny = False
+    forcedAny = False
 
-        status["total"] = p.summary["total"]
-        status["passed"] = p.summary["passed"]
-        status["collected"] = p.summary["collected"]
-        status["error"] = p.summary["error"]
-        failedAny = False
-        forcedAny = False
-
-        for test in tests:
-            name = test["test_name"]
-            result = test["test_result"]
-            if result == 1:
-                attempts.append({"attempt":name, "valid":True})
-            if result == 0:
-                attempts.append({"attempt":name, "valid":False})
-                failedAny = True
-            if result == -1:
-                attempts.append({"attempt":name, "valid":True})
+    '''
+    locations = Location.objects.filter(card=p)
+    '''
+    tests = p.test_outcomes         
+    for test in tests:
+        status["total"] += 1
+        totalrun = test['total']
+        totalpassed = test['passed']
+        if totalrun == totalpassed:
+            status["passed"] += 1
+        print(test)
+    ''' 
+    attemptList = attempts[nodeid==test].order_by("attempt_number")
+    if attemptList:
+        last = attemptList[len(attemptList)-1]
+        if not last.revoked and test.required:
+            if last.overwrite_pass:
+                status["passed"] += 1
                 forcedAny = True
-            ''' 
-            attemptList = attempts[nodeid==test].order_by("attempt_number")
-            if attemptList:
-                last = attemptList[len(attemptList)-1]
-                if not last.revoked and test.required:
-                    if last.overwrite_pass:
-                        status["passed"] += 1
-                        forcedAny = True
-                    elif last.passed_all():
-                        status["passed"] += 1
-                    else:
-                        failedAny = True
-                attempts.append({"attempt":last, "valid": True, "required": test.required})
+            elif last.passed_all():
+                status["passed"] += 1
             else:
-                attempts.append({"attempt":test.test_name, "valid": False, "required": test.required})
-            '''
+                failedAny = True
+        attempts.append({"attempt":last, "valid": True, "required": test.required})
+    else:
+        attempts.append({"attempt":test.test_name, "valid": False, "required": test.required})
+        '''
 
-        if status["total"] == status["passed"]:
-            if forcedAny:
-                status["banner"] = "GOOD (FORCED)"
-                status["css"] = "forced"
-            else:
-                status["banner"] = "GOOD"
-                status["css"] = "okay"
-        elif failedAny:
-            status["banner"] = "FAILED"
-            status["css"] = "bad"
+    if status["total"] == status["passed"]:
+        if forcedAny:
+            status["banner"] = "GOOD (FORCED)"
+            status["css"] = "forced"
         else:
-            status["banner"] = "INCOMPLETE"
-            status["css"] = "warn"
+            status["banner"] = "GOOD"
+            status["css"] = "okay"
+    elif failedAny:
+        status["banner"] = "FAILED"
+        status["css"] = "bad"
+    else:
+        status["banner"] = "INCOMPLETE"
+        status["css"] = "warn"
 
-        if(request.POST.get('comment_add')):
-            comment = ""
-            if not p.comments == "":
-                comment += "\n"
-            comment += str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute) + ": " + request.POST.get('comment')
-            tempcomments = p.comments
-            if not tempcomments:
-                tempcomments = ""
-            tempcomments += comment
-            p.comments = tempcomments
-            p.save()
+    if(request.POST.get('comment_add')):
+        comment = ""
+        if not p.comments == "":
+            comment += "\n"
+        comment += str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute) + ": " + request.POST.get('comment')
+        tempcomments = p.comments
+        if not tempcomments:
+            tempcomments = ""
+        tempcomments += comment
+        p.comments = tempcomments
+        p.save()
 
-        if(request.POST.get('location_add')):      
-            newloc = {"geo_loc":request.POST.get("location")}
-            newloc["date_received"] = str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute)
-            temploc = p.locations
-            if not temploc:
-                temploc = []
-            temploc.append(newloc)
-            p.locations = temploc
-            p.save()
-        return render(request, 'cm_db/detail.html', {'card': p,
-                                                         'rm' : "PLACEHOLDER",
-                                                         'rm_slot' : "PLACEHOLDER",
-                                                         'cu' : "PLACEHOLDER",
-                                                         'attempts':attempts,
-                                                         'locations':"PLACEHOLDER",
-                                                         'status':status,
-                                                        })
+    if(request.POST.get('location_add')):      
+        newloc = {"geo_loc":request.POST.get("location")}
+        newloc["date_received"] = str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute)
+        temploc = p.locations
+        if not temploc:
+            temploc = []
+        temploc.append(newloc)
+        p.locations = temploc
+        p.save()
+    return render(request, 'cm_db/detail.html', {
+                                                     'card': p,
+                                                     'rm' : "PLACEHOLDER",
+                                                     'rm_slot' : "PLACEHOLDER",
+                                                     'cu' : "PLACEHOLDER",
+                                                     'attempts':tests,
+                                                     'locations':"PLACEHOLDER",
+                                                     'status':status,
+                                                    })
 
 #class CatalogView(generic.ListView):
 #    """ This displays a list of all CM cards """

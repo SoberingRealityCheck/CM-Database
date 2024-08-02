@@ -16,6 +16,7 @@ urlpatterns = [
     path('stats', views.stats, name='stats'),
     path('test-details', views.TestDetailsView.as_view(), name='test-details'),
     #path('<str:filepath_url>' ,views.detail, name='detail-uid'),
+    path('NO_ID/', views.detail, {"card":'NO_ID'}),
     re_path(r'^(?P<card>[0-9]{14})', views.detail, name='detail-uid'),
     re_path(r'^uid/(?P<card>[a-fA-F0-9]{8,16})/calibration$', views.calibration, name='calibration-uid'),
     re_path(r'^uid/(?P<card>[a-fA-F0-9]{8,16})/calibration/(?P<group>[0-9]{1,2})/plots$', views.calPlots, name='plotview-uid'),

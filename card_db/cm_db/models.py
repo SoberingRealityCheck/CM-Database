@@ -21,7 +21,14 @@ class Summary(models.Model):
 class Test_Outcome(models.Model):
     test_name = CharField(max_length = 20, null = False)
     #if this works, probably want to replace this with IntegerField or something similar to make sure it can only ever be [-1, 0, 1]
-    test_result = CharField(max_length = 1, null = False)
+    passed = CharField(max_length = 4, null = False)
+    total = CharField(max_length = 4, null = False)
+    failed = CharField(max_length = 4, default = "0")
+    anyFailed = CharField(max_length = 1, default = "0")
+    anyForced = CharField(max_length = 1, default = "0")
+    result = CharField(max_length = 10, default = "")
+    get_css_class = CharField(max_length = 10, default = "")
+    required = CharField(max_length = 0, default = "1")
     
     objects = DjongoManager()
 
@@ -32,7 +39,7 @@ class Test_Outcome(models.Model):
 class Test_Outcome_Form(forms.ModelForm):
     class Meta:
         model = Test_Outcome
-        fields = ('test_name','test_result')
+        fields = ('test_name','passed','total','failed','anyFailed','anyForced','result', "get_css_class", "required")
 
 '''
 class Array_Value(models.Model):
@@ -203,17 +210,24 @@ class Test_Details_Form(forms.ModelForm):
 
 
 class Card_Metadata(models.Model):
+    filename = CharField(max_length = 50, unique = True)
     branch = CharField(max_length = 20, default = "NO_BRANCH")
     commit_hash = CharField(max_length = 30, default = "NO_COMMIT_HASH")
     remote_url = CharField(max_length = 50, default = "NO_URL")
     status = CharField(max_length = 50, default = "NO_STATUS")
     firmware_name = CharField(max_length = 30, default = "NO_FIRMWARE_NAME")
     firmware_git_desc =  CharField(max_length = 20, default = "NO_GIT_DESC")
-    filename = CharField(max_length = 50, unique = True)
+    
+    objects = DjongoManager()
 
     class Meta:
         abstract = True
    
+class Card_Metadata_Form(forms.ModelForm):
+    class Meta:
+        model = Card_Metadata
+        fields = ('filename','branch','commit_hash','remote_url','status','firmware_name','firmware_git_desc')
+
 
 class Location(models.Model):
     date_received = CharField(max_length = 30, null = True)
@@ -233,7 +247,7 @@ class CM_Card(models.Model):
     #unsure if manual ID assignment is really necessary but I remember it fixing some issue I had last time I did this
     _id = models.ObjectIdField()
     #identifier is the chip number or barcode or whatnot
-    identifier = CharField(max_length = 20, default = "NO_ID_ASSIGNED")
+    identifier = CharField(max_length = 20, default = "NO_ID")
     #Quick Test summary for easy fast data
     summary = EmbeddedField(model_container = Summary, null = True)
     #1 for passed, 0 for failed, -1 for skipped
@@ -245,7 +259,10 @@ class CM_Card(models.Model):
             model_container = Test_Details,
             model_form_class = Test_Details_Form,
             null = True)
-    card_metadata = EmbeddedField(model_container = Card_Metadata)
+    card_metadata = ArrayField(
+            model_container = Card_Metadata,
+            model_form_class = Card_Metadata_Form,
+            null = True)
     filename_url = CharField(max_length=19, unique = True)
     comments = CharField(max_length=1000, null = True)
     locations = ArrayField(

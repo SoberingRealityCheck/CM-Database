@@ -173,32 +173,18 @@ table, td, th {
   </thead>
   <tbody>
     <div id="accordion" class="collapse">
-    {% for item in attempts %}
-    {% if item.valid %}
+    {% for test in attempts %}
     <tr>
-      <th scope="row">{{item.attempt.test_type}}</th>
-      <td class="{{item.attempt.get_css_class}}">{{item.attempt.get_status}}
-          {% if not item.required %}
+      <th scope="row">{{test.test_name}}</th>
+      <td class="{{test.get_css_class}}">{{test.result}}
+          {% if not test.required %}
           (NOT REQ)
           {% endif %}
       </td>
-      <td>{{item.attempt.date_tested}}</td>
-      <td>{{item.attempt.num_passed}}/{{item.attempt.num_failed}}</td>
-      <td><a href="{{item.attempt.test_type}}">[link to history]</a></td>
+      <td>{{test.date_tested}}</td>
+      <td>{{test.passed}}/{{test.failed}}</td>
+      <td><a href="{{test.test_name}}">[link to history]</a></td>
     </tr>
-    {% else %}
-    <tr>
-      <th scope="row">{{item.attempt}}</th>
-      <td class="warn">REMAINING
-          {% if not item.required %}
-          (NOT REQ)
-          {% endif %}
-      </td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-    </tr>
-    {% endif %}
     {% endfor %}
   </div>
   </tbody>
