@@ -29,7 +29,7 @@ class Test_Outcome(models.Model):
     result = CharField(max_length = 10, default = "")
     get_css_class = CharField(max_length = 10, default = "")
     required = CharField(max_length = 0, default = "1")
-    
+    most_recent_date = CharField(max_length=20, default = "") 
     objects = DjongoManager()
 
     class Meta:
@@ -39,7 +39,7 @@ class Test_Outcome(models.Model):
 class Test_Outcome_Form(forms.ModelForm):
     class Meta:
         model = Test_Outcome
-        fields = ('test_name','passed','total','failed','anyFailed','anyForced','result', "get_css_class", "required")
+        fields = ('test_name','passed','total','failed','anyFailed','anyForced','result', "get_css_class", "required", "most_recent_date")
 
 '''
 class Array_Value(models.Model):

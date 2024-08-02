@@ -116,6 +116,9 @@ def Create_Fresh_Card(data, fname):
     #TEMP BANDAID FIX BECAUSE I DO NOT YET KNOW WHICH TESTS ARE REQUIRED
     for test in test_outcomes:
         test["required"] = 1
+    for test in test_outcomes:
+        date = fname[62:][:10]
+        test["most_recent_date"] = date
     newcard.test_outcomes = test_outcomes
     #save test details
     test_details = []
@@ -171,37 +174,41 @@ def Update_Existing_Card(data, fname):
         identifier = "NO_ID"
     oldcard = CM_Card.objects.filter(identifier = identifier)[0]
     #id assignment is easy. Just leave it as is
-    test_outcomes = oldcard.test_outcomes
+    old_test_outcomes = oldcard.test_outcomes
+    test_outcomes = []
     for test in data['tests']:
         test_name = f"{stringReplace(test['nodeid'].split('::')[1])}"
         result = selector(test['outcome'])
         new = True
-        for test in test_outcomes:
+        #nesting a for loop here is very slow. There's likely a clever workaround using faster pymongo querying but for now this is a temporary solution.
+        for test in old_test_outcomes:
             if test["test_name"] == test_name:
                 new = False
                 test_outcome_new = test
                 test_outcome_new["total"] = str(int(test_outcome_new["total"])+1)
                 if result == 1:
                     test_outcome_new["passed"] = str(int(test_outcome_new["passed"])+1)
-                    if test["anyForced"] == 0:
+                    if test["passed"] == test["total"]:
                         test_outcome_new["result"] = "Passed"
-                if result == 0:
-                    if test["anyForced"] == 0:
+                elif result == 0:
+                    if test["anyForced"] != 1:
                         test_outcome_new["result"] = "Failed"
                     test_outcome_new["anyFailed"] = 1
                     test_outcome_new["failed"] = str(int(test_outcome_new["failed"])+1)
                     #print(test_outcome_new["failed"])
-                #if result == -1:
+                elif result == -1:
+                    if test["passed"] != test["total"]:
+                        test_outcome_new["result"] = "Incomplete"
                     #test_outcome_new["result"] = "Forced"
                     #test_outcome_new["anyForced"] = 1
-                test = test_outcome_new
+                test_outcomes.append(test_outcome_new)
                 pass
         if new:
             test_outcome_new = {"test_name":test_name, "passed":0, "total":1, "failed":0, "anyForced":0, "anyFailed":0, "result":"Incomplete"}
             if result == 1:
                 test_outcome_new["passed"] = 1
                 test_outcome_new["result"] = "Passed"
-            if result == 0:
+            elif result == 0:
                 test_outcome_new["result"] = "Failed"
                 test_outcome_new["anyFailed"] = 1
                 test_outcome_new["failed"] = 1
@@ -213,17 +220,20 @@ def Update_Existing_Card(data, fname):
         result = test["result"]
         if result == "Passed":
             test["get_css_class"] = "okay"
-        if result == "Forced":
+        elif result == "Forced":
             test["get_css_class"] = "forced"
-        if result == "Failed":
+        elif result == "Failed":
             test["get_css_class"] = "bad"
-        if result == "Incomplete":
+        elif result == "Incomplete":
             test["get_css_class"] = "warn"
 
 
     #TEMP BANDAID FIX BECAUSE I DO NOT YET KNOW WHICH TESTS ARE REQUIRED
     for test in test_outcomes:
         test["required"] = 1
+    for test in test_outcomes:
+        date = fname[62:][:10]
+        test["most_recent_date"] = date
     oldcard.test_outcomes = test_outcomes
     #save test details
     test_details = oldcard.test_details

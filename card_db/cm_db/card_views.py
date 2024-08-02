@@ -219,6 +219,11 @@ def detail(request, card):
         totalpassed = test['passed']
         if totalrun == totalpassed:
             status["passed"] += 1
+        print(test["anyFailed"])
+        if test["anyFailed"] != 0:
+            failedAny = True
+        if test["anyForced"] != 0:
+            forcedAny = True
         print(test)
     ''' 
     attemptList = attempts[nodeid==test].order_by("attempt_number")
