@@ -54,7 +54,7 @@ table, td, th {
     <div id="breakLine" style="height:2px;width:25%;background-color:#E74C3C"></div>
 </div><br>
 
-<!-- QIE Card Info Table -->
+<!-- Card Info Table -->
 <table id="cardinfo" class="info" style="margin-left:50px; font-size:30px;">
     <col width="25%">
     <col width="30%">
@@ -69,7 +69,7 @@ table, td, th {
         <tr>
             <td>Barcode:</td>
             <td>{{card.barcode}}</td>
-            <td>({{card.get_bar_uid}})</td>
+            <td>({{card.identifier}})</td>
             <td></td>
         </tr>
         <tr>
@@ -132,7 +132,7 @@ table, td, th {
     </tr>
   </thead>
   <tbody>
-    {% for location in locations %}
+    {% for location in card.locations %}
     <tr>
       <th scope="row">{{location.date_received | default:"No date recorded"}}</th>
       <td>{{location.geo_loc}}</td>

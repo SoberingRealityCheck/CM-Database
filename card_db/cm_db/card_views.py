@@ -19,8 +19,8 @@ class CatalogView(generic.ListView):
     """ This displays a list of all CM cards """
     
     template_name = 'cm_db/catalog.html'
-    context_object_name = 'identifier_list'
-    cards = CM_Card.objects.all().order_by('identifier')
+    context_object_name = 'filename_url_list'
+    cards = CM_Card.objects.all().order_by('filename_url')
     #num_cards = len(cards)
     def get_queryset(self):
         return self.cards
@@ -29,10 +29,10 @@ class CatalogView(generic.ListView):
 
 def catalog(request):
     """ This displays a list of all CM cards """
-    cards = CM_Card.objects.all().order_by('identifier')
+    cards = CM_Card.objects.all().order_by('filename_url')
     count = len(cards)
 
-    return render(request, 'cm_db/catalog.html', {'identifier_list': cards,
+    return render(request, 'cm_db/catalog.html', {'filename_url_list': cards,
                                                       'total_count': count})
 
 def summary(request):
@@ -188,7 +188,7 @@ def detail(request, card):
     """ This displays the overview of tests for a card """
     if len(card) > 7:
         try:
-            p = CM_Card.objects.filter(identifier=card).configure(cursor_type=CursorType.TAILABLE).iterator()
+            p_results = CM_Card.objects.filter(filename_url = card)
         except CM_Card.DoesNotExist:
             #raise Http404("CM card with unique id " + str(card) + " does not exist")
             return render(request, 'cm_db/error.html')
@@ -202,22 +202,32 @@ def detail(request, card):
             return render(request, 'cm_db/error.html')
     for p in p_results:
         print("chip number:", p.identifier)
-        created = p.created
-        attempts = p.tests
         '''
         locations = Location.objects.filter(card=p)
         '''
         attempts = []
         status = {}    
-        tests = []
+        tests = p.test_outcomes
 
-        status["total"] = len(tests)
-        status["passed"] = 0
+        status["total"] = p.summary["total"]
+        status["passed"] = p.summary["passed"]
+        status["collected"] = p.summary["collected"]
+        status["error"] = p.summary["error"]
         failedAny = False
         forcedAny = False
 
         for test in tests:
-            
+            name = test["test_name"]
+            result = test["test_result"]
+            if result == 1:
+                attempts.append({"attempt":name, "valid":True})
+            if result == 0:
+                attempts.append({"attempt":name, "valid":False})
+                failedAny = True
+            if result == -1:
+                attempts.append({"attempt":name, "valid":True})
+                forcedAny = True
+            ''' 
             attemptList = attempts[nodeid==test].order_by("attempt_number")
             if attemptList:
                 last = attemptList[len(attemptList)-1]
@@ -231,8 +241,8 @@ def detail(request, card):
                         failedAny = True
                 attempts.append({"attempt":last, "valid": True, "required": test.required})
             else:
-                attempts.append({"attempt":test.name, "valid": False, "required": test.required})
-            
+                attempts.append({"attempt":test.test_name, "valid": False, "required": test.required})
+            '''
 
         if status["total"] == status["passed"]:
             if forcedAny:
@@ -260,10 +270,15 @@ def detail(request, card):
             p.comments = tempcomments
             p.save()
 
-        if(request.POST.get('location_add')):
-            if len(Location.objects.filter(card=p)) < 10:
-                Location.objects.create(geo_loc=request.POST.get("location"), card=p)
-
+        if(request.POST.get('location_add')):      
+            newloc = {"geo_loc":request.POST.get("location")}
+            newloc["date_received"] = str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute)
+            temploc = p.locations
+            if not temploc:
+                temploc = []
+            temploc.append(newloc)
+            p.locations = temploc
+            p.save()
         return render(request, 'cm_db/detail.html', {'card': p,
                                                          'rm' : "PLACEHOLDER",
                                                          'rm_slot' : "PLACEHOLDER",

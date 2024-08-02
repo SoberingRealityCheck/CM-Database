@@ -10,7 +10,7 @@ class Summary(models.Model):
     passed = CharField(max_length = 3)
     total = CharField(max_length = 3)
     collected = CharField(max_length = 3)
-
+    error = CharField(max_length = 3)
     def __getitem__(self, name):
         return getattr(self, name)
     
@@ -209,11 +209,25 @@ class Card_Metadata(models.Model):
     status = CharField(max_length = 50, default = "NO_STATUS")
     firmware_name = CharField(max_length = 30, default = "NO_FIRMWARE_NAME")
     firmware_git_desc =  CharField(max_length = 20, default = "NO_GIT_DESC")
-    filename = CharField(max_length = 50, default = "NO_FILENAME")
+    filename = CharField(max_length = 50, unique = True)
 
     class Meta:
         abstract = True
    
+
+class Location(models.Model):
+    date_received = CharField(max_length = 30, null = True)
+    geo_loc = CharField(max_length=40, null = False)
+        
+    objects = DjongoManager()
+
+    class Meta:
+        abstract = True
+
+class Location_Form(forms.ModelForm):
+    class Meta:
+        model = Location
+        fields = ('date_received', 'geo_loc')
 
 class CM_Card(models.Model):
     #unsure if manual ID assignment is really necessary but I remember it fixing some issue I had last time I did this
@@ -231,6 +245,11 @@ class CM_Card(models.Model):
             model_container = Test_Details,
             model_form_class = Test_Details_Form,
             null = True)
-    card_metadata = EmbeddedField(model_container = Card_Metadata, null = True)
-    
+    card_metadata = EmbeddedField(model_container = Card_Metadata)
+    filename_url = CharField(max_length=19, unique = True)
+    comments = CharField(max_length=1000, null = True)
+    locations = ArrayField(
+            model_container = Location,
+            model_form_class = Location_Form, 
+            null = True)
     objects = DjongoManager()
