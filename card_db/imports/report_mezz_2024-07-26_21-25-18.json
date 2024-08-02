@@ -1,0 +1,813 @@
+{
+  "created": 1722029133.1239638,
+  "duration": 17.62725329399109,
+  "exitcode": 0,
+  "root": "/home/jsw/mezz/econd-sw/test_mezzanine",
+  "environment": {},
+  "summary": {
+    "passed": 3,
+    "total": 3,
+    "collected": 3
+  },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 246
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+      "lineno": 246,
+      "outcome": "passed",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 5.520161183001619,
+        "outcome": "passed",
+        "stdout": "     link=0 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=1 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=2 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=3 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=4 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=0 pattern=290 words_little_endian=0 bytes_little_endian=1\n     link=1 pattern=290 words_little_endian=0 bytes_little_endian=1\n"
+      },
+      "metadata": {
+        "eRX_errcounts": [
+          [
+            0,
+            0,
+            8,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            96,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            3,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            238,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            16,
+            88,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "maxwidth": [
+          5,
+          5,
+          4,
+          5,
+          5,
+          5
+        ],
+        "second_max_width": [
+          4,
+          4,
+          4,
+          5,
+          5,
+          4
+        ]
+      },
+      "call": {
+        "duration": 0.0037130630007595755,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.002990945999044925,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+      "lineno": 246,
+      "outcome": "passed",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 4.305046115998266,
+        "outcome": "passed",
+        "stdout": "     link=0 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=1 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=2 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=3 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=4 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=0 pattern=290 words_little_endian=0 bytes_little_endian=1\n     link=1 pattern=290 words_little_endian=0 bytes_little_endian=1\n"
+      },
+      "metadata": {
+        "eRX_errcounts": [
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            7,
+            25,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            8,
+            255,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            28,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            131,
+            38,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "maxwidth": [
+          5,
+          4,
+          5,
+          6,
+          5,
+          4
+        ],
+        "second_max_width": [
+          5,
+          4,
+          3,
+          4,
+          4,
+          3
+        ]
+      },
+      "call": {
+        "duration": 0.003497837999020703,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.002945345997432014,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+      "lineno": 246,
+      "outcome": "passed",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 4.307496330999129,
+        "outcome": "passed",
+        "stdout": "     link=0 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=1 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=2 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=3 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=4 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=0 pattern=290 words_little_endian=0 bytes_little_endian=1\n     link=1 pattern=290 words_little_endian=0 bytes_little_endian=1\n"
+      },
+      "metadata": {
+        "eRX_errcounts": [
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            233,
+            0,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            53,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            31,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "maxwidth": [
+          4,
+          5,
+          5,
+          5,
+          4,
+          5
+        ],
+        "second_max_width": [
+          4,
+          5,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "call": {
+        "duration": 0.0035022789998038206,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0029343349997361656,
+        "outcome": "passed"
+      }
+    }
+  ],
+  "FPGA-hexa-IP": "11",
+  "branch": "DN_CMtester_IO",
+  "commit_hash": "4f4f43d62e25add927a484f024c3e2e08d3482d8",
+  "remote_url": "ssh://git@gitlab.cern.ch:7999/hgcal-daq-sw/econd-sw.git",
+  "status": "M common_pytest/fixtures.py\u0000 M gpib_controls\u0000 M test_mezzanine/conftest.py\u0000 M test_mezzanine/pytest.ini\u0000 M test_mezzanine/test_io.py\u0000 M utils/gpibclient.py\u0000?? econ_i2c.py.orig\u0000?? test_mezzanine/tmp.py\u0000?? test_radiation/conftest.py.orig\u0000?? test_vectors/\u0000?? utils/align.py.orig\u0000?? utils/io.py.orig\u0000",
+  "firmware_name": "econ-mezz-tester-kria.bit\u0000",
+  "firmware_git_desc": "9e5953f-dirty",
+  "chip_number": null
+}

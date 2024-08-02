@@ -5,9 +5,9 @@ import datetime
 from os import listdir, path
 import json
 
-#from .models import CM_Test_Result, Tester, Test, Attempt, Location, CMShuntParams 
+#from .models import CM_Card, Tester, Test, Attempt, Location, CMShuntParams 
 import cm_db.custom.filters as filters
-from .models import CM_Test_Result
+from .models import CM_Card
 # Create your views here.
 
 from django.utils import timezone
@@ -19,8 +19,8 @@ class CatalogView(generic.ListView):
     """ This displays a list of all CM cards """
     
     template_name = 'cm_db/catalog.html'
-    context_object_name = 'chip_number_list'
-    cards = CM_Test_Result.objects.all().order_by('chip_number')
+    context_object_name = 'identifier_list'
+    cards = CM_Card.objects.all().order_by('identifier')
     #num_cards = len(cards)
     def get_queryset(self):
         return self.cards
@@ -29,10 +29,10 @@ class CatalogView(generic.ListView):
 
 def catalog(request):
     """ This displays a list of all CM cards """
-    cards = CM_Test_Result.objects.all().order_by('chip_number')
+    cards = CM_Card.objects.all().order_by('identifier')
     count = len(cards)
 
-    return render(request, 'cm_db/catalog.html', {'chip_number_list': cards,
+    return render(request, 'cm_db/catalog.html', {'identifier_list': cards,
                                                       'total_count': count})
 
 def summary(request):
@@ -47,7 +47,7 @@ def summary(request):
         print("JSON Loaded")
     else:
         print("Loading Cards")
-        cards = list(CM_Test_Result.objects.all().order_by('chip_number'))
+        cards = list(CM_Card.objects.all().order_by('identifier'))
         print("Loaded Cards")
         print("Loading Tests")
         tests = list(Test.objects.all())
@@ -66,14 +66,14 @@ def calibration(request, card):
     """ This displays the calibration overview for a card """
     if len(card) > 7:
         try:
-            p = CM_Test_Result.objects.get(uid__endswith=card)
-        except CM_Test_Result.DoesNotExist:
+            p = CM_Card.objects.get(uid__endswith=card)
+        except CM_Card.DoesNotExist:
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Test_Result.objects.get(chip_number__endswith=card)
-        except CM_Test_Result.DoesNotExist:
-            raise Http404("CM card with chip_number " + str(card) + " does not exist")
+            p = CM_Card.objects.get(identifier__endswith=card)
+        except CM_Card.DoesNotExist:
+            raise Http404("CM card with identifier " + str(card) + " does not exist")
 
     calibrations = p.CMshuntparams_set.all().order_by("group")
 
@@ -83,14 +83,14 @@ def calResults(request, card, group):
     """ This displays the calibration results for a card """
     if len(card) > 7:
         try:
-            p = CM_Test_Result.objects.get(uid__endswith=card)
-        except CM_Test_Result.DoesNotExist:
+            p = CM_Card.objects.get(uid__endswith=card)
+        except CM_Card.DoesNotExist:
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Test_Result.objects.get(chip_number__endswith=card)
-        except CM_Test_Result.DoesNotExist:
-            raise Http404("CM card with chip_number " + str(card) + " does not exist")
+            p = CM_Card.objects.get(identifier__endswith=card)
+        except CM_Card.DoesNotExist:
+            raise Http404("CM card with identifier " + str(card) + " does not exist")
     calibration = p.CMshuntparams_set.get(group=group)
 
     if str(calibration.results) != "default.png":
@@ -100,7 +100,7 @@ def calResults(request, card, group):
         data = []
         for item in c:
             temp = { "id":str(item[0]),
-                     "serial":str(p.chip_number),
+                     "serial":str(p.identifier),
                      "CM":str(item[2]),
                      "capID":str(item[3]),
                      "range":str(item[4]),
@@ -118,14 +118,14 @@ def calPlots(request, card, group):
     """ This displays the calibration plots for a card """
     if len(card) > 7:
         try:
-            p = CM_Test_Result.objects.get(uid__endswith=card)
-        except CM_Test_Result.DoesNotExist:
+            p = CM_Card.objects.get(uid__endswith=card)
+        except CM_Card.DoesNotExist:
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Test_Result.objects.get(chip_number__endswith=card)
-        except CM_Test_Result.DoesNotExist:
-            raise Http404("CM card with chip_number " + str(card) + " does not exist")
+            p = CM_Card.objects.get(identifier__endswith=card)
+        except CM_Card.DoesNotExist:
+            raise Http404("CM card with identifier " + str(card) + " does not exist")
     calibration = p.CMshuntparams_set.get(group=group)
 
     files = []
@@ -171,7 +171,7 @@ def stats(request):
         for test in tests:
             attempts.extend(list(test.attempt_set.all())) 
                 
-        cards = list(CM_Test_Result.objects.all().order_by("chip_number"))
+        cards = list(CM_Card.objects.all().order_by("identifier"))
 
         testFailedStats = filters.getFailedCardStats(cards, tests, attempts)
         testPassedStats = filters.getPassedCardStats(cards, tests, attempts)
@@ -188,20 +188,20 @@ def detail(request, card):
     """ This displays the overview of tests for a card """
     if len(card) > 7:
         try:
-            p = CM_Test_Result.objects.filter(chip_number=card).configure(cursor_type=CursorType.TAILABLE).iterator()
-        except CM_Test_Result.DoesNotExist:
+            p = CM_Card.objects.filter(identifier=card).configure(cursor_type=CursorType.TAILABLE).iterator()
+        except CM_Card.DoesNotExist:
             #raise Http404("CM card with unique id " + str(card) + " does not exist")
             return render(request, 'cm_db/error.html')
     else:
         try:
-            #p_results = CM_Test_Result.objects.get(chip_number__endswith=card)
-            p_results = CM_Test_Result.objects.all().filter(chip_number = card)
+            #p_results = CM_Card.objects.get(identifier__endswith=card)
+            p_results = CM_Card.objects.all().filter(identifier = card)
             print("p results:",p_results) 
-        except CM_Test_Result.DoesNotExist:
-            #raise Http404("CM card with chip_number " + str(card) + " does not exist")
+        except CM_Card.DoesNotExist:
+            #raise Http404("CM card with identifier " + str(card) + " does not exist")
             return render(request, 'cm_db/error.html')
     for p in p_results:
-        print("chip number:", p.chip_number)
+        print("chip number:", p.identifier)
         created = p.created
         attempts = p.tests
         '''
@@ -277,12 +277,12 @@ def detail(request, card):
 #    """ This displays a list of all CM cards """
 #    
 #    template_name = 'cm_db/catalog.html'
-#    context_object_name = 'chip_number_list'
+#    context_object_name = 'identifier_list'
 #    def get_queryset(self):
-#        return CM_Test_Result.objects.all().order_by('chip_number')
+#        return CM_Card.objects.all().order_by('identifier')
 #
 def error(request): 
-    """ This displays an error for incorrect chip_number or unique id """
+    """ This displays an error for incorrect identifier or unique id """
     return render(request, 'cm_db/error.html')
 
 class PlotView(generic.ListView):
@@ -297,17 +297,17 @@ def testDetail(request, card, test):
     """ This displays details about a specific test for a card """
     if len(card) > 7:
         try:
-            p = CM_Test_Result.objects.get(uid__endswith=card)
-        except CM_Test_Result.DoesNotExist:
+            p = CM_Card.objects.get(uid__endswith=card)
+        except CM_Card.DoesNotExist:
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Test_Result.objects.get(chip_number__endswith=card)
-        except CM_Test_Result.DoesNotExist:
-            raise Http404("CM card with chip_number " + str(card) + " does not exist")
+            p = CM_Card.objects.get(identifier__endswith=card)
+        except CM_Card.DoesNotExist:
+            raise Http404("CM card with identifier " + str(card) + " does not exist")
     try:
         curTest = Test.objects.get(name=test)
-    except CM_Test_Result.DoesNotExist:
+    except CM_Card.DoesNotExist:
         raise Http404("CM card does not exist")
     
     if(request.POST.get('overwrite_pass')):
@@ -346,7 +346,7 @@ def testDetail(request, card, test):
 
 def fieldView(request):
     """ This displays details about tests on a card """ 
-    options = ["chip_number",
+    options = ["identifier",
                "readout_module",
                "calibration_unit",
                "uid",
@@ -367,7 +367,7 @@ def fieldView(request):
                 fields.append(field)
 
 
-    cards = list(CM_Test_Result.objects.all().order_by("chip_number"))
+    cards = list(CM_Card.objects.all().order_by("identifier"))
     items = []
     # Info for "Card Status"
     cache = path.join(MEDIA_ROOT, "cached_data/summary.json")
