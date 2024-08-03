@@ -188,20 +188,13 @@ def stats(request):
 def detail(request, card):
     print(card)
     """ This displays the overview of tests for a card """
-    if len(card) > 7:
-        try:
-            p = CM_Card.objects.filter(filename_url = card)
-        except CM_Card.DoesNotExist:
-            #raise Http404("CM card with unique id " + str(card) + " does not exist")
-            return render(request, 'cm_db/error.html')
-    else:
-        try:
-            #p_results = CM_Card.objects.get(barcode__endswith=card)
-            p = CM_Card.objects.all().filter(barcode = card)[0]
-            print("p results:",p) 
-        except CM_Card.DoesNotExist:
-            #raise Http404("CM card with barcode " + str(card) + " does not exist")
-            return render(request, 'cm_db/error.html')
+    try:
+        #p_results = CM_Card.objects.get(barcode__endswith=card)
+        p = CM_Card.objects.all().filter(barcode = card)[0]
+        print("p results:",p) 
+    except CM_Card.DoesNotExist:
+        #raise Http404("CM card with barcode " + str(card) + " does not exist")
+        return render(request, 'cm_db/error.html')
     testnames = []
     attempts = []
     status = {"total":0, "passed":0}
@@ -320,7 +313,7 @@ def testDetail(request, card, test):
         except CM_Card.DoesNotExist:
             raise Http404("CM card with barcode " + str(card) + " does not exist")
     try:
-        curTest = CM_Card.objects.filter(CM_Card.test_outcomes["test_name"]==test)
+        curTest = Test.objects.all().filter(test_name=test,barcode=card)
     except CM_Card.DoesNotExist:
         raise Http404("CM card does not exist")
     
@@ -330,33 +323,54 @@ def testDetail(request, card, test):
             attempt.overwrite_pass = not attempt.overwrite_pass
             attempt.save()
     
-    attemptList = list(Attempt.objects.filter(card=p, test_type=curTest).order_by("attempt_number").reverse())
+    attemptList = list(curTest)
+    print(attemptList)
     attemptData = []
-    for attempt in attemptList:
+    for attempt_number, attempt in enumerate(attemptList):
         data = ""
-        if not str(attempt.hidden_log_file) == "default.png":
-            inFile = open(path.join(MEDIA_ROOT, str(attempt.hidden_log_file)), "r")
+        if not str(attempt.filename) == "default.png":
+
+            '''
+            inFile = open(path.join(MEDIA_ROOT, str(attempt.JSON_metadata["filename"])), "r")
             tempDict = json.load(inFile)
-            if attempt.test_type.abbreviation == "overall pedestal" and "pedResults" in tempDict["TestOutputs"]: 
+            if attempt.test_name.abbreviation == "overall pedestal" and "pedResults" in tempDict["TestOutputs"]: 
                 data = tempDict["TestOutputs"]["pedResults"]
-            elif attempt.test_type.abbreviation == "overall charge injection" and "ciResults" in tempDict["TestOutputs"]: 
+            elif attempt.test_name.abbreviation == "overall charge injection" and "ciResults" in tempDict["TestOutputs"]: 
                 data = tempDict["TestOutputs"]["ciResults"]
-            elif attempt.test_type.abbreviation == "overall phase scan" and "phaseResults" in tempDict["TestOutputs"]:
+            elif attempt.test_name.abbreviation == "overall phase scan" and "phaseResults" in tempDict["TestOutputs"]:
                 data = tempDict["TestOutputs"]["phaseResults"]
-            elif attempt.test_type.abbreviation == "overall shunt scan" and "shuntResults" in tempDict["TestOutputs"]:
+            elif attempt.test_name.abbreviation == "overall shunt scan" and "shuntResults" in tempDict["TestOutputs"]:
                 data = tempDict["TestOutputs"]["shuntResults"]
             elif "ResultStrings" in tempDict:
-                if attempt.test_type.abbreviation in tempDict["ResultStrings"]:
-                    data = tempDict["ResultStrings"][attempt.test_type.abbreviation]
-        attemptData.append((attempt, data))
+                if attempt.test_name.abbreviation in tempDict["ResultStrings"]:
+                    data = tempDict["ResultStrings"][attempt.test_name.abbreviation]
+            '''
+            filename = attempt.filename
+            filename = filename[50:]
+            
+            if attempt.valid == True:
+                outcome = attempt.outcome
+                if outcome == "passed":
+                    status = "okay"
+                elif outcome == "failed":
+                    status = "bad"
+                elif outcome == "forced":
+                    status = "forced"
+                else:
+                    status = "warn"
+            else:
+                status = "warn"
+            
+
+        attemptData.append((attempt, filename, attempt_number, status))
 
     firstTest = []
 
     return render(request, 'cm_db/testDetail.html', {'card': p,
-                                                         'test': curTest,
+                                                         'test': test,
                                                          'attempts': attemptData
                                                          })
-
+            
 
 def fieldView(request):
     """ This displays details about tests on a card """ 

@@ -258,46 +258,39 @@ def UploadTests(data, fname):
         else:
             time = str(date) + ": " + str(hour) + ":" + str(minute) + "AM"
         new_test.date_run = time
-        metadata = {}
+        new_test.outcome = test['outcome']
         if 'metadata' in test:
             #print(test['metadata'])
             if "eRX_errcounts" in test['metadata']:
-                metadata["eRX_errcounts"] = Metadata_Formatter(test['metadata'], "eRX_errcounts")
+                new_test.eRX_errcounts = Metadata_Formatter(test['metadata'], "eRX_errcounts")
             else:
-                metadata["eRX_errcounts"] = None
+                new_test.eRX_errcounts = None
             if "eTX_errcounts" in test['metadata']:
-                metadata["eTX_errcounts"] = Metadata_Formatter(test['metadata'], "eTX_errcounts")
+                new_test.eTX_errcounts = Metadata_Formatter(test['metadata'], "eTX_errcounts")
             else:
-                metadata["eTX_errcounts"] = None
+                new_test.eTX_errcounts = None
             if "eTX_bitcounts" in test['metadata']:
-                metadata["eTX_bitcounts"] = Metadata_Formatter(test['metadata'], "eTX_bitcounts")
+                new_test.eTX_bitcounts = Metadata_Formatter(test['metadata'], "eTX_bitcounts")
             else:
-                metadata["eTX_bitcounts"] = None
+                new_test.eTX_bitcounts = None
             if "eTX_delays" in test['metadata']:
-                metadata["eTX_delays"] = Metadata_Formatter(test['metadata'], "eTX_delays")
+                new_test.eTX_delays = Metadata_Formatter(test['metadata'], "eTX_delays")
             else:
-                metadata["eTX_delays"] = None
-        test_details_temp = {
-                "outcome": test['outcome'],
-                "test_metadata": metadata if metadata!={} else None,
-                "failure_information":{
-                    "failure_mode": test['call']['traceback'][0]['message'] if 'traceback' in test['call'] and test['call']['traceback'][0]['message'] != '' else test['call']['crash']['message'],
-                    "failure_cause": test['call']['crash']['message'],
-                    "failure_code_line": test["call"]["crash"]["lineno"],
-                } if 'failed' in test['outcome'] else None
-            }
-        new_test.test_details = test_details_temp
+                new_test.eTX_delays = None
+            new_test.failure_information = {
+                "failure_mode": test['call']['traceback'][0]['message'] if 'traceback' in test['call'] and test['call']['traceback'][0]['message'] != '' else test['call']['crash']['message'],
+                "failure_cause": test['call']['crash']['message'],
+                "failure_code_line": test["call"]["crash"]["lineno"],
+            } if 'failed' in test['outcome'] else None
         #save test metadata
-        new_metadata = {
-            "branch": data['branch'],
-            "commit_hash": data['commit_hash'],
-            "remote_url": data['remote_url'],
-            "status": data['status'],
-            "firmware_name": data['firmware_name'],
-            "firmware_git_desc": data['firmware_git_desc'],
-            "filename": fname
-            }
-        new_test.JSON_metadata = new_metadata
+        new_test.branch = data['branch']
+        new_test.commit_hash = data['commit_hash']
+        new_test.remote_url = data['remote_url']
+        new_test.status = data['status']
+        new_test.firmware_name = data['firmware_name']
+        new_test.firmware_git_desc = data['firmware_git_desc']
+        new_test.filename = fname
+        
         new_test.save()
 
 def jsonFileUploader(fname):
@@ -346,18 +339,11 @@ dict2 = {
 ## upload all the JSON files in the database
 
 def main():
-    filename_list = []
-    metadata_list = Test.objects.values_list("JSON_metadata")
-    for entry in metadata_list:
-        #print("entry:", entry)
-        if entry:
-            if entry[0]:
-                for metadata in entry:
-                    #print("metadata:",metadata)
-                    filename_list.append(metadata["filename"])
+    filename_list = list(Test.objects.values_list("filename"))
+    print(filename_list)
     #print("FILENAME LIST:",filename_list)
     for i, (fname) in enumerate(fnames):
-        if fname not in filename_list:
+        if (fname,) not in filename_list:
             print("uploading file",i)
             jsonFileUploader(fname)
             #this is to prevent accidentally uploading two of the same file at once

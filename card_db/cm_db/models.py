@@ -219,7 +219,6 @@ class Failure_Info(models.Model):
 
 
 class Test_Details(models.Model):
-    outcome = CharField(max_length = 10, null = True)
     test_metadata  = EmbeddedField(model_container = Test_Metadata, null = True)
     #failure_info = EmbeddedField(model_container = Failure_Info, null = True)
     
@@ -227,12 +226,6 @@ class Test_Details(models.Model):
 
     class Meta:
         abstract = True
-
-class Test_Details_Form(forms.ModelForm):
-    class Meta:
-        model = Test_Details
-        fields = ('outcome', 'test_metadata')
-
 
 class JSON_Metadata(models.Model):
     filename = CharField(max_length = 50, unique = True)
@@ -259,15 +252,41 @@ class Test(models.Model):
     test_name = CharField(max_length = 20, default = "NoTest")
     barcode = CharField(max_length = 20, default = "NoID")
     date_run = CharField(max_length=20, default = "null")
+    outcome = CharField(max_length=10, default = "null")
     valid = models.BooleanField(default = True)
-    test_details = EmbeddedField(
-            model_container = Test_Details,
-            #model_form_class = Test_Details_Form,
-            null = True)
     
-    JSON_metadata = EmbeddedField(
-            model_container = JSON_Metadata,
-            #model_form_class = JSON_Metadata_Form,
-            null = True)
+    eRX_errcounts = ArrayField(
+            model_container = eRX_Row,
+            model_form_class = eRX_Row_Form,
+            blank = True
+            )
+    eTX_delays =  ArrayField(
+            model_container = eTX_Row,
+            model_form_class = eTX_Row_Form,
+            blank = True
+            )
+    eTX_bitcounts =  ArrayField(
+            model_container = eTX_Row,
+            model_form_class = eTX_Row_Form,
+            blank = True
+            )
+    eTX_errcounts =  ArrayField(
+            model_container = eTX_Row,
+            model_form_class = eTX_Row_Form,
+            blank = True
+            )
+    
+    filename = CharField(max_length = 50, unique = True)
+    branch = CharField(max_length = 20, default = "NO_BRANCH")
+    commit_hash = CharField(max_length = 30, default = "NO_COMMIT_HASH")
+    remote_url = CharField(max_length = 50, default = "NO_URL")
+    status = CharField(max_length = 50, default = "NO_STATUS")
+    firmware_name = CharField(max_length = 30, default = "NO_FIRMWARE_NAME")
+    firmware_git_desc =  CharField(max_length = 20, default = "NO_GIT_DESC")
+     
+    comments = CharField(max_length=1000, null = True)
     
     objects = DjongoManager()
+    
+    class Meta:
+        ordering = ('date_run',)
