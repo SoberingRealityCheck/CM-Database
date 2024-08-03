@@ -219,7 +219,6 @@ class Failure_Info(models.Model):
 
 
 class Test_Details(models.Model):
-    test_name = CharField(max_length = 20, null = True)
     outcome = CharField(max_length = 10, null = True)
     test_metadata  = EmbeddedField(model_container = Test_Metadata, null = True)
     #failure_info = EmbeddedField(model_container = Failure_Info, null = True)
@@ -232,7 +231,7 @@ class Test_Details(models.Model):
 class Test_Details_Form(forms.ModelForm):
     class Meta:
         model = Test_Details
-        fields = ('test_name', 'outcome', 'test_metadata')
+        fields = ('outcome', 'test_metadata')
 
 
 class JSON_Metadata(models.Model):
@@ -249,21 +248,26 @@ class JSON_Metadata(models.Model):
     class Meta:
         abstract = True
    
-class JSON_Metadata_Form(forms.ModelFormj):
+class JSON_Metadata_Form(forms.ModelForm):
     class Meta:
         model = JSON_Metadata
         fields = ('filename','branch','commit_hash','remote_url','status','firmware_name','firmware_git_desc')
 
 
 class Test(models.Model):
-    test_details = ArrayField(
+    _id = models.ObjectIdField()
+    test_name = CharField(max_length = 20, default = "NoTest")
+    barcode = CharField(max_length = 20, default = "NoID")
+    date_run = CharField(max_length=20, default = "null")
+    valid = models.BooleanField(default = True)
+    test_details = EmbeddedField(
             model_container = Test_Details,
-            model_form_class = Test_Details_Form,
+            #model_form_class = Test_Details_Form,
             null = True)
     
-    JSON_metadata = ArrayField(
+    JSON_metadata = EmbeddedField(
             model_container = JSON_Metadata,
-            model_form_class = JSON_Metadata_Form,
+            #model_form_class = JSON_Metadata_Form,
             null = True)
     
     objects = DjongoManager()

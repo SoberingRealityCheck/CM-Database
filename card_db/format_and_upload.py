@@ -250,7 +250,14 @@ def UploadTests(data, fname):
         new_test = Test.objects.create()
         new_test.test_name = f"{stringReplace(test['nodeid'].split('::')[1])}"
         new_test.barcode = barcode
-        
+        date = fname[62:][:10]
+        hour = int(fname[73:][:2])
+        minute = int(fname[76:][:2])
+        if hour > 12:
+            time = str(date) + ": " + str(hour % 12) + ":" + str(minute) + "PM"
+        else:
+            time = str(date) + ": " + str(hour) + ":" + str(minute) + "AM"
+        new_test.date_run = time
         metadata = {}
         if 'metadata' in test:
             #print(test['metadata'])
@@ -290,6 +297,7 @@ def UploadTests(data, fname):
             "firmware_git_desc": data['firmware_git_desc'],
             "filename": fname
             }
+        new_test.JSON_metadata = new_metadata
         new_test.save()
 
 def jsonFileUploader(fname):
@@ -339,16 +347,15 @@ dict2 = {
 
 def main():
     filename_list = []
-    metadata_list = CM_Card.objects.values_list("JSON_metadata")
+    metadata_list = Test.objects.values_list("JSON_metadata")
     for entry in metadata_list:
-        print("entry:", entry)
+        #print("entry:", entry)
         if entry:
             if entry[0]:
-                for metadata_array in entry:
-                    for metadata in metadata_array:
-                        print("metadata:",metadata)
-                        filename_list.append(metadata["filename"])
-    print("FILENAME LIST:",filename_list)
+                for metadata in entry:
+                    #print("metadata:",metadata)
+                    filename_list.append(metadata["filename"])
+    #print("FILENAME LIST:",filename_list)
     for i, (fname) in enumerate(fnames):
         if fname not in filename_list:
             print("uploading file",i)
