@@ -89,10 +89,10 @@ def jsonFileUploader(fname):
     ## preprocess the JSON file
     newcard = CM_Card.objects.create()
     if 'chip_number' in data and data['chip_number']: 
-        newcard.identifier = data['chip_number']
+        newcard.barcode = data['chip_number']
         newcard.save()
     else: 
-        newcard.identifier = "NO_ID"
+        newcard.barcode = "NO_ID"
     newcard.summary = {
             "passed":data['summary']['passed'] if 'passed' in data['summary'] else 0, 
             "error":data['summary']['error'] if 'error' in data['summary'] else 0,
@@ -166,7 +166,7 @@ dict2 = {
         "individual_test_outcomes": {
             f"{stringReplace(test['nodeid'].split('::')[1])}": selector(test['outcome']) for test in data['tests']
         },
-        "identifier": data['chip_number']
+        "barcode": data['chip_number']
         }
 '''
 ## upload all the JSON files in the database

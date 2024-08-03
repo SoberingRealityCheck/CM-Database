@@ -19,9 +19,9 @@ class CatalogView(generic.ListView):
     """ This displays a list of all CM cards """
     
     template_name = 'cm_db/catalog.html'
-    context_object_name = 'identifier_list'
-    #cards = CM_Card.objects.all().order_by('identifier')
-    cards = CM_Card.objects.values_list("identifier",flat = True)
+    context_object_name = 'barcode_list'
+    #cards = CM_Card.objects.all().order_by('barcode')
+    cards = CM_Card.objects.values_list("barcode",flat = True)
     #num_cards = len(cards)
     def get_queryset(self):
         return self.cards
@@ -30,11 +30,11 @@ class CatalogView(generic.ListView):
 
 def catalog(request):
     """ This displays a list of all CM cards """
-    cards = CM_Card.objects.values_list('identifier', flat=True).distinct()
+    cards = CM_Card.objects.values_list('barcode', flat=True).distinct()
     print(cards)
     count = len(cards)
 
-    return render(request, 'cm_db/catalog.html', {'identifier_list': cards,
+    return render(request, 'cm_db/catalog.html', {'barcode_list': cards,
                                                       'total_count': count})
 
 def summary(request):
@@ -49,7 +49,7 @@ def summary(request):
         print("JSON Loaded")
     else:
         print("Loading Cards")
-        cards = list(CM_Card.objects.all().order_by('identifier'))
+        cards = list(CM_Card.objects.all().order_by('barcode'))
         print("Loaded Cards")
         print("Loading Tests")
         tests = list(Test.objects.all())
@@ -73,9 +73,9 @@ def calibration(request, card):
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Card.objects.get(identifier__endswith=card)
+            p = CM_Card.objects.get(barcode__endswith=card)
         except CM_Card.DoesNotExist:
-            raise Http404("CM card with identifier " + str(card) + " does not exist")
+            raise Http404("CM card with barcode " + str(card) + " does not exist")
 
     calibrations = p.CMshuntparams_set.all().order_by("group")
 
@@ -90,9 +90,9 @@ def calResults(request, card, group):
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Card.objects.get(identifier__endswith=card)
+            p = CM_Card.objects.get(barcode__endswith=card)
         except CM_Card.DoesNotExist:
-            raise Http404("CM card with identifier " + str(card) + " does not exist")
+            raise Http404("CM card with barcode " + str(card) + " does not exist")
     calibration = p.CMshuntparams_set.get(group=group)
 
     if str(calibration.results) != "default.png":
@@ -102,7 +102,7 @@ def calResults(request, card, group):
         data = []
         for item in c:
             temp = { "id":str(item[0]),
-                     "serial":str(p.identifier),
+                     "serial":str(p.barcode),
                      "CM":str(item[2]),
                      "capID":str(item[3]),
                      "range":str(item[4]),
@@ -125,9 +125,9 @@ def calPlots(request, card, group):
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Card.objects.get(identifier__endswith=card)
+            p = CM_Card.objects.get(barcode__endswith=card)
         except CM_Card.DoesNotExist:
-            raise Http404("CM card with identifier " + str(card) + " does not exist")
+            raise Http404("CM card with barcode " + str(card) + " does not exist")
     calibration = p.CMshuntparams_set.get(group=group)
 
     files = []
@@ -173,7 +173,7 @@ def stats(request):
         for test in tests:
             attempts.extend(list(test.attempt_set.all())) 
                 
-        cards = list(CM_Card.objects.all().order_by("identifier"))
+        cards = list(CM_Card.objects.all().order_by("barcode"))
 
         testFailedStats = filters.getFailedCardStats(cards, tests, attempts)
         testPassedStats = filters.getPassedCardStats(cards, tests, attempts)
@@ -196,11 +196,11 @@ def detail(request, card):
             return render(request, 'cm_db/error.html')
     else:
         try:
-            #p_results = CM_Card.objects.get(identifier__endswith=card)
-            p = CM_Card.objects.all().filter(identifier = card)[0]
+            #p_results = CM_Card.objects.get(barcode__endswith=card)
+            p = CM_Card.objects.all().filter(barcode = card)[0]
             print("p results:",p) 
         except CM_Card.DoesNotExist:
-            #raise Http404("CM card with identifier " + str(card) + " does not exist")
+            #raise Http404("CM card with barcode " + str(card) + " does not exist")
             return render(request, 'cm_db/error.html')
     testnames = []
     attempts = []
@@ -291,12 +291,12 @@ def detail(request, card):
 #    """ This displays a list of all CM cards """
 #    
 #    template_name = 'cm_db/catalog.html'
-#    context_object_name = 'identifier_list'
+#    context_object_name = 'barcode_list'
 #    def get_queryset(self):
-#        return CM_Card.objects.all().order_by('identifier')
+#        return CM_Card.objects.all().order_by('barcode')
 #
 def error(request): 
-    """ This displays an error for incorrect identifier or unique id """
+    """ This displays an error for incorrect barcode or unique id """
     return render(request, 'cm_db/error.html')
 
 class PlotView(generic.ListView):
@@ -316,9 +316,9 @@ def testDetail(request, card, test):
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Card.objects.get(identifier__endswith=card)
+            p = CM_Card.objects.get(barcode__endswith=card)
         except CM_Card.DoesNotExist:
-            raise Http404("CM card with identifier " + str(card) + " does not exist")
+            raise Http404("CM card with barcode " + str(card) + " does not exist")
     try:
         curTest = CM_Card.objects.filter(CM_Card.test_outcomes["test_name"]==test)
     except CM_Card.DoesNotExist:
@@ -360,7 +360,7 @@ def testDetail(request, card, test):
 
 def fieldView(request):
     """ This displays details about tests on a card """ 
-    options = ["identifier",
+    options = ["barcode",
                "readout_module",
                "calibration_unit",
                "uid",
@@ -381,7 +381,7 @@ def fieldView(request):
                 fields.append(field)
 
 
-    cards = list(CM_Card.objects.all().order_by("identifier"))
+    cards = list(CM_Card.objects.all().order_by("barcode"))
     items = []
     # Info for "Card Status"
     cache = path.join(MEDIA_ROOT, "cached_data/summary.json")

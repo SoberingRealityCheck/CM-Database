@@ -246,8 +246,9 @@ class Location_Form(forms.ModelForm):
 class CM_Card(models.Model):
     #unsure if manual ID assignment is really necessary but I remember it fixing some issue I had last time I did this
     _id = models.ObjectIdField()
-    #identifier is the chip number or barcode or whatnot
-    identifier = CharField(max_length = 20, default = "NoID")
+    #barcode is the chip number or barcode or whatnot
+    barcode = CharField(max_length = 20, default = "NoID")
+    
     #Quick Test summary for easy fast data
     summary = EmbeddedField(model_container = Summary, null = True)
     #1 for passed, 0 for failed, -1 for skipped
@@ -255,15 +256,7 @@ class CM_Card(models.Model):
             model_container = Test_Outcome,
             model_form_class = Test_Outcome_Form,
             null = True)
-    test_details = ArrayField(
-            model_container = Test_Details,
-            model_form_class = Test_Details_Form,
-            null = True)
-    JSON_metadata = ArrayField(
-            model_container = JSON_Metadata,
-            model_form_class = JSON_Metadata_Form,
-            null = True)
-    filename_url = CharField(max_length=19, unique = True)
+    
     comments = CharField(max_length=1000, null = True)
     locations = ArrayField(
             model_container = Location,
@@ -273,4 +266,15 @@ class CM_Card(models.Model):
 
 
 class Test(models.Model):
+    test_details = ArrayField(
+            model_container = Test_Details,
+            model_form_class = Test_Details_Form,
+            null = True)
     
+    JSON_metadata = ArrayField(
+            model_container = JSON_Metadata,
+            model_form_class = JSON_Metadata_Form,
+            null = True)
+    
+    
+    objects = DjongoManager()

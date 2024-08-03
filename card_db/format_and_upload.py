@@ -87,9 +87,9 @@ def Metadata_Formatter(metadata, metadata_type):
 def Create_Fresh_Card(data, fname):
     newcard = CM_Card.objects.create()
     if 'chip_number' in data and data['chip_number']: 
-        newcard.identifier = data['chip_number']
+        newcard.barcode = data['chip_number']
     else: 
-        newcard.identifier = null_chip_ID
+        newcard.barcode = null_chip_ID
     #save test outcomes
     test_outcomes = []
     for test in data['tests']:
@@ -172,10 +172,10 @@ def Create_Fresh_Card(data, fname):
 
 def Update_Existing_Card(data, fname):
     if 'chip_number' in data and data['chip_number']: 
-        identifier = data['chip_number']
+        barcode = data['chip_number']
     else: 
-        identifier = null_chip_ID
-    oldcard = CM_Card.objects.filter(identifier = identifier)[0]
+        barcode = null_chip_ID
+    oldcard = CM_Card.objects.filter(barcode = barcode)[0]
     #id assignment is easy. Just leave it as is
     old_test_outcomes = oldcard.test_outcomes
     test_outcomes = []
@@ -293,17 +293,17 @@ def jsonFileUploader(fname):
         data = json.load(jsonfile)
     ## preprocess the JSON file
     if 'chip_number' in data and data['chip_number']: 
-        identifier = data['chip_number']
+        barcode = data['chip_number']
     else: 
-        identifier = null_chip_ID
+        barcode = null_chip_ID
     #check DB for existing entries of the same name. Decide whether to update existing entry or create new one
-    ID_List = CM_Card.objects.values_list('identifier',flat=True)
+    ID_List = CM_Card.objects.values_list('barcode',flat=True)
     #print(ID_List)
-    if identifier in ID_List:
-        print(identifier, "already exists! Updating Entry with new data...")
+    if barcode in ID_List:
+        print(barcode, "already exists! Updating Entry with new data...")
         Update_Existing_Card(data, fname)
     else:
-        print(identifier, "not listed in database! Creating new entry...")
+        print(barcode, "not listed in database! Creating new entry...")
         Create_Fresh_Card(data, fname)
     '''
     newcard.summary = {
@@ -328,7 +328,7 @@ dict2 = {
         "individual_test_outcomes": {
             f"{stringReplace(test['nodeid'].split('::')[1])}": selector(test['outcome']) for test in data['tests']
         },
-        "identifier": data['chip_number']
+        "barcode": data['chip_number']
         }
 '''
 ## upload all the JSON files in the database
