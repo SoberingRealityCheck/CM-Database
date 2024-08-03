@@ -35,24 +35,48 @@ class Test_Outcome(models.Model):
     class Meta:
         abstract = True
 
-
 class Test_Outcome_Form(forms.ModelForm):
     class Meta:
         model = Test_Outcome
         fields = ('test_name','passed','total','failed','anyFailed','anyForced','result', "get_css_class", "required", "most_recent_date")
 
-'''
-class Array_Value(models.Model):
-    value = CharField(max_length = 6)
+
+class Location(models.Model):
+    date_received = CharField(max_length = 30, null = True)
+    geo_loc = CharField(max_length=40, null = False)
+        
+    objects = DjongoManager()
 
     class Meta:
         abstract = True
 
-class Array_Value_Form(forms.ModelForm): 
+class Location_Form(forms.ModelForm):
     class Meta:
-        model = Array_Value
-        fields = ('value',)
-'''
+        model = Location
+        fields = ('date_received', 'geo_loc')
+
+class CM_Card(models.Model):
+    #unsure if manual ID assignment is really necessary but I remember it fixing some issue I had last time I did this
+    _id = models.ObjectIdField()
+    #barcode is the chip number or barcode or whatnot
+    barcode = CharField(max_length = 20, default = "NoID")
+    
+    #Quick Test summary for easy fast data. Updated by site when card is requested. Might be good to make a manual update script too.
+    summary = EmbeddedField(model_container = Summary, null = True)
+    #1 for passed, 0 for failed, -1 for skipped
+    test_outcomes = ArrayField(
+            model_container = Test_Outcome,
+            model_form_class = Test_Outcome_Form,
+            null = True)
+    
+    comments = CharField(max_length=1000, null = True)
+    
+    locations = ArrayField(
+            model_container = Location,
+            model_form_class = Location_Form, 
+            null = True)
+    
+    objects = DjongoManager()
 
 
 class eTX_Row(models.Model):
@@ -149,7 +173,6 @@ class eRX_Row(models.Model):
     class Meta:
         abstract = True
 
-
 class eRX_Row_Form(forms.ModelForm):
     class Meta:
         model = eRX_Row
@@ -184,6 +207,7 @@ class Test_Metadata(models.Model):
     class Meta:
         abstract = True
 
+
 class Failure_Info(models.Model):
     #this is currently coded in a very silly way and should be corrected once it becomes clearer what the failure reports will look like
     failure_mode = CharField(max_length = 2000, null = True)
@@ -193,8 +217,10 @@ class Failure_Info(models.Model):
     class Meta:
         abstract = True
 
+
 class Test_Details(models.Model):
     test_name = CharField(max_length = 20, null = True)
+    outcome = CharField(max_length = 10, null = True)
     test_metadata  = EmbeddedField(model_container = Test_Metadata, null = True)
     #failure_info = EmbeddedField(model_container = Failure_Info, null = True)
     
@@ -206,7 +232,7 @@ class Test_Details(models.Model):
 class Test_Details_Form(forms.ModelForm):
     class Meta:
         model = Test_Details
-        fields = ('test_name', 'test_metadata')
+        fields = ('test_name', 'outcome', 'test_metadata')
 
 
 class JSON_Metadata(models.Model):
@@ -223,46 +249,10 @@ class JSON_Metadata(models.Model):
     class Meta:
         abstract = True
    
-class JSON_Metadata_Form(forms.ModelForm):
+class JSON_Metadata_Form(forms.ModelFormj):
     class Meta:
         model = JSON_Metadata
         fields = ('filename','branch','commit_hash','remote_url','status','firmware_name','firmware_git_desc')
-
-
-class Location(models.Model):
-    date_received = CharField(max_length = 30, null = True)
-    geo_loc = CharField(max_length=40, null = False)
-        
-    objects = DjongoManager()
-
-    class Meta:
-        abstract = True
-
-class Location_Form(forms.ModelForm):
-    class Meta:
-        model = Location
-        fields = ('date_received', 'geo_loc')
-
-class CM_Card(models.Model):
-    #unsure if manual ID assignment is really necessary but I remember it fixing some issue I had last time I did this
-    _id = models.ObjectIdField()
-    #barcode is the chip number or barcode or whatnot
-    barcode = CharField(max_length = 20, default = "NoID")
-    
-    #Quick Test summary for easy fast data
-    summary = EmbeddedField(model_container = Summary, null = True)
-    #1 for passed, 0 for failed, -1 for skipped
-    test_outcomes = ArrayField(
-            model_container = Test_Outcome,
-            model_form_class = Test_Outcome_Form,
-            null = True)
-    
-    comments = CharField(max_length=1000, null = True)
-    locations = ArrayField(
-            model_container = Location,
-            model_form_class = Location_Form, 
-            null = True)
-    objects = DjongoManager()
 
 
 class Test(models.Model):
@@ -275,6 +265,5 @@ class Test(models.Model):
             model_container = JSON_Metadata,
             model_form_class = JSON_Metadata_Form,
             null = True)
-    
     
     objects = DjongoManager()
