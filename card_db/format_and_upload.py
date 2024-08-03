@@ -158,7 +158,7 @@ def Create_Fresh_Card(data, fname):
     if test_details != []:
         newcard.test_details = test_details 
     #save test metadata
-    newcard.card_metadata = [{
+    newcard.JSON_metadata = [{
         "branch": data['branch'],
         "commit_hash": data['commit_hash'],
         "remote_url": data['remote_url'],
@@ -273,7 +273,7 @@ def Update_Existing_Card(data, fname):
     if test_details != []:
         oldcard.test_details = test_details 
     #save test metadata
-    metadata = oldcard.card_metadata
+    metadata = oldcard.JSON_metadata
     new_metadata = {
         "branch": data['branch'],
         "commit_hash": data['commit_hash'],
@@ -314,13 +314,13 @@ def jsonFileUploader(fname):
             }
     '''
 '''
-newcard.card_metadata.branch = data['branch']
-newcard.card_metadata.commit_hash = data['commit_hash']
-newcard.card_metadata.remote_url = data['remote_url']
-newcard.card_metadata.status = data['status']
-newcard.card_metadata.firmware_name = data['firmware_name']
-newcard.card_metadata.firmware_git_desc = data['firmware_git_desc']
-newcard.card_metadata.filename = fname
+newcard.JSON_metadata.branch = data['branch']
+newcard.JSON_metadata.commit_hash = data['commit_hash']
+newcard.JSON_metadata.remote_url = data['remote_url']
+newcard.JSON_metadata.status = data['status']
+newcard.JSON_metadata.firmware_name = data['firmware_name']
+newcard.JSON_metadata.firmware_git_desc = data['firmware_git_desc']
+newcard.JSON_metadata.filename = fname
 '''
 '''
 dict2 = {
@@ -335,7 +335,7 @@ dict2 = {
 
 def main():
     filename_list = []
-    metadata_list = CM_Card.objects.values_list("card_metadata")
+    metadata_list = CM_Card.objects.values_list("JSON_metadata")
     for entry in metadata_list:
         print("entry:", entry)
         if entry:

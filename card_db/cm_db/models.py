@@ -209,7 +209,7 @@ class Test_Details_Form(forms.ModelForm):
         fields = ('test_name', 'test_metadata')
 
 
-class Card_Metadata(models.Model):
+class JSON_Metadata(models.Model):
     filename = CharField(max_length = 50, unique = True)
     branch = CharField(max_length = 20, default = "NO_BRANCH")
     commit_hash = CharField(max_length = 30, default = "NO_COMMIT_HASH")
@@ -223,9 +223,9 @@ class Card_Metadata(models.Model):
     class Meta:
         abstract = True
    
-class Card_Metadata_Form(forms.ModelForm):
+class JSON_Metadata_Form(forms.ModelForm):
     class Meta:
-        model = Card_Metadata
+        model = JSON_Metadata
         fields = ('filename','branch','commit_hash','remote_url','status','firmware_name','firmware_git_desc')
 
 
@@ -259,9 +259,9 @@ class CM_Card(models.Model):
             model_container = Test_Details,
             model_form_class = Test_Details_Form,
             null = True)
-    card_metadata = ArrayField(
-            model_container = Card_Metadata,
-            model_form_class = Card_Metadata_Form,
+    JSON_metadata = ArrayField(
+            model_container = JSON_Metadata,
+            model_form_class = JSON_Metadata_Form,
             null = True)
     filename_url = CharField(max_length=19, unique = True)
     comments = CharField(max_length=1000, null = True)
@@ -270,3 +270,7 @@ class CM_Card(models.Model):
             model_form_class = Location_Form, 
             null = True)
     objects = DjongoManager()
+
+
+class Test(models.Model):
+    
