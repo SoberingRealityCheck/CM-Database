@@ -7,7 +7,7 @@ import json
 
 #from .models import CM_Card, Tester, Test, Attempt, Location, CMShuntParams 
 import cm_db.custom.filters as filters
-from .models import CM_Card
+from .models import CM_Card, Test
 # Create your views here.
 
 from django.utils import timezone

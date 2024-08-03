@@ -10,7 +10,7 @@ import numpy as np
 import glob
 import json
 import djongo 
-from cm_db.models import CM_Card
+from cm_db.models import CM_Card, Test
 from traceback_with_variables import activate_by_import
 
 ## Grab JSON Files
@@ -19,7 +19,6 @@ a = f"{idir}/report*.json"
 fnames = list(np.sort(glob.glob(f"{idir}/report*.json")))
 import traceback
 
-null_chip_ID = "NullID"
 
 '''
 ## Connect to a local Database
@@ -50,6 +49,14 @@ def stringReplace(word):
     if "]" in word:
         word = word.replace("]", "")
     return word
+
+def get_Barcode(data):
+    null_chip_ID = "NullID"
+    if 'chip_number' in data and data['chip_number']: 
+        barcode = data['chip_number']
+    else: 
+        barcode = null_chip_ID
+    return barcode
 
 def Metadata_Formatter(metadata, metadata_type):
     #print("formatting metadata of type", metadata_type)
@@ -86,10 +93,7 @@ def Metadata_Formatter(metadata, metadata_type):
 
 def Create_Fresh_Card(data, fname):
     newcard = CM_Card.objects.create()
-    if 'chip_number' in data and data['chip_number']: 
-        newcard.barcode = data['chip_number']
-    else: 
-        newcard.barcode = null_chip_ID
+    newcard.barcode = get_Barcode(data)
     #save test outcomes
     test_outcomes = []
     for test in data['tests']:
@@ -171,10 +175,7 @@ def Create_Fresh_Card(data, fname):
     newcard.save()
 
 def Update_Existing_Card(data, fname):
-    if 'chip_number' in data and data['chip_number']: 
-        barcode = data['chip_number']
-    else: 
-        barcode = null_chip_ID
+    barcode = get_Barcode(data)
     oldcard = CM_Card.objects.filter(barcode = barcode)[0]
     #id assignment is easy. Just leave it as is
     old_test_outcomes = oldcard.test_outcomes
@@ -239,8 +240,17 @@ def Update_Existing_Card(data, fname):
         test["most_recent_date"] = date
     oldcard.test_outcomes = test_outcomes
     #save test details
-    test_details = oldcard.test_details
+    
+    oldcard.save()
+
+
+def UploadTests(data, fname):
+    barcode = get_Barcode(data)
     for test in data['tests']:
+        new_test = Test.objects.create()
+        new_test.test_name = f"{stringReplace(test['nodeid'].split('::')[1])}"
+        new_test.barcode = barcode
+        
         metadata = {}
         if 'metadata' in test:
             #print(test['metadata'])
@@ -261,41 +271,33 @@ def Update_Existing_Card(data, fname):
             else:
                 metadata["eTX_delays"] = None
         test_details_temp = {
-                "test_name":f"{stringReplace(test['nodeid'].split('::')[1])}", 
+                "outcome": test['outcome'],
                 "test_metadata": metadata if metadata!={} else None,
                 "failure_information":{
                     "failure_mode": test['call']['traceback'][0]['message'] if 'traceback' in test['call'] and test['call']['traceback'][0]['message'] != '' else test['call']['crash']['message'],
                     "failure_cause": test['call']['crash']['message'],
                     "failure_code_line": test["call"]["crash"]["lineno"],
                 } if 'failed' in test['outcome'] else None
-                }
-        test_details.append(test_details_temp)
-    if test_details != []:
-        oldcard.test_details = test_details 
-    #save test metadata
-    metadata = oldcard.JSON_metadata
-    new_metadata = {
-        "branch": data['branch'],
-        "commit_hash": data['commit_hash'],
-        "remote_url": data['remote_url'],
-        "status": data['status'],
-        "firmware_name": data['firmware_name'],
-        "firmware_git_desc": data['firmware_git_desc'],
-        "filename": fname
-        }
-    metadata.append(new_metadata)
-
-    oldcard.save()
+            }
+        new_test.test_details = test_details_temp
+        #save test metadata
+        new_metadata = {
+            "branch": data['branch'],
+            "commit_hash": data['commit_hash'],
+            "remote_url": data['remote_url'],
+            "status": data['status'],
+            "firmware_name": data['firmware_name'],
+            "firmware_git_desc": data['firmware_git_desc'],
+            "filename": fname
+            }
+        new_test.save()
 
 def jsonFileUploader(fname):
     ## open the JSON File
     with open(fname) as jsonfile:
         data = json.load(jsonfile)
     ## preprocess the JSON file
-    if 'chip_number' in data and data['chip_number']: 
-        barcode = data['chip_number']
-    else: 
-        barcode = null_chip_ID
+    barcode = get_Barcode(data)
     #check DB for existing entries of the same name. Decide whether to update existing entry or create new one
     ID_List = CM_Card.objects.values_list('barcode',flat=True)
     #print(ID_List)
@@ -305,6 +307,8 @@ def jsonFileUploader(fname):
     else:
         print(barcode, "not listed in database! Creating new entry...")
         Create_Fresh_Card(data, fname)
+    
+    UploadTests(data, fname)
     '''
     newcard.summary = {
             "passed":data['summary']['passed'] if 'passed' in data['summary'] else 0, 
