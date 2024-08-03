@@ -247,7 +247,7 @@ class CM_Card(models.Model):
     #unsure if manual ID assignment is really necessary but I remember it fixing some issue I had last time I did this
     _id = models.ObjectIdField()
     #identifier is the chip number or barcode or whatnot
-    identifier = CharField(max_length = 20, default = "NO_ID")
+    identifier = CharField(max_length = 20, default = "NoID")
     #Quick Test summary for easy fast data
     summary = EmbeddedField(model_container = Summary, null = True)
     #1 for passed, 0 for failed, -1 for skipped

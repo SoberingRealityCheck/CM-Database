@@ -18,6 +18,9 @@ idir = "/data/www/html/django/CM-Database/card_db/imports"
 a = f"{idir}/report*.json"
 fnames = list(np.sort(glob.glob(f"{idir}/report*.json")))
 import traceback
+
+null_chip_ID = "NullID"
+
 '''
 ## Connect to a local Database
 client = pymongo.MongoClient("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.12") # Connect to local database
@@ -86,7 +89,7 @@ def Create_Fresh_Card(data, fname):
     if 'chip_number' in data and data['chip_number']: 
         newcard.identifier = data['chip_number']
     else: 
-        newcard.identifier = "NO_ID"
+        newcard.identifier = null_chip_ID
     #save test outcomes
     test_outcomes = []
     for test in data['tests']:
@@ -171,7 +174,7 @@ def Update_Existing_Card(data, fname):
     if 'chip_number' in data and data['chip_number']: 
         identifier = data['chip_number']
     else: 
-        identifier = "NO_ID"
+        identifier = null_chip_ID
     oldcard = CM_Card.objects.filter(identifier = identifier)[0]
     #id assignment is easy. Just leave it as is
     old_test_outcomes = oldcard.test_outcomes
@@ -292,7 +295,7 @@ def jsonFileUploader(fname):
     if 'chip_number' in data and data['chip_number']: 
         identifier = data['chip_number']
     else: 
-        identifier = "NO_ID"
+        identifier = null_chip_ID
     #check DB for existing entries of the same name. Decide whether to update existing entry or create new one
     ID_List = CM_Card.objects.values_list('identifier',flat=True)
     #print(ID_List)

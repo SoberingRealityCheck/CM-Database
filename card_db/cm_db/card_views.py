@@ -320,7 +320,7 @@ def testDetail(request, card, test):
         except CM_Card.DoesNotExist:
             raise Http404("CM card with identifier " + str(card) + " does not exist")
     try:
-        curTest = Test.objects.get(name=test)
+        curTest = CM_Card.objects.filter(CM_Card.test_outcomes["test_name"]==test)
     except CM_Card.DoesNotExist:
         raise Http404("CM card does not exist")
     
