@@ -1,0 +1,2339 @@
+{
+  "created": 1722028866.2398043,
+  "duration": 21.257789373397827,
+  "exitcode": 1,
+  "root": "/home/jsw/mezz/econd-sw/test_mezzanine",
+  "environment": {},
+  "summary": {
+    "failed": 14,
+    "passed": 4,
+    "error": 15,
+    "total": 33,
+    "collected": 33
+  },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_i2c.py",
+          "type": "Module"
+        },
+        {
+          "nodeid": "test_io.py",
+          "type": "Module"
+        },
+        {
+          "nodeid": "test_packet_econd.py",
+          "type": "Module"
+        }
+      ]
+    },
+    {
+      "nodeid": "test_i2c.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_i2c.py::test_rw_allregisters_D[0]",
+          "type": "Function",
+          "lineno": 34
+        },
+        {
+          "nodeid": "test_i2c.py::test_rw_allregisters_D[255]",
+          "type": "Function",
+          "lineno": 34
+        },
+        {
+          "nodeid": "test_i2c.py::test_rw_allregisters_T[0]",
+          "type": "Function",
+          "lineno": 58
+        },
+        {
+          "nodeid": "test_i2c.py::test_rw_allregisters_T[255]",
+          "type": "Function",
+          "lineno": 58
+        },
+        {
+          "nodeid": "test_i2c.py::test_hard_reset_i2c_allregisters_D",
+          "type": "Function",
+          "lineno": 84
+        },
+        {
+          "nodeid": "test_i2c.py::test_hard_reset_i2c_allregisters_T",
+          "type": "Function",
+          "lineno": 107
+        },
+        {
+          "nodeid": "test_i2c.py::test_soft_reset_i2c_allregisters_D",
+          "type": "Function",
+          "lineno": 130
+        },
+        {
+          "nodeid": "test_i2c.py::test_soft_reset_i2c_allregisters_T",
+          "type": "Function",
+          "lineno": 153
+        },
+        {
+          "nodeid": "test_i2c.py::test_wrong_reg_address_D",
+          "type": "Function",
+          "lineno": 176
+        },
+        {
+          "nodeid": "test_i2c.py::test_wrong_reg_address_T",
+          "type": "Function",
+          "lineno": 200
+        },
+        {
+          "nodeid": "test_i2c.py::test_wrong_i2c_address_D",
+          "type": "Function",
+          "lineno": 224
+        },
+        {
+          "nodeid": "test_i2c.py::test_wrong_i2c_address_T",
+          "type": "Function",
+          "lineno": 237
+        },
+        {
+          "nodeid": "test_i2c.py::test_hold_hard_reset_D",
+          "type": "Function",
+          "lineno": 250
+        },
+        {
+          "nodeid": "test_i2c.py::test_hold_hard_reset_T",
+          "type": "Function",
+          "lineno": 264
+        },
+        {
+          "nodeid": "test_i2c.py::test_hold_soft_reset_D",
+          "type": "Function",
+          "lineno": 278
+        },
+        {
+          "nodeid": "test_i2c.py::test_hold_soft_reset_T",
+          "type": "Function",
+          "lineno": 299
+        },
+        {
+          "nodeid": "test_i2c.py::test_chip_sync_D",
+          "type": "Function",
+          "lineno": 320
+        },
+        {
+          "nodeid": "test_i2c.py::test_chip_sync_T",
+          "type": "Function",
+          "lineno": 341
+        }
+      ]
+    },
+    {
+      "nodeid": "test_io.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.08]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.32]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.2]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.08]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.32]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.2]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 356
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 356
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 356
+        }
+      ]
+    },
+    {
+      "nodeid": "test_packet_econd.py",
+      "outcome": "passed",
+      "result": []
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "test_i2c.py::test_rw_allregisters_D[0]",
+      "lineno": 34,
+      "outcome": "failed",
+      "keywords": [
+        "test_rw_allregisters_D[0]",
+        "pytestmark",
+        "0",
+        "parametrize",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.5061388609974529,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002645338998263469,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 50,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 279.\nFailed on attempt 1 at write 0 of 279.\nFailed on attempt 2 at write 0 of 279.\n",
+        "longrepr": "to_write = 0, i2c_ECOND = <econ_i2c.ECON_I2C object at 0xffff89f24790>, CfgConverterD = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89f24a00>, out_of_reset = None\n\n    @pytest.mark.ECOND\n    @pytest.mark.parametrize(\"to_write\", [0, 0xFF])\n    def test_rw_allregisters_D(\n        to_write, i2c_ECOND, CfgConverterD, out_of_reset,\n    ):\n        \"\"\"\n        Test all read/write I2C registers by writing to all of them, then reading\n        them back and comparing.\n    \n        First write all zeros and compare, then write all ones and compare.\n        \"\"\"\n        write_array = to_write * numpy.ones(\n            CfgConverterD.total_length_bytes, dtype=numpy.uint8\n        )\n    \n>       i2c_ECOND.write_all(CfgConverterD.RW_mask_array & write_array)\n\ntest_i2c.py:50: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89f24610>, i2c_msgs = (i2c_msg(96,0,b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89f06c40>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0015840050000406336,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_rw_allregisters_D[255]",
+      "lineno": 34,
+      "outcome": "failed",
+      "keywords": [
+        "test_rw_allregisters_D[255]",
+        "pytestmark",
+        "255",
+        "parametrize",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0039021869997668546,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002215428998169955,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 50,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 279.\nFailed on attempt 1 at write 0 of 279.\nFailed on attempt 2 at write 0 of 279.\n",
+        "longrepr": "to_write = 255, i2c_ECOND = <econ_i2c.ECON_I2C object at 0xffff89f24790>, CfgConverterD = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89f24a00>, out_of_reset = None\n\n    @pytest.mark.ECOND\n    @pytest.mark.parametrize(\"to_write\", [0, 0xFF])\n    def test_rw_allregisters_D(\n        to_write, i2c_ECOND, CfgConverterD, out_of_reset,\n    ):\n        \"\"\"\n        Test all read/write I2C registers by writing to all of them, then reading\n        them back and comparing.\n    \n        First write all zeros and compare, then write all ones and compare.\n        \"\"\"\n        write_array = to_write * numpy.ones(\n            CfgConverterD.total_length_bytes, dtype=numpy.uint8\n        )\n    \n>       i2c_ECOND.write_all(CfgConverterD.RW_mask_array & write_array)\n\ntest_i2c.py:50: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89f24610>, i2c_msgs = (i2c_msg(96,0,b'\\x00\\x00\\x7f\\xff\\xff?\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89c278c0>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0014981429994804785,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_rw_allregisters_T[0]",
+      "lineno": 58,
+      "outcome": "failed",
+      "keywords": [
+        "test_rw_allregisters_T[0]",
+        "pytestmark",
+        "0",
+        "parametrize",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.12478328400175087,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0029489459993783385,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 76,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 228.\nFailed on attempt 1 at write 0 of 228.\nFailed on attempt 2 at write 0 of 228.\n",
+        "longrepr": "to_write = 0, i2c_ECONT = <econ_i2c.ECON_I2C object at 0xffff89e72ac0>, CfgConverterT = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89c15610>, out_of_reset = None\nsupport_ECONT = <utils.support.Support object at 0xffff927b5130>\n\n    @pytest.mark.ECONT\n    @pytest.mark.parametrize(\"to_write\", [0, 0xFF])\n    def test_rw_allregisters_T(\n        to_write, i2c_ECONT, CfgConverterT, out_of_reset, support_ECONT,\n    ):\n        \"\"\"\n        Test all read/write I2C registers by writing to all of them, then reading\n        them back and comparing.\n    \n        First write all zeros and compare, then write all ones and compare.\n        \"\"\"\n        support_ECONT.reset(3)\n        support_ECONT.out_of_reset()\n        write_array = to_write * numpy.ones(\n            CfgConverterT.total_length_bytes, dtype=numpy.uint8\n        )\n    \n>       i2c_ECONT.write_all(CfgConverterT.RW_mask_array & write_array)\n\ntest_i2c.py:76: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89e72eb0>, i2c_msgs = (i2c_msg(32,0,b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89c27ac0>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0014964039983169641,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_rw_allregisters_T[255]",
+      "lineno": 58,
+      "outcome": "failed",
+      "keywords": [
+        "test_rw_allregisters_T[255]",
+        "pytestmark",
+        "255",
+        "parametrize",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0038399650002247654,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002893565000704257,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 76,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 228.\nFailed on attempt 1 at write 0 of 228.\nFailed on attempt 2 at write 0 of 228.\n",
+        "longrepr": "to_write = 255, i2c_ECONT = <econ_i2c.ECON_I2C object at 0xffff89e72ac0>, CfgConverterT = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89c15610>, out_of_reset = None\nsupport_ECONT = <utils.support.Support object at 0xffff927b5130>\n\n    @pytest.mark.ECONT\n    @pytest.mark.parametrize(\"to_write\", [0, 0xFF])\n    def test_rw_allregisters_T(\n        to_write, i2c_ECONT, CfgConverterT, out_of_reset, support_ECONT,\n    ):\n        \"\"\"\n        Test all read/write I2C registers by writing to all of them, then reading\n        them back and comparing.\n    \n        First write all zeros and compare, then write all ones and compare.\n        \"\"\"\n        support_ECONT.reset(3)\n        support_ECONT.out_of_reset()\n        write_array = to_write * numpy.ones(\n            CfgConverterT.total_length_bytes, dtype=numpy.uint8\n        )\n    \n>       i2c_ECONT.write_all(CfgConverterT.RW_mask_array & write_array)\n\ntest_i2c.py:76: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89e72eb0>, i2c_msgs = (i2c_msg(32,0,b'\\x00\\x00\\x7f\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89c27b40>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.00148710299981758,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hard_reset_i2c_allregisters_D",
+      "lineno": 84,
+      "outcome": "failed",
+      "keywords": [
+        "test_hard_reset_i2c_allregisters_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.003376935001142556,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002117086998623563,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 94,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 279.\nFailed on attempt 1 at write 0 of 279.\nFailed on attempt 2 at write 0 of 279.\n",
+        "longrepr": "support_ECOND = <utils.support.Support object at 0xffff92742a00>, i2c_ECOND = <econ_i2c.ECON_I2C object at 0xffff89f24790>\nCfgConverterD = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89f24a00>, out_of_reset = None\n\n    @pytest.mark.ECOND\n    def test_hard_reset_i2c_allregisters_D(\n        support_ECOND, i2c_ECOND, CfgConverterD, out_of_reset,\n    ):\n        \"\"\"\n        Set all the RW I2C registers to non-default values, then do a hard reset,\n        and read all the I2C registers to see that they return to their default\n        values.\n        \"\"\"\n>       i2c_ECOND.write_all(\n            CfgConverterD.RW_mask_array & (~CfgConverterD.default_value_array)\n        )\n\ntest_i2c.py:94: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89f24610>, i2c_msgs = (i2c_msg(96,0,b'\\x00\\x00~\\xff\\xff?\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89e018c0>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0013933509981143288,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hard_reset_i2c_allregisters_T",
+      "lineno": 107,
+      "outcome": "failed",
+      "keywords": [
+        "test_hard_reset_i2c_allregisters_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033846160004031844,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002147928000340471,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 117,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 228.\nFailed on attempt 1 at write 0 of 228.\nFailed on attempt 2 at write 0 of 228.\n",
+        "longrepr": "support_ECONT = <utils.support.Support object at 0xffff927b5130>, i2c_ECONT = <econ_i2c.ECON_I2C object at 0xffff89e72ac0>\nCfgConverterT = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89c15610>, out_of_reset = None\n\n    @pytest.mark.ECONT\n    def test_hard_reset_i2c_allregisters_T(\n        support_ECONT, i2c_ECONT, CfgConverterT, out_of_reset,\n    ):\n        \"\"\"\n        Set all the RW I2C registers to non-default values, then do a hard reset,\n        and read all the I2C registers to see that they return to their default\n        values.\n        \"\"\"\n>       i2c_ECONT.write_all(\n            CfgConverterT.RW_mask_array & (~CfgConverterT.default_value_array)\n        )\n\ntest_i2c.py:117: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89e72eb0>, i2c_msgs = (i2c_msg(32,0,b'\\x00\\x00~\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89e014c0>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0013946110011602286,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_soft_reset_i2c_allregisters_D",
+      "lineno": 130,
+      "outcome": "failed",
+      "keywords": [
+        "test_soft_reset_i2c_allregisters_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033529639986227266,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002109107001160737,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 140,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 279.\nFailed on attempt 1 at write 0 of 279.\nFailed on attempt 2 at write 0 of 279.\n",
+        "longrepr": "support_ECOND = <utils.support.Support object at 0xffff92742a00>, i2c_ECOND = <econ_i2c.ECON_I2C object at 0xffff89f24790>\nCfgConverterD = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89f24a00>, out_of_reset = None\n\n    @pytest.mark.ECOND\n    def test_soft_reset_i2c_allregisters_D(\n        support_ECOND, i2c_ECOND, CfgConverterD, out_of_reset,\n    ):\n        \"\"\"\n        Set all the ECON-D RW I2C registers to non-default values, then do a soft\n        reset, and read all the I2C registers to see that they keep their\n        non-default values.\n        \"\"\"\n>       i2c_ECOND.write_all(\n            CfgConverterD.RW_mask_array & (~CfgConverterD.default_value_array)\n        )\n\ntest_i2c.py:140: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89f24610>, i2c_msgs = (i2c_msg(96,0,b'\\x00\\x00~\\xff\\xff?\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89dfc940>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0013938609990873374,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_soft_reset_i2c_allregisters_T",
+      "lineno": 153,
+      "outcome": "failed",
+      "keywords": [
+        "test_soft_reset_i2c_allregisters_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033735149991116486,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0021276769984979182,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 163,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 228.\nFailed on attempt 1 at write 0 of 228.\nFailed on attempt 2 at write 0 of 228.\n",
+        "longrepr": "support_ECONT = <utils.support.Support object at 0xffff927b5130>, i2c_ECONT = <econ_i2c.ECON_I2C object at 0xffff89e72ac0>\nCfgConverterT = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89c15610>, out_of_reset = None\n\n    @pytest.mark.ECONT\n    def test_soft_reset_i2c_allregisters_T(\n        support_ECONT, i2c_ECONT, CfgConverterT, out_of_reset,\n    ):\n        \"\"\"\n        Set all the ECON-T RW I2C registers to non-default values, then do a soft\n        reset, and read all the I2C registers to see that they keep their\n        non-default values.\n        \"\"\"\n>       i2c_ECONT.write_all(\n            CfgConverterT.RW_mask_array & (~CfgConverterT.default_value_array)\n        )\n\ntest_i2c.py:163: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89e72eb0>, i2c_msgs = (i2c_msg(32,0,b'\\x00\\x00~\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89dfc140>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0014195410003594588,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_wrong_reg_address_D",
+      "lineno": 176,
+      "outcome": "failed",
+      "keywords": [
+        "test_wrong_reg_address_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033936460022232495,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002816193002217915,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+          "lineno": 131,
+          "message": "OSError: 5"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 191,
+            "message": ""
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 131,
+            "message": "OSError"
+          }
+        ],
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722028857.5900397,
+            "msecs": 590.0397300720215,
+            "relativeCreated": 14641.395092010498,
+            "thread": 281473433747488,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 3789
+          }
+        ],
+        "longrepr": "self = <econ_tools.swamp.hexactrl_io.Xil_i2c object at 0xffff89f24730>, address = 96, count = 16, log = True\n\n    def read(\n        self,\n        address: int,\n        count: int = 1,\n        log: bool = True,\n    ):\n        \"\"\"\n        Read data from the i2c address specified\n    \n        :param address: The address of the peripheral on the bus to read data\n            from, must be 0-127\n        :type address: byte\n        :param count: The number of bytes to read form the bus if the count is\n            larger than one a block read is performed. Defaults to 1.\n        :type count: int, optional\n        :return: Array of values read for the different bytes as list of ints\n        :rtype: list\n        \"\"\"\n        if count == 1:\n            if log:\n                self.transaction_logger.debug(\n                    f\"Reading SingleByte \" f\"from addr = {address}\"\n                )\n            try:\n                ret = self.bus.read_byte(address).to_bytes(1, \"little\")\n            except IOError as e:\n                self.transaction_logger.error(\n                    \"Error occurred during read: \", exc_info=True\n                )\n                raise IOError(e.args[0])\n            if log:\n                self.transaction_logger.debug(f\"Read returned {ret}\")\n        else:\n            if log:\n                self.transaction_logger.debug(\n                    f\"Reading {count} Bytes \" f\"from addr = {address}\"\n                )\n            try:\n                read = i2c_msg.read(address, count)\n>               self.bus.i2c_rdwr(read)\n\n../econ_tools/swamp/hexactrl_io.py:125: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89f24610>, i2c_msgs = (i2c_msg(96,1,b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89e44340>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError\n\nDuring handling of the above exception, another exception occurred:\n\ni2c_ECOND = <econ_i2c.ECON_I2C object at 0xffff89f24790>, CfgConverterD = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89f24a00>\nsupport_ECOND = <utils.support.Support object at 0xffff92742a00>, out_of_reset = None\n\n    @pytest.mark.ECOND\n    def test_wrong_reg_address_D(\n        i2c_ECOND, CfgConverterD, support_ECOND, out_of_reset,\n    ):\n        \"\"\"\n        Check that we get zeros when reading from some internal address that\n        doesn't correspond to any I2C register.\n        \"\"\"\n        i2c_ECOND.target.transport.write(\n            address=i2c_ECOND.target.base_address,\n            data=None,\n            internal_address=(0xFFFF - 16).to_bytes(2, \"big\"),\n        )\n    \n>       read_bytes = i2c_ECOND.target.transport.read(\n            address=i2c_ECOND.target.base_address,\n            count=16,\n        )\n\ntest_i2c.py:191: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <econ_tools.swamp.hexactrl_io.Xil_i2c object at 0xffff89f24730>, address = 96, count = 16, log = True\n\n    def read(\n        self,\n        address: int,\n        count: int = 1,\n        log: bool = True,\n    ):\n        \"\"\"\n        Read data from the i2c address specified\n    \n        :param address: The address of the peripheral on the bus to read data\n            from, must be 0-127\n        :type address: byte\n        :param count: The number of bytes to read form the bus if the count is\n            larger than one a block read is performed. Defaults to 1.\n        :type count: int, optional\n        :return: Array of values read for the different bytes as list of ints\n        :rtype: list\n        \"\"\"\n        if count == 1:\n            if log:\n                self.transaction_logger.debug(\n                    f\"Reading SingleByte \" f\"from addr = {address}\"\n                )\n            try:\n                ret = self.bus.read_byte(address).to_bytes(1, \"little\")\n            except IOError as e:\n                self.transaction_logger.error(\n                    \"Error occurred during read: \", exc_info=True\n                )\n                raise IOError(e.args[0])\n            if log:\n                self.transaction_logger.debug(f\"Read returned {ret}\")\n        else:\n            if log:\n                self.transaction_logger.debug(\n                    f\"Reading {count} Bytes \" f\"from addr = {address}\"\n                )\n            try:\n                read = i2c_msg.read(address, count)\n                self.bus.i2c_rdwr(read)\n                ret = bytearray(list(read))\n            except IOError as e:\n                self.transaction_logger.error(\n                    \"Error occurred during read: \", exc_info=True\n                )\n>               raise IOError(e.args[0])\nE               OSError: 5\n\n../econ_tools/swamp/hexactrl_io.py:131: OSError"
+      },
+      "teardown": {
+        "duration": 0.0014128219991107471,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_wrong_reg_address_T",
+      "lineno": 200,
+      "outcome": "failed",
+      "keywords": [
+        "test_wrong_reg_address_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033759149991965387,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002697809999517631,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+          "lineno": 131,
+          "message": "OSError: 5"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 215,
+            "message": ""
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 131,
+            "message": "OSError"
+          }
+        ],
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722028857.9017088,
+            "msecs": 901.7088413238525,
+            "relativeCreated": 14953.06420326233,
+            "thread": 281473433747488,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 3789
+          }
+        ],
+        "longrepr": "self = <econ_tools.swamp.hexactrl_io.Xil_i2c object at 0xffff89e72a90>, address = 32, count = 16, log = True\n\n    def read(\n        self,\n        address: int,\n        count: int = 1,\n        log: bool = True,\n    ):\n        \"\"\"\n        Read data from the i2c address specified\n    \n        :param address: The address of the peripheral on the bus to read data\n            from, must be 0-127\n        :type address: byte\n        :param count: The number of bytes to read form the bus if the count is\n            larger than one a block read is performed. Defaults to 1.\n        :type count: int, optional\n        :return: Array of values read for the different bytes as list of ints\n        :rtype: list\n        \"\"\"\n        if count == 1:\n            if log:\n                self.transaction_logger.debug(\n                    f\"Reading SingleByte \" f\"from addr = {address}\"\n                )\n            try:\n                ret = self.bus.read_byte(address).to_bytes(1, \"little\")\n            except IOError as e:\n                self.transaction_logger.error(\n                    \"Error occurred during read: \", exc_info=True\n                )\n                raise IOError(e.args[0])\n            if log:\n                self.transaction_logger.debug(f\"Read returned {ret}\")\n        else:\n            if log:\n                self.transaction_logger.debug(\n                    f\"Reading {count} Bytes \" f\"from addr = {address}\"\n                )\n            try:\n                read = i2c_msg.read(address, count)\n>               self.bus.i2c_rdwr(read)\n\n../econ_tools/swamp/hexactrl_io.py:125: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89e72eb0>, i2c_msgs = (i2c_msg(32,1,b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89c27e40>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError\n\nDuring handling of the above exception, another exception occurred:\n\ni2c_ECONT = <econ_i2c.ECON_I2C object at 0xffff89e72ac0>, CfgConverterT = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89c15610>\nsupport_ECONT = <utils.support.Support object at 0xffff927b5130>, out_of_reset = None\n\n    @pytest.mark.ECONT\n    def test_wrong_reg_address_T(\n        i2c_ECONT, CfgConverterT, support_ECONT, out_of_reset,\n    ):\n        \"\"\"\n        Check that we get zeros when reading from some internal address that\n        doesn't correspond to any I2C register.\n        \"\"\"\n        i2c_ECONT.target.transport.write(\n            address=i2c_ECONT.target.base_address,\n            data=None,\n            internal_address=(0xFFFF - 16).to_bytes(2, \"big\"),\n        )\n    \n>       read_bytes = i2c_ECONT.target.transport.read(\n            address=i2c_ECONT.target.base_address,\n            count=16,\n        )\n\ntest_i2c.py:215: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <econ_tools.swamp.hexactrl_io.Xil_i2c object at 0xffff89e72a90>, address = 32, count = 16, log = True\n\n    def read(\n        self,\n        address: int,\n        count: int = 1,\n        log: bool = True,\n    ):\n        \"\"\"\n        Read data from the i2c address specified\n    \n        :param address: The address of the peripheral on the bus to read data\n            from, must be 0-127\n        :type address: byte\n        :param count: The number of bytes to read form the bus if the count is\n            larger than one a block read is performed. Defaults to 1.\n        :type count: int, optional\n        :return: Array of values read for the different bytes as list of ints\n        :rtype: list\n        \"\"\"\n        if count == 1:\n            if log:\n                self.transaction_logger.debug(\n                    f\"Reading SingleByte \" f\"from addr = {address}\"\n                )\n            try:\n                ret = self.bus.read_byte(address).to_bytes(1, \"little\")\n            except IOError as e:\n                self.transaction_logger.error(\n                    \"Error occurred during read: \", exc_info=True\n                )\n                raise IOError(e.args[0])\n            if log:\n                self.transaction_logger.debug(f\"Read returned {ret}\")\n        else:\n            if log:\n                self.transaction_logger.debug(\n                    f\"Reading {count} Bytes \" f\"from addr = {address}\"\n                )\n            try:\n                read = i2c_msg.read(address, count)\n                self.bus.i2c_rdwr(read)\n                ret = bytearray(list(read))\n            except IOError as e:\n                self.transaction_logger.error(\n                    \"Error occurred during read: \", exc_info=True\n                )\n>               raise IOError(e.args[0])\nE               OSError: 5\n\n../econ_tools/swamp/hexactrl_io.py:131: OSError"
+      },
+      "teardown": {
+        "duration": 0.0014003409996803384,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_wrong_i2c_address_D",
+      "lineno": 224,
+      "outcome": "passed",
+      "keywords": [
+        "test_wrong_i2c_address_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.003369614998518955,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0027595210012805182,
+        "outcome": "passed",
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722028858.0386722,
+            "msecs": 38.67220878601074,
+            "relativeCreated": 15090.027570724487,
+            "thread": 281473433747488,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 3789
+          }
+        ]
+      },
+      "teardown": {
+        "duration": 0.0012060560002282728,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_wrong_i2c_address_T",
+      "lineno": 237,
+      "outcome": "passed",
+      "keywords": [
+        "test_wrong_i2c_address_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.003365144999406766,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0024344949997612275,
+        "outcome": "passed",
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722028858.0495813,
+            "msecs": 49.581289291381836,
+            "relativeCreated": 15100.936651229858,
+            "thread": 281473433747488,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 3789
+          }
+        ]
+      },
+      "teardown": {
+        "duration": 0.0011513049976201728,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hold_hard_reset_D",
+      "lineno": 250,
+      "outcome": "passed",
+      "keywords": [
+        "test_hold_hard_reset_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.002055615997960558,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002742451000813162,
+        "outcome": "passed",
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722028858.0590675,
+            "msecs": 59.067487716674805,
+            "relativeCreated": 15110.422849655151,
+            "thread": 281473433747488,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 3789
+          }
+        ]
+      },
+      "teardown": {
+        "duration": 0.00105890299892053,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hold_hard_reset_T",
+      "lineno": 264,
+      "outcome": "passed",
+      "keywords": [
+        "test_hold_hard_reset_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0020511759976216126,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0027145500025653746,
+        "outcome": "passed",
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722028858.068461,
+            "msecs": 68.46094131469727,
+            "relativeCreated": 15119.816303253174,
+            "thread": 281473433747488,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 3789
+          }
+        ]
+      },
+      "teardown": {
+        "duration": 0.001039883998600999,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hold_soft_reset_D",
+      "lineno": 278,
+      "outcome": "failed",
+      "keywords": [
+        "test_hold_soft_reset_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.003342734999023378,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002110787001583958,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 287,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 279.\nFailed on attempt 1 at write 0 of 279.\nFailed on attempt 2 at write 0 of 279.\n",
+        "longrepr": "support_ECOND = <utils.support.Support object at 0xffff92742a00>, i2c_ECOND = <econ_i2c.ECON_I2C object at 0xffff89f24790>\nCfgConverterD = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89f24a00>, out_of_reset = None\n\n    @pytest.mark.ECOND\n    def test_hold_soft_reset_D(\n        support_ECOND, i2c_ECOND, CfgConverterD, out_of_reset,\n    ):\n        \"\"\"\n        Check that holding the ECON-D in soft reset does not affect I2C\n        communications nor the values in I2C registers.\n        \"\"\"\n>       i2c_ECOND.write_all(\n            CfgConverterD.RW_mask_array & (~CfgConverterD.default_value_array)\n        )\n\ntest_i2c.py:287: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89f24610>, i2c_msgs = (i2c_msg(96,0,b'\\x00\\x00~\\xff\\xff?\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89e35640>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.00138888099900214,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hold_soft_reset_T",
+      "lineno": 299,
+      "outcome": "failed",
+      "keywords": [
+        "test_hold_soft_reset_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033771149974199943,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002128787000401644,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 308,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 228.\nFailed on attempt 1 at write 0 of 228.\nFailed on attempt 2 at write 0 of 228.\n",
+        "longrepr": "support_ECONT = <utils.support.Support object at 0xffff927b5130>, i2c_ECONT = <econ_i2c.ECON_I2C object at 0xffff89e72ac0>\nCfgConverterT = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89c15610>, out_of_reset = None\n\n    @pytest.mark.ECONT\n    def test_hold_soft_reset_T(\n        support_ECONT, i2c_ECONT, CfgConverterT, out_of_reset,\n    ):\n        \"\"\"\n        Check that holding the ECON-T in soft reset does not affect I2C\n        communications nor the values in I2C registers.\n        \"\"\"\n>       i2c_ECONT.write_all(\n            CfgConverterT.RW_mask_array & (~CfgConverterT.default_value_array)\n        )\n\ntest_i2c.py:308: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89e72eb0>, i2c_msgs = (i2c_msg(32,0,b'\\x00\\x00~\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89e15e40>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0013834500023222063,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_chip_sync_D",
+      "lineno": 320,
+      "outcome": "failed",
+      "keywords": [
+        "test_chip_sync_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.1758746630002861,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002129176999005722,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 329,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 279.\nFailed on attempt 1 at write 0 of 279.\nFailed on attempt 2 at write 0 of 279.\n",
+        "longrepr": "i2c_ECOND = <econ_i2c.ECON_I2C object at 0xffff89f24790>, CfgConverterD = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89f24a00>\nfc = <utils.fastcontrol.FastControl object at 0xffff89b49490>, fc_basic_setup = None, out_of_reset = None\n\n    @pytest.mark.ECOND\n    def test_chip_sync_D(\n        i2c_ECOND, CfgConverterD, fc, fc_basic_setup, out_of_reset,\n    ):\n        \"\"\"\n        Send a ChipSync fast command and verify that the contents of the ECON-D RW\n        I2C registers are unchanged.\n        \"\"\"\n>       i2c_ECOND.write_all(\n            CfgConverterD.RW_mask_array & (~CfgConverterD.default_value_array)\n        )\n\ntest_i2c.py:329: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89f24610>, i2c_msgs = (i2c_msg(96,0,b'\\x00\\x00~\\xff\\xff?\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89e15a40>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0014874930020596366,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_chip_sync_T",
+      "lineno": 341,
+      "outcome": "failed",
+      "keywords": [
+        "test_chip_sync_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.015234009999403497,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.002200519000325585,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+          "lineno": 658,
+          "message": "OSError: [Errno 5] Input/output error"
+        },
+        "traceback": [
+          {
+            "path": "test_i2c.py",
+            "lineno": 350,
+            "message": ""
+          },
+          {
+            "path": "../econ_i2c.py",
+            "lineno": 136,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/ECON.py",
+            "lineno": 109,
+            "message": "in write_all"
+          },
+          {
+            "path": "../econ_tools/swamp/hexactrl_io.py",
+            "lineno": 51,
+            "message": "in write"
+          },
+          {
+            "path": "../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py",
+            "lineno": 658,
+            "message": "OSError"
+          }
+        ],
+        "stdout": "Failed on attempt 0 at write 0 of 228.\nFailed on attempt 1 at write 0 of 228.\nFailed on attempt 2 at write 0 of 228.\n",
+        "longrepr": "i2c_ECONT = <econ_i2c.ECON_I2C object at 0xffff89e72ac0>, CfgConverterT = <econ_tools.swamp.cfgconverter.CfgConverter object at 0xffff89c15610>\nfc = <utils.fastcontrol.FastControl object at 0xffff89b49490>, fc_basic_setup = None, out_of_reset = None\n\n    @pytest.mark.ECONT\n    def test_chip_sync_T(\n        i2c_ECONT, CfgConverterT, fc, fc_basic_setup, out_of_reset,\n    ):\n        \"\"\"\n        Send a ChipSync fast command and verify that the contents of the ECON-T RW\n        I2C registers are unchanged.\n        \"\"\"\n>       i2c_ECONT.write_all(\n            CfgConverterT.RW_mask_array & (~CfgConverterT.default_value_array)\n        )\n\ntest_i2c.py:350: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../econ_i2c.py:136: in write_all\n    self.target.write_all(self.cfg.array_to_bytes(data))\n../econ_tools/swamp/ECON.py:109: in write_all\n    self.transport.write(\n../econ_tools/swamp/hexactrl_io.py:51: in write\n    self.bus.i2c_rdwr(msg_send)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <smbus2.smbus2.SMBus object at 0xffff89e72eb0>, i2c_msgs = (i2c_msg(32,0,b'\\x00\\x00~\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff'),)\nioctl_data = <smbus2.smbus2.i2c_rdwr_ioctl_data object at 0xffff89dbfbc0>\n\n    def i2c_rdwr(self, *i2c_msgs):\n        \"\"\"\n        Combine a series of i2c read and write operations in a single\n        transaction (with repeated start bits but no stop bits in between).\n    \n        This method takes i2c_msg instances as input, which must be created\n        first with :py:meth:`i2c_msg.read` or :py:meth:`i2c_msg.write`.\n    \n        :param i2c_msgs: One or more i2c_msg class instances.\n        :type i2c_msgs: i2c_msg\n        :rtype: None\n        \"\"\"\n        ioctl_data = i2c_rdwr_ioctl_data.create(*i2c_msgs)\n>       ioctl(self.fd, I2C_RDWR, ioctl_data)\nE       OSError: [Errno 5] Input/output error\n\n../../../.local/lib/python3.9/site-packages/smbus2/smbus2.py:658: OSError"
+      },
+      "teardown": {
+        "duration": 0.0014779829980398063,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 4.340399174998311,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 42,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 26,
+            "message": "in ReadPower"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:42: in SetVoltage\n    _p,_v,_i  = self.ReadPower()\n../utils/gpibclient.py:26: in ReadPower\n    message = self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0012297569992369972,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.08]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.36659785799929523,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 42,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 26,
+            "message": "in ReadPower"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:42: in SetVoltage\n    _p,_v,_i  = self.ReadPower()\n../utils/gpibclient.py:26: in ReadPower\n    message = self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0012190770030429121,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.08]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.01129573200159939,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 42,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 26,
+            "message": "in ReadPower"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:42: in SetVoltage\n    _p,_v,_i  = self.ReadPower()\n../utils/gpibclient.py:26: in ReadPower\n    message = self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0012294869993638713,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.08]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004316406000725692,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 42,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 26,
+            "message": "in ReadPower"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:42: in SetVoltage\n    _p,_v,_i  = self.ReadPower()\n../utils/gpibclient.py:26: in ReadPower\n    message = self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0012483579994295724,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.08]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.005241776998445857,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 42,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 26,
+            "message": "in ReadPower"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:42: in SetVoltage\n    _p,_v,_i  = self.ReadPower()\n../utils/gpibclient.py:26: in ReadPower\n    message = self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.001220727001054911,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.007713412000157405,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012577180023072287,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.32]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.006293149999692105,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012617680004041176,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.32]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004539431000011973,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012595180014614016,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.32]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004321206000895472,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012290070008020848,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.32]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004510540999035584,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012550179999379907,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0076867719981237315,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012626089992409106,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.2]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.006291170000622515,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012441879989637528,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.2]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004514739997830475,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012700480001512915,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.2]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0043189860007259995,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012438880003173836,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.2]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004526860997430049,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffff89e6e550>, support_asic = <utils.support.Support object at 0xffff89e6e640>\nsupport_emu = <utils.support.Support object at 0xffff89e6e070>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.00473017599870218,
+        "outcome": "passed"
+      }
+    }
+  ],
+  "FPGA-hexa-IP": "11",
+  "branch": "DN_CMtester_IO",
+  "commit_hash": "4f4f43d62e25add927a484f024c3e2e08d3482d8",
+  "remote_url": "ssh://git@gitlab.cern.ch:7999/hgcal-daq-sw/econd-sw.git",
+  "status": "M common_pytest/fixtures.py\u0000 M gpib_controls\u0000 M test_mezzanine/conftest.py\u0000 M test_mezzanine/pytest.ini\u0000 M test_mezzanine/test_io.py\u0000 M utils/gpibclient.py\u0000?? econ_i2c.py.orig\u0000?? test_mezzanine/tmp.py\u0000?? test_radiation/conftest.py.orig\u0000?? test_vectors/\u0000?? utils/align.py.orig\u0000?? utils/io.py.orig\u0000",
+  "firmware_name": "econ-mezz-tester-kria.bit\u0000",
+  "firmware_git_desc": "9e5953f-dirty",
+  "chip_number": null
+}

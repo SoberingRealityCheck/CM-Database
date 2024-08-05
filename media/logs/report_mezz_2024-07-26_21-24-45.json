@@ -1,0 +1,291 @@
+{
+  "created": 1722029090.8071501,
+  "duration": 8.99892282485962,
+  "exitcode": 0,
+  "root": "/home/jsw/mezz/econd-sw/test_mezzanine",
+  "environment": {},
+  "summary": {
+    "passed": 1,
+    "total": 1,
+    "collected": 1
+  },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 246
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+      "lineno": 246,
+      "outcome": "passed",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 5.52983354800017,
+        "outcome": "passed",
+        "stdout": "     link=0 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=1 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=2 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=3 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=4 pattern=290 words_little_endian=1 bytes_little_endian=1\n     link=0 pattern=290 words_little_endian=0 bytes_little_endian=1\n     link=1 pattern=290 words_little_endian=0 bytes_little_endian=1\n"
+      },
+      "metadata": {
+        "eRX_errcounts": [
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            1,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            100,
+            0,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            33,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            20,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0,
+            0,
+            59,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            255,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            255,
+            255,
+            165,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            0,
+            0,
+            0,
+            255,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "maxwidth": [
+          4,
+          5,
+          5,
+          5,
+          4,
+          5
+        ],
+        "second_max_width": [
+          4,
+          5,
+          4,
+          3,
+          3,
+          4
+        ]
+      },
+      "call": {
+        "duration": 0.0036919429985573515,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.001080564998119371,
+        "outcome": "passed"
+      }
+    }
+  ],
+  "FPGA-hexa-IP": "11",
+  "branch": "DN_CMtester_IO",
+  "commit_hash": "4f4f43d62e25add927a484f024c3e2e08d3482d8",
+  "remote_url": "ssh://git@gitlab.cern.ch:7999/hgcal-daq-sw/econd-sw.git",
+  "status": "M common_pytest/fixtures.py\u0000 M gpib_controls\u0000 M test_mezzanine/conftest.py\u0000 M test_mezzanine/pytest.ini\u0000 M test_mezzanine/test_io.py\u0000 M utils/gpibclient.py\u0000?? econ_i2c.py.orig\u0000?? test_mezzanine/tmp.py\u0000?? test_radiation/conftest.py.orig\u0000?? test_vectors/\u0000?? utils/align.py.orig\u0000?? utils/io.py.orig\u0000",
+  "firmware_name": "econ-mezz-tester-kria.bit\u0000",
+  "firmware_git_desc": "9e5953f-dirty",
+  "chip_number": null
+}

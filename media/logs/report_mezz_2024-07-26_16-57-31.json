@@ -1,0 +1,445 @@
+{
+  "created": 1722013053.2644787,
+  "duration": 2.502810478210449,
+  "exitcode": 1,
+  "root": "/home/jsw/mezz/econd-sw/test_mezzanine",
+  "environment": {},
+  "summary": {
+    "error": 15,
+    "total": 15,
+    "collected": 15
+  },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_io.py",
+          "type": "Module"
+        }
+      ]
+    },
+    {
+      "nodeid": "test_io.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.08]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.32]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.2]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.08]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.32]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.2]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 356
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 356
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 356
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 1.2148236419998284,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0011795359996540355,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.08]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.3687905590004448,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0011409550006646896,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.08]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.012945734999448177,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0011248150003666524,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.08]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.007109737000064342,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0011385850002625375,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.08]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0071970380004131584,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.001149595000242698,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.008980277999398822,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.001131175000409712,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.32]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.00819422999938979,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0011334850005368935,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.32]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.01276747100018838,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0011603060002016718,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.32]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.006232456999896385,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.001149384999735048,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.32]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.007234389000586816,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0011299150000922964,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.008132369000122708,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.001122714000302949,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.2]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.008953727999141847,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0011357349994796095,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.2]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0064117709998754435,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0018713210001806146,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.2]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.00619810599982884,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0011257750002187095,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.2]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.006373639999765146,
+        "outcome": "failed",
+        "longrepr": "ScopeMismatch: You tried to access the function scoped fixture json_metadata with a module scoped request object, involved factories:\ntest_io.py:12:  def set_voltage(voltage, gpib_client, support_asic, support_emu)\ntest_io.py:7:  def voltage(request, json_metadata)\n../../../.local/lib/python3.9/site-packages/pytest_jsonreport/plugin.py:352:  def json_metadata(request)"
+      },
+      "teardown": {
+        "duration": 0.0018642710001586238,
+        "outcome": "passed"
+      }
+    }
+  ],
+  "FPGA-hexa-IP": "11",
+  "branch": "DN_CMtester_IO",
+  "commit_hash": "4f4f43d62e25add927a484f024c3e2e08d3482d8",
+  "remote_url": "ssh://git@gitlab.cern.ch:7999/hgcal-daq-sw/econd-sw.git",
+  "status": "M common_pytest/fixtures.py\u0000 M gpib_controls\u0000 M test_mezzanine/pytest.ini\u0000 M test_mezzanine/test_io.py\u0000 M utils/gpibclient.py\u0000?? econ_i2c.py.orig\u0000?? test_mezzanine/tmp.py\u0000?? test_radiation/conftest.py.orig\u0000?? test_vectors/\u0000?? utils/align.py.orig\u0000?? utils/io.py.orig\u0000",
+  "firmware_name": "econ-mezz-tester-kria.bit\u0000",
+  "firmware_git_desc": "9e5953f-dirty",
+  "chip_number": null
+}

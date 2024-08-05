@@ -1,0 +1,1821 @@
+{
+  "created": 1722029925.6991339,
+  "duration": 15.863456726074219,
+  "exitcode": 1,
+  "root": "/home/jsw/mezz/econd-sw/test_mezzanine",
+  "environment": {},
+  "summary": {
+    "passed": 18,
+    "error": 15,
+    "total": 33,
+    "collected": 33
+  },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_i2c.py",
+          "type": "Module"
+        },
+        {
+          "nodeid": "test_io.py",
+          "type": "Module"
+        },
+        {
+          "nodeid": "test_packet_econd.py",
+          "type": "Module"
+        }
+      ]
+    },
+    {
+      "nodeid": "test_i2c.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_i2c.py::test_rw_allregisters_D[0]",
+          "type": "Function",
+          "lineno": 34
+        },
+        {
+          "nodeid": "test_i2c.py::test_rw_allregisters_D[255]",
+          "type": "Function",
+          "lineno": 34
+        },
+        {
+          "nodeid": "test_i2c.py::test_rw_allregisters_T[0]",
+          "type": "Function",
+          "lineno": 58
+        },
+        {
+          "nodeid": "test_i2c.py::test_rw_allregisters_T[255]",
+          "type": "Function",
+          "lineno": 58
+        },
+        {
+          "nodeid": "test_i2c.py::test_hard_reset_i2c_allregisters_D",
+          "type": "Function",
+          "lineno": 84
+        },
+        {
+          "nodeid": "test_i2c.py::test_hard_reset_i2c_allregisters_T",
+          "type": "Function",
+          "lineno": 107
+        },
+        {
+          "nodeid": "test_i2c.py::test_soft_reset_i2c_allregisters_D",
+          "type": "Function",
+          "lineno": 130
+        },
+        {
+          "nodeid": "test_i2c.py::test_soft_reset_i2c_allregisters_T",
+          "type": "Function",
+          "lineno": 153
+        },
+        {
+          "nodeid": "test_i2c.py::test_wrong_reg_address_D",
+          "type": "Function",
+          "lineno": 176
+        },
+        {
+          "nodeid": "test_i2c.py::test_wrong_reg_address_T",
+          "type": "Function",
+          "lineno": 200
+        },
+        {
+          "nodeid": "test_i2c.py::test_wrong_i2c_address_D",
+          "type": "Function",
+          "lineno": 224
+        },
+        {
+          "nodeid": "test_i2c.py::test_wrong_i2c_address_T",
+          "type": "Function",
+          "lineno": 237
+        },
+        {
+          "nodeid": "test_i2c.py::test_hold_hard_reset_D",
+          "type": "Function",
+          "lineno": 250
+        },
+        {
+          "nodeid": "test_i2c.py::test_hold_hard_reset_T",
+          "type": "Function",
+          "lineno": 264
+        },
+        {
+          "nodeid": "test_i2c.py::test_hold_soft_reset_D",
+          "type": "Function",
+          "lineno": 278
+        },
+        {
+          "nodeid": "test_i2c.py::test_hold_soft_reset_T",
+          "type": "Function",
+          "lineno": 299
+        },
+        {
+          "nodeid": "test_i2c.py::test_chip_sync_D",
+          "type": "Function",
+          "lineno": 320
+        },
+        {
+          "nodeid": "test_i2c.py::test_chip_sync_T",
+          "type": "Function",
+          "lineno": 341
+        }
+      ]
+    },
+    {
+      "nodeid": "test_io.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.08]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.32]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.2]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.08]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.32]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.2]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 356
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 356
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 356
+        }
+      ]
+    },
+    {
+      "nodeid": "test_packet_econd.py",
+      "outcome": "passed",
+      "result": []
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "test_i2c.py::test_rw_allregisters_D[0]",
+      "lineno": 34,
+      "outcome": "passed",
+      "keywords": [
+        "test_rw_allregisters_D[0]",
+        "pytestmark",
+        "0",
+        "parametrize",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.5059154089976801,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.14888149999751477,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0013546499976655468,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_rw_allregisters_D[255]",
+      "lineno": 34,
+      "outcome": "passed",
+      "keywords": [
+        "test_rw_allregisters_D[255]",
+        "pytestmark",
+        "255",
+        "parametrize",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.003822024998953566,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.14827659499860601,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0012655180034926161,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_rw_allregisters_T[0]",
+      "lineno": 58,
+      "outcome": "passed",
+      "keywords": [
+        "test_rw_allregisters_T[0]",
+        "pytestmark",
+        "0",
+        "parametrize",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.13120282499949099,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.12178420499913045,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0012600280024344102,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_rw_allregisters_T[255]",
+      "lineno": 58,
+      "outcome": "passed",
+      "keywords": [
+        "test_rw_allregisters_T[255]",
+        "pytestmark",
+        "255",
+        "parametrize",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0038033640012145042,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.1213915869993798,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.001282198998524109,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hard_reset_i2c_allregisters_D",
+      "lineno": 84,
+      "outcome": "passed",
+      "keywords": [
+        "test_hard_reset_i2c_allregisters_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033647849995759316,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.14768876299785916,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0011914169990632217,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hard_reset_i2c_allregisters_T",
+      "lineno": 107,
+      "outcome": "passed",
+      "keywords": [
+        "test_hard_reset_i2c_allregisters_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.003357255001901649,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.12090734500088729,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0011612660018727183,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_soft_reset_i2c_allregisters_D",
+      "lineno": 130,
+      "outcome": "passed",
+      "keywords": [
+        "test_soft_reset_i2c_allregisters_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033723460001056083,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.14757043999998132,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0011650759988697246,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_soft_reset_i2c_allregisters_T",
+      "lineno": 153,
+      "outcome": "passed",
+      "keywords": [
+        "test_soft_reset_i2c_allregisters_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.003369915000803303,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.12084167399734724,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0012436180004442576,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_wrong_reg_address_D",
+      "lineno": 176,
+      "outcome": "passed",
+      "keywords": [
+        "test_wrong_reg_address_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0044022980000590906,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0021416269992187154,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0011211249984626193,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_wrong_reg_address_T",
+      "lineno": 200,
+      "outcome": "passed",
+      "keywords": [
+        "test_wrong_reg_address_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033571650019439403,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0017112380010075867,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0011304250001558103,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_wrong_i2c_address_D",
+      "lineno": 224,
+      "outcome": "passed",
+      "keywords": [
+        "test_wrong_i2c_address_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033351739984937012,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.004068390997417737,
+        "outcome": "passed",
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722029918.4149323,
+            "msecs": 414.9322509765625,
+            "relativeCreated": 10604.982614517212,
+            "thread": 281473882923040,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 4101
+          }
+        ]
+      },
+      "teardown": {
+        "duration": 0.0012255569999979343,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_wrong_i2c_address_T",
+      "lineno": 237,
+      "outcome": "passed",
+      "keywords": [
+        "test_wrong_i2c_address_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.010367601000325521,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0024599039970780723,
+        "outcome": "passed",
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722029918.4343593,
+            "msecs": 434.3593120574951,
+            "relativeCreated": 10624.409675598145,
+            "thread": 281473882923040,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 4101
+          }
+        ]
+      },
+      "teardown": {
+        "duration": 0.0011635459995886777,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hold_hard_reset_D",
+      "lineno": 250,
+      "outcome": "passed",
+      "keywords": [
+        "test_hold_hard_reset_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.00207232599859708,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0026955300018016715,
+        "outcome": "passed",
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722029918.443909,
+            "msecs": 443.9089298248291,
+            "relativeCreated": 10633.959293365479,
+            "thread": 281473882923040,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 4101
+          }
+        ]
+      },
+      "teardown": {
+        "duration": 0.0010706639986892696,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hold_hard_reset_T",
+      "lineno": 264,
+      "outcome": "passed",
+      "keywords": [
+        "test_hold_hard_reset_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0021108469991304446,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0034437170033925213,
+        "outcome": "passed",
+        "log": [
+          {
+            "name": "Xil_i2c_bus_2",
+            "msg": "Error occurred during read: ",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py",
+            "filename": "hexactrl_io.py",
+            "module": "hexactrl_io",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/jsw/mezz/econd-sw/test_mezzanine/../econ_tools/swamp/hexactrl_io.py\", line 125, in read\n    self.bus.i2c_rdwr(read)\n  File \"/home/jsw/.local/lib/python3.9/site-packages/smbus2/smbus2.py\", line 658, in i2c_rdwr\n    ioctl(self.fd, I2C_RDWR, ioctl_data)\nOSError: [Errno 5] Input/output error",
+            "stack_info": null,
+            "lineno": 128,
+            "funcName": "read",
+            "created": 1722029918.4533763,
+            "msecs": 453.37629318237305,
+            "relativeCreated": 10643.426656723022,
+            "thread": 281473882923040,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 4101
+          }
+        ]
+      },
+      "teardown": {
+        "duration": 0.0010787939972942695,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hold_soft_reset_D",
+      "lineno": 278,
+      "outcome": "passed",
+      "keywords": [
+        "test_hold_soft_reset_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0033591449973755516,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.1473217940001632,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0011758159998862538,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_hold_soft_reset_T",
+      "lineno": 299,
+      "outcome": "passed",
+      "keywords": [
+        "test_hold_soft_reset_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.003346544999658363,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.12063772900000913,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0011903070007974748,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_chip_sync_D",
+      "lineno": 320,
+      "outcome": "passed",
+      "keywords": [
+        "test_chip_sync_D",
+        "pytestmark",
+        "ECOND",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.17909571299969684,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.14799632900030701,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.001267888001166284,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_i2c.py::test_chip_sync_T",
+      "lineno": 341,
+      "outcome": "passed",
+      "keywords": [
+        "test_chip_sync_T",
+        "pytestmark",
+        "ECONT",
+        "test_i2c.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.015255129997967742,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.12171382400265429,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0012693589997070376,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 3.439613433998602,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 41,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:41: in SetVoltage\n    self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0012317379987507593,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.08]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.3690601880007307,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 41,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:41: in SetVoltage\n    self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0059798830006911885,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.08]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0116308390024642,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 41,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:41: in SetVoltage\n    self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0012329370001680218,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.08]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004345266999735031,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 41,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:41: in SetVoltage\n    self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0012238779963809066,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.08]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.005295717997796601,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 41,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:41: in SetVoltage\n    self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0012443979976524133,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.007749472999421414,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012369869982649107,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.32]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.006331461001536809,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012380080006550997,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.32]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004595022997818887,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012828280014218763,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.32]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004327175996877486,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012587080018420238,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.32]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004586023002048023,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.32, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.001246617997821886,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.007699191999563482,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012673780001932755,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.2]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0063315510014945175,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012973490011063404,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.2]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0045556619988929015,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012479379984142724,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.2]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004334586999902967,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.0012383670000417624,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.2]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004551522000838304,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 26,
+          "message": "zmq.error.ZMQError: Operation cannot be accomplished in current state"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 40,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 568,
+            "message": "in send_string"
+          },
+          {
+            "path": "/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py",
+            "lineno": 400,
+            "message": "in send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 728,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 775,
+            "message": "in zmq.backend.cython.socket.Socket.send"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 247,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 242,
+            "message": "in zmq.backend.cython.socket._send_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 26,
+            "message": "ZMQError"
+          }
+        ],
+        "longrepr": "voltage = 1.2, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa4ad36d0>, support_asic = <utils.support.Support object at 0xffffa4ad39d0>\nsupport_emu = <utils.support.Support object at 0xffffa4ad3a90>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:40: in SetVoltage\n    self.socket.send_string(f'{self.ip}:::SetVoltage:::{v}')\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:568: in send_string\n    return self.send(u.encode(encoding), flags=flags, copy=copy, **kwargs)\n/usr/local/lib64/python3.9/site-packages/zmq/sugar/socket.py:400: in send\n    return super(Socket, self).send(data, flags=flags, copy=copy, track=track)\nzmq/backend/cython/socket.pyx:728: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:775: in zmq.backend.cython.socket.Socket.send\n    ???\nzmq/backend/cython/socket.pyx:247: in zmq.backend.cython.socket._send_copy\n    ???\nzmq/backend/cython/socket.pyx:242: in zmq.backend.cython.socket._send_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.ZMQError: Operation cannot be accomplished in current state\n\nzmq/backend/cython/checkrc.pxd:26: ZMQError"
+      },
+      "teardown": {
+        "duration": 0.004712505000497913,
+        "outcome": "passed"
+      }
+    }
+  ],
+  "FPGA-hexa-IP": "11",
+  "branch": "DN_CMtester_IO",
+  "commit_hash": "4f4f43d62e25add927a484f024c3e2e08d3482d8",
+  "remote_url": "ssh://git@gitlab.cern.ch:7999/hgcal-daq-sw/econd-sw.git",
+  "status": "M common_pytest/fixtures.py\u0000 M gpib_controls\u0000 M test_mezzanine/conftest.py\u0000 M test_mezzanine/pytest.ini\u0000 M test_mezzanine/test_io.py\u0000 M utils/gpibclient.py\u0000?? econ_i2c.py.orig\u0000?? test_mezzanine/tmp.py\u0000?? test_radiation/conftest.py.orig\u0000?? test_vectors/\u0000?? utils/align.py.orig\u0000?? utils/io.py.orig\u0000",
+  "firmware_name": "econ-mezz-tester-kria.bit\u0000",
+  "firmware_git_desc": "9e5953f-dirty",
+  "chip_number": null
+}

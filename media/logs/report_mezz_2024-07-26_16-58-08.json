@@ -1,0 +1,445 @@
+{
+  "created": 1722013090.0397987,
+  "duration": 2.411897659301758,
+  "exitcode": 1,
+  "root": "/home/jsw/mezz/econd-sw/test_mezzanine",
+  "environment": {},
+  "summary": {
+    "error": 15,
+    "total": 15,
+    "collected": 15
+  },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_io.py",
+          "type": "Module"
+        }
+      ]
+    },
+    {
+      "nodeid": "test_io.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 246
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.08]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.32]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.2]",
+          "type": "Function",
+          "lineno": 274
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 303
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.08]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.32]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.2]",
+          "type": "Function",
+          "lineno": 330
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 356
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.32]",
+          "type": "Function",
+          "lineno": 356
+        },
+        {
+          "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.2]",
+          "type": "Function",
+          "lineno": 356
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 1.214038344999608,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 247\n  @pytest.mark.ECOND\n  def test_ePortRXPRBS_ECOND(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0012407670001266524,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.08]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.3679214089997913,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 275\n  @pytest.mark.ECONT\n  def test_ePortRXPRBS_ECONT(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011771059998864075,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.08]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.010775187000035658,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 304\n  @pytest.mark.ECOND\n  def test_eTX_delayscan_ECOND(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011846059996969416,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.08]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004119690999687009,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 331\n  @pytest.mark.ECONT\n  def test_eTX_delayscan_ECONT(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011540049999894109,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.08]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.010679455000172311,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 357\n  @pytest.mark.ECOND\n  def test_eTx_PRBS7_ECOND(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.001163396000265493,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.32]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0070738859994889935,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 247\n  @pytest.mark.ECOND\n  def test_ePortRXPRBS_ECOND(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011823860004369635,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.32]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.006865770999866072,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 275\n  @pytest.mark.ECONT\n  def test_ePortRXPRBS_ECONT(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011611749996518483,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.32]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004319075000239536,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 304\n  @pytest.mark.ECOND\n  def test_eTX_delayscan_ECOND(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011436849999881815,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.32]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004774425000505289,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 331\n  @pytest.mark.ECONT\n  def test_eTX_delayscan_ECONT(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011768949998440803,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.32]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.32]",
+        "pytestmark",
+        "1.32",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004303083999730006,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 357\n  @pytest.mark.ECOND\n  def test_eTx_PRBS7_ECOND(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.001150854999650619,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.2]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.0076977199996690615,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 247\n  @pytest.mark.ECOND\n  def test_ePortRXPRBS_ECOND(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011876360003952868,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECONT[1.2]",
+      "lineno": 274,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECONT[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.006066194000595715,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 275\n  @pytest.mark.ECONT\n  def test_ePortRXPRBS_ECONT(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011528349996297038,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECOND[1.2]",
+      "lineno": 303,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004997119999643473,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 304\n  @pytest.mark.ECOND\n  def test_eTX_delayscan_ECOND(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.001187156000014511,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTX_delayscan_ECONT[1.2]",
+      "lineno": 330,
+      "outcome": "error",
+      "keywords": [
+        "test_eTX_delayscan_ECONT[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECONT",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.004102171000340604,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 331\n  @pytest.mark.ECONT\n  def test_eTX_delayscan_ECONT(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011507050003274344,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "test_io.py::test_eTx_PRBS7_ECOND[1.2]",
+      "lineno": 356,
+      "outcome": "error",
+      "keywords": [
+        "test_eTx_PRBS7_ECOND[1.2]",
+        "pytestmark",
+        "1.2",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 0.00428226399981213,
+        "outcome": "failed",
+        "longrepr": "file /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 357\n  @pytest.mark.ECOND\n  def test_eTx_PRBS7_ECOND(\nfile /home/jsw/mezz/econd-sw/test_mezzanine/test_io.py, line 12\n  @pytest.fixture(scope='module')\n  def set_voltage(voltage, gpib_client, support_asic, support_emu):\nE       fixture 'gpib_client' not found\n>       available fixtures: CfgConverterD, CfgConverterT, ECOND_I2C_basic_settings, ECOND_I2C_basic_settings_pre_alignment, ECOND_word_align, ECONT_I2C_basic_settings, ECONT_I2C_basic_settings_pre_alignment, ECONT_word_align, I2C_enable_prbs7_ECOND, I2C_for_PRBS_scan_ECOND, I2C_for_PRBS_scan_ECONT, IP_address, PLLfreq, PRBS_setup_ECOND, PRBS_setup_ECONT, __pytest_repeat_step_number, align_pattern, aligner_ECOND, aligner_ECONT, basic_setup, blocks, bus_id, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, channel_phase_select_ECOND, channel_phase_select_ECONT, default_frequency, doctest_namespace, eTX_delay_scan_setup_ECOND, eTX_delay_scan_setup_ECONT, errcounts_fixedphase_scan_ECOND, errcounts_fixedphase_scan_ECONT, fc, fc_basic_setup, firmware_name, freq_setter, from_IO_ECOND, from_IO_ECONT, gen, hard_reset_ECOND, hard_reset_ECONT, i2c_ECOND, i2c_ECONT, include_metadata_in_junit_xml, json_metadata, lc_ECOND, lc_ECOND_input, lc_ECONT, lc_ECONT_input, linkcap_pattern, load_val, metadata, monkeypatch, normal_frequency, out_of_reset, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, roc_version, sc_ECOND, sc_ECONT, set_rocv3gen, set_up_ROCDAQ, set_voltage, setup_IO, setup_IO_ECOND, setup_IO_ECONT, setup_TV_ECONT, support_ECOND, support_ECONT, support_asic, support_emu, target, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, to_IO_ECOND, to_IO_ECONT, tv_ECOND, tv_ECONT, uhal_hw, voltage\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/jsw/mezz/econd-sw/test_mezzanine/test_io.py:12"
+      },
+      "teardown": {
+        "duration": 0.0011561049996089423,
+        "outcome": "passed"
+      }
+    }
+  ],
+  "FPGA-hexa-IP": "11",
+  "branch": "DN_CMtester_IO",
+  "commit_hash": "4f4f43d62e25add927a484f024c3e2e08d3482d8",
+  "remote_url": "ssh://git@gitlab.cern.ch:7999/hgcal-daq-sw/econd-sw.git",
+  "status": "M common_pytest/fixtures.py\u0000 M gpib_controls\u0000 M test_mezzanine/pytest.ini\u0000 M test_mezzanine/test_io.py\u0000 M utils/gpibclient.py\u0000?? econ_i2c.py.orig\u0000?? test_mezzanine/tmp.py\u0000?? test_radiation/conftest.py.orig\u0000?? test_vectors/\u0000?? utils/align.py.orig\u0000?? utils/io.py.orig\u0000",
+  "firmware_name": "econ-mezz-tester-kria.bit\u0000",
+  "firmware_git_desc": "9e5953f-dirty",
+  "chip_number": null
+}

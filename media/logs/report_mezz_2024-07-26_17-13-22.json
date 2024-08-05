@@ -1,0 +1,104 @@
+{
+  "created": 1722014007.080015,
+  "duration": 4.971492290496826,
+  "exitcode": 1,
+  "root": "/home/jsw/mezz/econd-sw/test_mezzanine",
+  "environment": {},
+  "summary": {
+    "error": 1,
+    "total": 1,
+    "collected": 1
+  },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+          "type": "Function",
+          "lineno": 246
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "test_io.py::test_ePortRXPRBS_ECOND[1.08]",
+      "lineno": 246,
+      "outcome": "error",
+      "keywords": [
+        "test_ePortRXPRBS_ECOND[1.08]",
+        "pytestmark",
+        "1.08",
+        "ECOND",
+        "test_io.py",
+        "test_mezzanine"
+      ],
+      "setup": {
+        "duration": 4.330824937000216,
+        "outcome": "failed",
+        "crash": {
+          "path": "zmq/backend/cython/checkrc.pxd",
+          "lineno": 20,
+          "message": "zmq.error.Again: Resource temporarily unavailable"
+        },
+        "traceback": [
+          {
+            "path": "test_io.py",
+            "lineno": 14,
+            "message": ""
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 43,
+            "message": "in SetVoltage"
+          },
+          {
+            "path": "../utils/gpibclient.py",
+            "lineno": 27,
+            "message": "in ReadPower"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 791,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 827,
+            "message": "in zmq.backend.cython.socket.Socket.recv"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 191,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/socket.pyx",
+            "lineno": 186,
+            "message": "in zmq.backend.cython.socket._recv_copy"
+          },
+          {
+            "path": "zmq/backend/cython/checkrc.pxd",
+            "lineno": 20,
+            "message": "Again"
+          }
+        ],
+        "longrepr": "voltage = 1.08, gpib_client = <utils.gpibclient.GPIBClient object at 0xffffa07eeeb0>, support_asic = <utils.support.Support object at 0xffffa07ee1c0>\nsupport_emu = <utils.support.Support object at 0xffffa07f18b0>\n\n    @pytest.fixture(scope='module')\n    def set_voltage(voltage, gpib_client, support_asic, support_emu):\n>       gpib_client.SetVoltage(voltage)\n\ntest_io.py:14: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../utils/gpibclient.py:43: in SetVoltage\n    _p,_v,_i  = self.ReadPower()\n../utils/gpibclient.py:27: in ReadPower\n    message = self.socket.recv()\nzmq/backend/cython/socket.pyx:791: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:827: in zmq.backend.cython.socket.Socket.recv\n    ???\nzmq/backend/cython/socket.pyx:191: in zmq.backend.cython.socket._recv_copy\n    ???\nzmq/backend/cython/socket.pyx:186: in zmq.backend.cython.socket._recv_copy\n    ???\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n>   ???\nE   zmq.error.Again: Resource temporarily unavailable\n\nzmq/backend/cython/checkrc.pxd:20: Again"
+      },
+      "teardown": {
+        "duration": 0.0012649780001083855,
+        "outcome": "passed"
+      }
+    }
+  ],
+  "FPGA-hexa-IP": "11",
+  "branch": "DN_CMtester_IO",
+  "commit_hash": "4f4f43d62e25add927a484f024c3e2e08d3482d8",
+  "remote_url": "ssh://git@gitlab.cern.ch:7999/hgcal-daq-sw/econd-sw.git",
+  "status": "M common_pytest/fixtures.py\u0000 M gpib_controls\u0000 M test_mezzanine/conftest.py\u0000 M test_mezzanine/pytest.ini\u0000 M test_mezzanine/test_io.py\u0000 M utils/gpibclient.py\u0000?? econ_i2c.py.orig\u0000?? test_mezzanine/tmp.py\u0000?? test_radiation/conftest.py.orig\u0000?? test_vectors/\u0000?? utils/align.py.orig\u0000?? utils/io.py.orig\u0000",
+  "firmware_name": "econ-mezz-tester-kria.bit\u0000",
+  "firmware_git_desc": "9e5953f-dirty",
+  "chip_number": null
+}
