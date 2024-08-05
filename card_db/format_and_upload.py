@@ -12,9 +12,11 @@ import json
 import djongo 
 from cm_db.models import CM_Card, Test
 from traceback_with_variables import activate_by_import
+import os
 
 ## Grab JSON Files
 idir = "/data/www/html/django/CM-Database/card_db/imports"
+odir = "/data/www/html/django/CM-Database/media"
 a = f"{idir}/report*.json"
 fnames = list(np.sort(glob.glob(f"{idir}/report*.json")))
 import traceback
@@ -51,7 +53,7 @@ def stringReplace(word):
     return word
 
 def get_Barcode(data):
-    null_chip_ID = "NullID"
+    null_chip_ID = "MissingID"
     if 'chip_number' in data and data['chip_number']: 
         barcode = data['chip_number']
     else: 
@@ -246,17 +248,19 @@ def Update_Existing_Card(data, fname):
 
 def UploadTests(data, fname):
     barcode = get_Barcode(data)
-    for test in data['tests']:
+    for i, test in enumerate(data['tests']):
         new_test = Test.objects.create()
         new_test.test_name = f"{stringReplace(test['nodeid'].split('::')[1])}"
         new_test.barcode = barcode
-        date = fname[62:][:10]
+        date = str(fname[62:][:10])
         hour = int(fname[73:][:2])
-        minute = int(fname[76:][:2])
+        minute = str(int(fname[76:][:2]))
+        if minute == '0':
+            minute = '00'
         if hour > 12:
-            time = str(date) + ": " + str(hour % 12) + ":" + str(minute) + "PM"
+            time = date + ": " + str(hour % 12) + ":" + minute + " PM"
         else:
-            time = str(date) + ": " + str(hour) + ":" + str(minute) + "AM"
+            time = date + ": " + str(hour) + ":" + minute + " AM"
         new_test.date_run = time
         new_test.outcome = test['outcome']
         if 'metadata' in test:
@@ -292,6 +296,7 @@ def UploadTests(data, fname):
         new_test.filename = fname
         
         new_test.save()
+    print(i,"tests added to file of chip",barcode)
 
 def jsonFileUploader(fname):
     ## open the JSON File
@@ -349,6 +354,9 @@ def main():
             #this is to prevent accidentally uploading two of the same file at once
             filename_list.append(fname)
         else: print ("file already uploaded! skipping.")
+        fname = fname[50:]
+        print(fname)
+        os.rename(f"{idir}/{fname}", f"{odir}/{fname}")
 
 if __name__=="__main__": 
     main()

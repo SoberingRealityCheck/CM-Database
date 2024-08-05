@@ -9,7 +9,6 @@ MAX_COMMENT_LENGTH = 1000
 class Summary(models.Model):
     passed = CharField(max_length = 3)
     total = CharField(max_length = 3)
-    collected = CharField(max_length = 3)
     error = CharField(max_length = 3)
     def __getitem__(self, name):
         return getattr(self, name)
@@ -61,6 +60,8 @@ class CM_Card(models.Model):
     #barcode is the chip number or barcode or whatnot
     barcode = CharField(max_length = 20, default = "NoID")
     
+    ECOND = CharField(max_length = 20, default = "NoEconD")
+    ECONT = CharField(max_length = 20, default = "NoEconT")
     #Quick Test summary for easy fast data. Updated by site when card is requested. Might be good to make a manual update script too.
     summary = EmbeddedField(model_container = Summary, null = True)
     #1 for passed, 0 for failed, -1 for skipped

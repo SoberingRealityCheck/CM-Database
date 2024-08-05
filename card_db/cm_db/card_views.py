@@ -201,23 +201,52 @@ def detail(request, card):
     test_overview = []
     failedAny = False
     forcedAny = False
+    
+    #Update Summary and Test_Outcomes values when requested
+    blanksummary = {'total':0, 'passed':0, 'collected':0, 'error':0}
+    p.summary = blanksummary
+    new_test_outcomes = []
+    for test in p.test_outcomes:
+        test_name = test["test_name"]
+        test = {'test_name':test_name, 'passed':0, 'total':0, 'failed':0, 'anyFailed':0, 'anyForced':0, 'result':'Incomplete', 'get_css_class':'warn', 'required':1, 'most_recent_date':'0'}
+        matchingtests = list(Test.objects.filter(test_name=test_name,barcode=card))
+        print("matching tests:", matchingtests)
+        for realTest in matchingtests:
+            print(realTest,"REAL TEST")
+            if realTest.valid:
+                test['total'] += 1
+                if realTest.outcome == "passed":
+                    test['passed'] += 1
+                if realTest.outcome == "failed":
+                    test['failed'] += 1
+                    test['anyFailed'] = 1
+            oldTestDate = int(''.join(filter(str.isdigit, test["most_recent_date"])))
+            newTestDate = int(''.join(filter(str.isdigit, realTest.date_run)))
+            if oldTestDate < newTestDate:
+                test['most_recent_date'] = realTest.date_run
+        new_test_outcomes.append(test)
+    p.test_outcomes = new_test_outcomes
 
-    '''
-    locations = Location.objects.filter(card=p)
-    '''
-    tests = p.test_outcomes         
-    for test in tests:
-        status["total"] += 1
+    card_test_outcomes = p.test_outcomes         
+    for test in card_test_outcomes:
+        p.summary["total"] += 1
         totalrun = test['total']
         totalpassed = test['passed']
         if totalrun == totalpassed:
-            status["passed"] += 1
-        print(test["anyFailed"])
-        if test["anyFailed"] != 0:
-            failedAny = True
-        if test["anyForced"] != 0:
+            p.summary["passed"] += 1
+            test["result"] = "Passed"
+            test["get_css_class"] = "okay"
+        elif test["anyForced"] != 0:
             forcedAny = True
-        print(test)
+            test["result"] = "Forced"
+            test["get_css_class"] = "forced"
+        elif test["anyFailed"] != 0:
+            failedAny = True
+            test["result"] = "Failed"
+            test["get_css_class"] = "bad"
+        else:
+            test["result"] = "Incomplete"
+            test["get_css_class"] = "warn"
     ''' 
     attemptList = attempts[nodeid==test].order_by("attempt_number")
     if attemptList:
@@ -234,7 +263,8 @@ def detail(request, card):
     else:
         attempts.append({"attempt":test.test_name, "valid": False, "required": test.required})
         '''
-
+    status["total"] = p.summary["total"]
+    status["passed"] = p.summary["passed"]
     if status["total"] == status["passed"]:
         if forcedAny:
             status["banner"] = "GOOD (FORCED)"
@@ -275,7 +305,7 @@ def detail(request, card):
                                                      'rm' : "PLACEHOLDER",
                                                      'rm_slot' : "PLACEHOLDER",
                                                      'cu' : "PLACEHOLDER",
-                                                     'attempts':tests,
+                                                     'attempts':card_test_outcomes,
                                                      'locations':"PLACEHOLDER",
                                                      'status':status,
                                                     })
@@ -302,16 +332,10 @@ class PlotView(generic.ListView):
 
 def testDetail(request, card, test):
     """ This displays details about a specific test for a card """
-    if len(card) > 7:
-        try:
-            p = CM_Card.objects.get(uid__endswith=card)
-        except CM_Card.DoesNotExist:
-            raise Http404("CM card with unique id " + str(card) + " does not exist")
-    else:
-        try:
-            p = CM_Card.objects.get(barcode__endswith=card)
-        except CM_Card.DoesNotExist:
-            raise Http404("CM card with barcode " + str(card) + " does not exist")
+    try:
+        p = CM_Card.objects.get(barcode__endswith=card)
+    except CM_Card.DoesNotExist:
+        raise Http404("CM card with barcode " + str(card) + " does not exist")
     try:
         curTest = Test.objects.all().filter(test_name=test,barcode=card)
     except CM_Card.DoesNotExist:
