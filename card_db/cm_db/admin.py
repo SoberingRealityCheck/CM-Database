@@ -1,6 +1,6 @@
 from django.contrib import admin
 #from .models import QieCard, Attempt, Tester, Test, Location, ReadoutModule, QieShuntParams, RMBiasVoltage, CalibrationUnit, SipmControlCard
-from .models import CM_Test_Result
+from .models import CM_Card
 # This file describes the layout of the admin pages.
 
 '''

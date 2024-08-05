@@ -5,9 +5,9 @@ import datetime
 from os import listdir, path
 import json
 
-#from .models import CM_Test_Result, Tester, Test, Attempt, Location, CMShuntParams 
+#from .models import CM_Card, Tester, Test, Attempt, Location, CMShuntParams 
 import cm_db.custom.filters as filters
-from .models import CM_Test_Result
+from .models import CM_Card, Test
 # Create your views here.
 
 from django.utils import timezone
@@ -19,8 +19,9 @@ class CatalogView(generic.ListView):
     """ This displays a list of all CM cards """
     
     template_name = 'cm_db/catalog.html'
-    context_object_name = 'chip_number_list'
-    cards = CM_Test_Result.objects.all().order_by('chip_number')
+    context_object_name = 'barcode_list'
+    #cards = CM_Card.objects.all().order_by('barcode')
+    cards = CM_Card.objects.values_list("barcode",flat = True)
     #num_cards = len(cards)
     def get_queryset(self):
         return self.cards
@@ -29,10 +30,11 @@ class CatalogView(generic.ListView):
 
 def catalog(request):
     """ This displays a list of all CM cards """
-    cards = CM_Test_Result.objects.all().order_by('chip_number')
+    cards = CM_Card.objects.values_list('barcode', flat=True).distinct()
+    print(cards)
     count = len(cards)
 
-    return render(request, 'cm_db/catalog.html', {'chip_number_list': cards,
+    return render(request, 'cm_db/catalog.html', {'barcode_list': cards,
                                                       'total_count': count})
 
 def summary(request):
@@ -47,7 +49,7 @@ def summary(request):
         print("JSON Loaded")
     else:
         print("Loading Cards")
-        cards = list(CM_Test_Result.objects.all().order_by('chip_number'))
+        cards = list(CM_Card.objects.all().order_by('barcode'))
         print("Loaded Cards")
         print("Loading Tests")
         tests = list(Test.objects.all())
@@ -66,14 +68,14 @@ def calibration(request, card):
     """ This displays the calibration overview for a card """
     if len(card) > 7:
         try:
-            p = CM_Test_Result.objects.get(uid__endswith=card)
-        except CM_Test_Result.DoesNotExist:
+            p = CM_Card.objects.get(uid__endswith=card)
+        except CM_Card.DoesNotExist:
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Test_Result.objects.get(chip_number__endswith=card)
-        except CM_Test_Result.DoesNotExist:
-            raise Http404("CM card with chip_number " + str(card) + " does not exist")
+            p = CM_Card.objects.get(barcode__endswith=card)
+        except CM_Card.DoesNotExist:
+            raise Http404("CM card with barcode " + str(card) + " does not exist")
 
     calibrations = p.CMshuntparams_set.all().order_by("group")
 
@@ -83,14 +85,14 @@ def calResults(request, card, group):
     """ This displays the calibration results for a card """
     if len(card) > 7:
         try:
-            p = CM_Test_Result.objects.get(uid__endswith=card)
-        except CM_Test_Result.DoesNotExist:
+            p = CM_Card.objects.get(uid__endswith=card)
+        except CM_Card.DoesNotExist:
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Test_Result.objects.get(chip_number__endswith=card)
-        except CM_Test_Result.DoesNotExist:
-            raise Http404("CM card with chip_number " + str(card) + " does not exist")
+            p = CM_Card.objects.get(barcode__endswith=card)
+        except CM_Card.DoesNotExist:
+            raise Http404("CM card with barcode " + str(card) + " does not exist")
     calibration = p.CMshuntparams_set.get(group=group)
 
     if str(calibration.results) != "default.png":
@@ -100,7 +102,7 @@ def calResults(request, card, group):
         data = []
         for item in c:
             temp = { "id":str(item[0]),
-                     "serial":str(p.chip_number),
+                     "serial":str(p.barcode),
                      "CM":str(item[2]),
                      "capID":str(item[3]),
                      "range":str(item[4]),
@@ -118,14 +120,14 @@ def calPlots(request, card, group):
     """ This displays the calibration plots for a card """
     if len(card) > 7:
         try:
-            p = CM_Test_Result.objects.get(uid__endswith=card)
-        except CM_Test_Result.DoesNotExist:
+            p = CM_Card.objects.get(uid__endswith=card)
+        except CM_Card.DoesNotExist:
             raise Http404("CM card with unique id " + str(card) + " does not exist")
     else:
         try:
-            p = CM_Test_Result.objects.get(chip_number__endswith=card)
-        except CM_Test_Result.DoesNotExist:
-            raise Http404("CM card with chip_number " + str(card) + " does not exist")
+            p = CM_Card.objects.get(barcode__endswith=card)
+        except CM_Card.DoesNotExist:
+            raise Http404("CM card with barcode " + str(card) + " does not exist")
     calibration = p.CMshuntparams_set.get(group=group)
 
     files = []
@@ -171,7 +173,7 @@ def stats(request):
         for test in tests:
             attempts.extend(list(test.attempt_set.all())) 
                 
-        cards = list(CM_Test_Result.objects.all().order_by("chip_number"))
+        cards = list(CM_Card.objects.all().order_by("barcode"))
 
         testFailedStats = filters.getFailedCardStats(cards, tests, attempts)
         testPassedStats = filters.getPassedCardStats(cards, tests, attempts)
@@ -186,99 +188,138 @@ def stats(request):
 def detail(request, card):
     print(card)
     """ This displays the overview of tests for a card """
-    if len(card) > 7:
-        try:
-            p = CM_Test_Result.objects.filter(chip_number=card).configure(cursor_type=CursorType.TAILABLE).iterator()
-        except CM_Test_Result.DoesNotExist:
-            #raise Http404("CM card with unique id " + str(card) + " does not exist")
-            return render(request, 'cm_db/error.html')
-    else:
-        try:
-            #p_results = CM_Test_Result.objects.get(chip_number__endswith=card)
-            p_results = CM_Test_Result.objects.all().filter(chip_number = card)
-            print("p results:",p_results) 
-        except CM_Test_Result.DoesNotExist:
-            #raise Http404("CM card with chip_number " + str(card) + " does not exist")
-            return render(request, 'cm_db/error.html')
-    for p in p_results:
-        print("chip number:", p.chip_number)
-        created = p.created
-        attempts = p.tests
-        '''
-        locations = Location.objects.filter(card=p)
-        '''
-        attempts = []
-        status = {}    
-        tests = []
+    try:
+        #p_results = CM_Card.objects.get(barcode__endswith=card)
+        p = CM_Card.objects.all().filter(barcode = card)[0]
+        print("p results:",p) 
+    except CM_Card.DoesNotExist:
+        #raise Http404("CM card with barcode " + str(card) + " does not exist")
+        return render(request, 'cm_db/error.html')
+    testnames = []
+    attempts = []
+    status = {"total":0, "passed":0}
+    test_overview = []
+    failedAny = False
+    forcedAny = False
+    
+    #Update Summary and Test_Outcomes values when requested
+    blanksummary = {'total':0, 'passed':0, 'collected':0, 'error':0}
+    p.summary = blanksummary
+    new_test_outcomes = []
+    for test in p.test_outcomes:
+        test_name = test["test_name"]
+        test = {'test_name':test_name, 'passed':0, 'total':0, 'failed':0, 'anyFailed':0, 'anyForced':0, 'result':'Incomplete', 'get_css_class':'warn', 'required':1, 'most_recent_date':'0'}
+        matchingtests = list(Test.objects.filter(test_name=test_name,barcode=card))
+        print("matching tests:", matchingtests)
+        for realTest in matchingtests:
+            print(realTest,"REAL TEST")
+            if realTest.valid:
+                test['total'] += 1
+                if realTest.outcome == "passed":
+                    test['passed'] += 1
+                if realTest.outcome == "failed":
+                    test['failed'] += 1
+                    test['anyFailed'] = 1
+            oldTestDate = int(''.join(filter(str.isdigit, test["most_recent_date"])))
+            newTestDate = int(''.join(filter(str.isdigit, realTest.date_run)))
+            if oldTestDate < newTestDate:
+                test['most_recent_date'] = realTest.date_run
+        new_test_outcomes.append(test)
+    p.test_outcomes = new_test_outcomes
 
-        status["total"] = len(tests)
-        status["passed"] = 0
-        failedAny = False
-        forcedAny = False
-
-        for test in tests:
-            
-            attemptList = attempts[nodeid==test].order_by("attempt_number")
-            if attemptList:
-                last = attemptList[len(attemptList)-1]
-                if not last.revoked and test.required:
-                    if last.overwrite_pass:
-                        status["passed"] += 1
-                        forcedAny = True
-                    elif last.passed_all():
-                        status["passed"] += 1
-                    else:
-                        failedAny = True
-                attempts.append({"attempt":last, "valid": True, "required": test.required})
-            else:
-                attempts.append({"attempt":test.name, "valid": False, "required": test.required})
-            
-
-        if status["total"] == status["passed"]:
-            if forcedAny:
-                status["banner"] = "GOOD (FORCED)"
-                status["css"] = "forced"
-            else:
-                status["banner"] = "GOOD"
-                status["css"] = "okay"
-        elif failedAny:
-            status["banner"] = "FAILED"
-            status["css"] = "bad"
+    card_test_outcomes = p.test_outcomes         
+    for test in card_test_outcomes:
+        p.summary["total"] += 1
+        totalrun = test['total']
+        totalpassed = test['passed']
+        if totalrun == totalpassed:
+            p.summary["passed"] += 1
+            test["result"] = "Passed"
+            test["get_css_class"] = "okay"
+        elif test["anyForced"] != 0:
+            forcedAny = True
+            test["result"] = "Forced"
+            test["get_css_class"] = "forced"
+        elif test["anyFailed"] != 0:
+            failedAny = True
+            test["result"] = "Failed"
+            test["get_css_class"] = "bad"
         else:
-            status["banner"] = "INCOMPLETE"
-            status["css"] = "warn"
+            test["result"] = "Incomplete"
+            test["get_css_class"] = "warn"
+    ''' 
+    attemptList = attempts[nodeid==test].order_by("attempt_number")
+    if attemptList:
+        last = attemptList[len(attemptList)-1]
+        if not last.revoked and test.required:
+            if last.overwrite_pass:
+                status["passed"] += 1
+                forcedAny = True
+            elif last.passed_all():
+                status["passed"] += 1
+            else:
+                failedAny = True
+        attempts.append({"attempt":last, "valid": True, "required": test.required})
+    else:
+        attempts.append({"attempt":test.test_name, "valid": False, "required": test.required})
+        '''
+    status["total"] = p.summary["total"]
+    status["passed"] = p.summary["passed"]
+    if status["total"] == status["passed"]:
+        if forcedAny:
+            status["banner"] = "GOOD (FORCED)"
+            status["css"] = "forced"
+        else:
+            status["banner"] = "GOOD"
+            status["css"] = "okay"
+    elif failedAny:
+        status["banner"] = "FAILED"
+        status["css"] = "bad"
+    else:
+        status["banner"] = "INCOMPLETE"
+        status["css"] = "warn"
 
-        if(request.POST.get('comment_add')):
-            comment = ""
-            if not p.comments == "":
-                comment += "\n"
-            comment += str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute) + ": " + request.POST.get('comment')
-            p.comments += comment
-            p.save()
+    if(request.POST.get('comment_add')):
+        comment = ""
+        if not p.comments == "":
+            comment += "\n"
+        comment += str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute) + ": " + request.POST.get('comment')
+        tempcomments = p.comments
+        if not tempcomments:
+            tempcomments = ""
+        tempcomments += comment
+        p.comments = tempcomments
+        p.save()
 
-        if(request.POST.get('location_add')):
-            if len(Location.objects.filter(card=p)) < 10:
-                Location.objects.create(geo_loc=request.POST.get("location"), card=p)
-
-        return render(request, 'cm_db/detail.html', {'card': p,
-                                                         'rm' : "PLACEHOLDER",
-                                                         'rm_slot' : "PLACEHOLDER",
-                                                         'cu' : "PLACEHOLDER",
-                                                         'attempts':attempts,
-                                                         'locations':"PLACEHOLDER",
-                                                         'status':status,
-                                                        })
+    if(request.POST.get('location_add')):      
+        newloc = {"geo_loc":request.POST.get("location")}
+        newloc["date_received"] = str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute)
+        temploc = p.locations
+        if not temploc:
+            temploc = []
+        temploc.append(newloc)
+        p.locations = temploc
+        p.save()
+    return render(request, 'cm_db/detail.html', {
+                                                     'card': p,
+                                                     'rm' : "PLACEHOLDER",
+                                                     'rm_slot' : "PLACEHOLDER",
+                                                     'cu' : "PLACEHOLDER",
+                                                     'attempts':card_test_outcomes,
+                                                     'locations':"PLACEHOLDER",
+                                                     'status':status,
+                                                    })
 
 #class CatalogView(generic.ListView):
 #    """ This displays a list of all CM cards """
 #    
 #    template_name = 'cm_db/catalog.html'
-#    context_object_name = 'chip_number_list'
+#    context_object_name = 'barcode_list'
 #    def get_queryset(self):
-#        return CM_Test_Result.objects.all().order_by('chip_number')
+#        return CM_Card.objects.all().order_by('barcode')
 #
 def error(request): 
-    """ This displays an error for incorrect chip_number or unique id """
+    """ This displays an error for incorrect barcode or unique id """
     return render(request, 'cm_db/error.html')
 
 class PlotView(generic.ListView):
@@ -291,58 +332,96 @@ class PlotView(generic.ListView):
 
 def testDetail(request, card, test):
     """ This displays details about a specific test for a card """
-    if len(card) > 7:
-        try:
-            p = CM_Test_Result.objects.get(uid__endswith=card)
-        except CM_Test_Result.DoesNotExist:
-            raise Http404("CM card with unique id " + str(card) + " does not exist")
-    else:
-        try:
-            p = CM_Test_Result.objects.get(chip_number__endswith=card)
-        except CM_Test_Result.DoesNotExist:
-            raise Http404("CM card with chip_number " + str(card) + " does not exist")
     try:
-        curTest = Test.objects.get(name=test)
-    except CM_Test_Result.DoesNotExist:
+        p = CM_Card.objects.get(barcode__endswith=card)
+    except CM_Card.DoesNotExist:
+        raise Http404("CM card with barcode " + str(card) + " does not exist")
+    try:
+        curTest = Test.objects.all().filter(test_name=test,barcode=card)
+    except CM_Card.DoesNotExist:
         raise Http404("CM card does not exist")
     
-    if(request.POST.get('overwrite_pass')):
-        if(request.POST.get('secret') == "pseudo" or request.POST.get('secret') == "pseudopod"):
-            attempt = Attempt.objects.get(pk=request.POST.get('overwrite_pass'))
-            attempt.overwrite_pass = not attempt.overwrite_pass
-            attempt.save()
-    
-    attemptList = list(Attempt.objects.filter(card=p, test_type=curTest).order_by("attempt_number").reverse())
+    attemptList = list(curTest)
+    print(attemptList)
     attemptData = []
-    for attempt in attemptList:
+    for attempt_number, attempt in enumerate(attemptList):
         data = ""
-        if not str(attempt.hidden_log_file) == "default.png":
-            inFile = open(path.join(MEDIA_ROOT, str(attempt.hidden_log_file)), "r")
+        if not str(attempt.filename) == "default.png":
+
+            '''
+            inFile = open(path.join(MEDIA_ROOT, str(attempt.JSON_metadata["filename"])), "r")
             tempDict = json.load(inFile)
-            if attempt.test_type.abbreviation == "overall pedestal" and "pedResults" in tempDict["TestOutputs"]: 
+            if attempt.test_name.abbreviation == "overall pedestal" and "pedResults" in tempDict["TestOutputs"]: 
                 data = tempDict["TestOutputs"]["pedResults"]
-            elif attempt.test_type.abbreviation == "overall charge injection" and "ciResults" in tempDict["TestOutputs"]: 
+            elif attempt.test_name.abbreviation == "overall charge injection" and "ciResults" in tempDict["TestOutputs"]: 
                 data = tempDict["TestOutputs"]["ciResults"]
-            elif attempt.test_type.abbreviation == "overall phase scan" and "phaseResults" in tempDict["TestOutputs"]:
+            elif attempt.test_name.abbreviation == "overall phase scan" and "phaseResults" in tempDict["TestOutputs"]:
                 data = tempDict["TestOutputs"]["phaseResults"]
-            elif attempt.test_type.abbreviation == "overall shunt scan" and "shuntResults" in tempDict["TestOutputs"]:
+            elif attempt.test_name.abbreviation == "overall shunt scan" and "shuntResults" in tempDict["TestOutputs"]:
                 data = tempDict["TestOutputs"]["shuntResults"]
             elif "ResultStrings" in tempDict:
-                if attempt.test_type.abbreviation in tempDict["ResultStrings"]:
-                    data = tempDict["ResultStrings"][attempt.test_type.abbreviation]
-        attemptData.append((attempt, data))
+                if attempt.test_name.abbreviation in tempDict["ResultStrings"]:
+                    data = tempDict["ResultStrings"][attempt.test_name.abbreviation]
+            '''
+            filename = attempt.filename
+            filename = filename[50:]
+            secretlist = ['pseudo', 'pseudopod', 'physics is hard']
+            if request.POST.get('overwrite_pass'):
+                if int(request.POST.get('overwrite_pass')) == attempt_number:
+                    if (request.POST.get('secret') in secretlist):
+                        attempt.overwrite_pass = not attempt.overwrite_pass
+                        attempt.save()
 
+            if request.POST.get('overwrite_valid'):
+                if int(request.POST.get('overwrite_valid')) == attempt_number:
+                    if (request.POST.get('secret') in secretlist):
+                        attempt.valid = not attempt.valid 
+                        attempt.save()
+            
+            outcome = attempt.outcome
+            if outcome == "passed":
+                status = "passed"
+                css = "okay"
+            elif outcome == "failed":
+                status = "FAILED"
+                css = "bad"
+            else:
+                status = outcome
+                css = "warn"
+            if attempt.overwrite_pass:
+                status += " - FORCED"
+                css = "forced"
+                if not attempt.valid:
+                    status = outcome + " - INVALID - FORCE PASS OVERRIDEN"
+                    css = None
+            elif not attempt.valid:
+                status += " - INVALID"
+                css = None
+            
+
+        attemptData.append((attempt, filename, attempt_number, status, css))
+         
+        if(request.POST.get('overwrite_pass')):
+            pass
+            '''
+            if(request.POST.get('secret') == "pseudo" or request.POST.get('secret') == "pseudopod"):
+                attempt = Test.objects.get(attempt_number=request.POST.get('overwrite_pass'))
+                attempt.overwrite_pass = not attempt.overwrite_pass
+                attempt.save()
+            '''
+
+                    
     firstTest = []
 
     return render(request, 'cm_db/testDetail.html', {'card': p,
-                                                         'test': curTest,
+                                                         'test': test,
                                                          'attempts': attemptData
                                                          })
-
+            
 
 def fieldView(request):
     """ This displays details about tests on a card """ 
-    options = ["chip_number",
+    options = ["barcode",
                "readout_module",
                "calibration_unit",
                "uid",
@@ -363,7 +442,7 @@ def fieldView(request):
                 fields.append(field)
 
 
-    cards = list(CM_Test_Result.objects.all().order_by("chip_number"))
+    cards = list(CM_Card.objects.all().order_by("barcode"))
     items = []
     # Info for "Card Status"
     cache = path.join(MEDIA_ROOT, "cached_data/summary.json")

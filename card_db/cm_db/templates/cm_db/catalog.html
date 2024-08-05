@@ -11,15 +11,15 @@
     </style>
 {% endblock %}
 
-{% block title %}HE QIE Card Test Database{% endblock %}
+{% block title %}HE CM Card Test Database{% endblock %}
 {% block catalog %}class="active"{% endblock %}
 
 {% block content %}
 <div class="row" align="left" style="padding-left:50px;">
 	<h3>
-        QIE Card Catalog
+        CM Card Catalog
         <div class="divider"></div>
-        Number of QIE Cards: {{total_count}}
+        Number of CM Cards: {{total_count}}
     </h3>
     <div id="breakLine" style="height:2px;width:50%;background-color:#E74C3C"></div>
 </div>
@@ -28,15 +28,15 @@
 <div class="row" style="padding-left:50px;padding-right:50px">
     <div class="splitColumns">
       <ul>
-{% if chip_number_list %}
+{% if barcode_list %}
 <div class="row">
 	<div align="center"><ul>
-	{% for card in chip_number_list %}
-  		<li style="font-size:18px"><a href="{{card.chip_number}}/">{{card.chip_number}}</a></li>
+	{% for card in barcode_list %}
+	<li style="font-size:18px"><a href="{{card}}/">{{card}}</a></li>
 	{%endfor%}
 	</ul></div>
 </div>
 {% else %}
-<h1>This database contains no QIE cards.</h1>
+<h1>This database contains no CM cards.</h1>
 {% endif %}
 {% endblock %}

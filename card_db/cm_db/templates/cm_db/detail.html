@@ -54,7 +54,7 @@ table, td, th {
     <div id="breakLine" style="height:2px;width:25%;background-color:#E74C3C"></div>
 </div><br>
 
-<!-- QIE Card Info Table -->
+<!-- Card Info Table -->
 <table id="cardinfo" class="info" style="margin-left:50px; font-size:30px;">
     <col width="25%">
     <col width="30%">
@@ -69,35 +69,35 @@ table, td, th {
         <tr>
             <td>Barcode:</td>
             <td>{{card.barcode}}</td>
-            <td>({{card.get_bar_uid}})</td>
+            <td>({{card.barcode}})</td>
             <td></td>
         </tr>
         <tr>
-            <td>ECON:</td>
+            <td>ECON-T:</td>
             <!-- <td>{{rm}}<span style="display:inline-block; width:30px"></span><a href="{{ SITE_URL }}/rm/{{rm}}">[link to RM]</a></td> -->
-            <td>T: <a href="{{ SITE_URL }}/rm/{{rm}}">{{rm}}</a></td>
-            <td>D: {{rm_slot}}</td>
+	    <td>{{card.ECONT}}</td>
+	    <td>{{card.ECONT}}</td>
         </tr>
         <tr>
-            <td>Calibration Unit:</td>
+            <td>ECON-D:</td>
             <!-- <td>{{cu}}<span style="display:inline-block; width:30px"></span><a href="{{ SITE_URL }}/cu/{{cu}}">[link to CU]</a></td> -->
-            <td><a href="{{ SITE_URL }}/cu/{{cu}}">{{cu}}</a></td>
+	    <td>{{card.ECOND}}</td>
+	    <td>{{card.ECOND}}</td>
+        </tr>
+        <tr>
+            <td>empty</td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
-            <td>Unique ID:</td>
-            <td>{{card.chip_number}}</td>
-            <td>({{card.chip_number}})</td>
+            <td>empty</td>
+	    <td></td>
+            <td></td>
         </tr>
         <tr>
-            <td>Bridge FW:</td>
-            <td>{{card.get_bridge_ver_hex}}</td>
-            <td>({{card.get_bridge_ver}})</td>
-        </tr>
-        <tr>
-            <td>Igloo FW:</td>
-            <td>{{card.get_igloo_ver_hex}}</td>
-            <td>({{card.get_igloo_ver}})</td>
+            <td>empty</td>
+            <td></td>
+            <td></td>
         </tr>
         </div>
     </tbody>
@@ -132,7 +132,7 @@ table, td, th {
     </tr>
   </thead>
   <tbody>
-    {% for location in locations %}
+    {% for location in card.locations %}
     <tr>
       <th scope="row">{{location.date_received | default:"No date recorded"}}</th>
       <td>{{location.geo_loc}}</td>
@@ -167,38 +167,24 @@ table, td, th {
       <th>Test<span class="fui-list-numbered" style="float:right"></span></th>
       <th>Pass/Fail <span class="fui-list-numbered" style="float:right"></span></th>
       <th>Date <span class="fui-list-numbered" style="float:right"></span></th>
-      <th>Historic Pass/Fail</th>
+      <th>Historic Pass/Fail/Total</th>
       <th>More</th>
     </tr>
   </thead>
   <tbody>
     <div id="accordion" class="collapse">
-    {% for item in attempts %}
-    {% if item.valid %}
+    {% for test in attempts %}
     <tr>
-      <th scope="row">{{item.attempt.test_type}}</th>
-      <td class="{{item.attempt.get_css_class}}">{{item.attempt.get_status}}
-          {% if not item.required %}
+      <th scope="row">{{test.test_name}}</th>
+      <td class="{{test.get_css_class}}">{{test.result}}
+          {% if not test.required %}
           (NOT REQ)
           {% endif %}
       </td>
-      <td>{{item.attempt.date_tested}}</td>
-      <td>{{item.attempt.num_passed}}/{{item.attempt.num_failed}}</td>
-      <td><a href="{{item.attempt.test_type}}">[link to history]</a></td>
+      <td>{{test.most_recent_date}}</td>
+      <td>{{test.passed}}/{{test.failed}}/{{test.total}}</td>
+      <td><a href="{{test.test_name}}">[link to history]</a></td>
     </tr>
-    {% else %}
-    <tr>
-      <th scope="row">{{item.attempt}}</th>
-      <td class="warn">REMAINING
-          {% if not item.required %}
-          (NOT REQ)
-          {% endif %}
-      </td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-    </tr>
-    {% endif %}
     {% endfor %}
   </div>
   </tbody>
