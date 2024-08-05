@@ -341,12 +341,6 @@ def testDetail(request, card, test):
     except CM_Card.DoesNotExist:
         raise Http404("CM card does not exist")
     
-    if(request.POST.get('overwrite_pass')):
-        if(request.POST.get('secret') == "pseudo" or request.POST.get('secret') == "pseudopod"):
-            attempt = Attempt.objects.get(pk=request.POST.get('overwrite_pass'))
-            attempt.overwrite_pass = not attempt.overwrite_pass
-            attempt.save()
-    
     attemptList = list(curTest)
     print(attemptList)
     attemptData = []
@@ -371,23 +365,52 @@ def testDetail(request, card, test):
             '''
             filename = attempt.filename
             filename = filename[50:]
+            secretlist = ['pseudo', 'pseudopod', 'physics is hard']
+            if request.POST.get('overwrite_pass'):
+                if int(request.POST.get('overwrite_pass')) == attempt_number:
+                    if (request.POST.get('secret') in secretlist):
+                        attempt.overwrite_pass = not attempt.overwrite_pass
+                        attempt.save()
+
+            if request.POST.get('overwrite_valid'):
+                if int(request.POST.get('overwrite_valid')) == attempt_number:
+                    if (request.POST.get('secret') in secretlist):
+                        attempt.valid = not attempt.valid 
+                        attempt.save()
             
-            if attempt.valid == True:
-                outcome = attempt.outcome
-                if outcome == "passed":
-                    status = "okay"
-                elif outcome == "failed":
-                    status = "bad"
-                elif outcome == "forced":
-                    status = "forced"
-                else:
-                    status = "warn"
+            outcome = attempt.outcome
+            if outcome == "passed":
+                status = "passed"
+                css = "okay"
+            elif outcome == "failed":
+                status = "FAILED"
+                css = "bad"
             else:
-                status = "warn"
+                status = outcome
+                css = "warn"
+            if attempt.overwrite_pass:
+                status += " - FORCED"
+                css = "forced"
+                if not attempt.valid:
+                    status = outcome + " - INVALID - FORCE PASS OVERRIDEN"
+                    css = None
+            elif not attempt.valid:
+                status += " - INVALID"
+                css = None
             
 
-        attemptData.append((attempt, filename, attempt_number, status))
+        attemptData.append((attempt, filename, attempt_number, status, css))
+         
+        if(request.POST.get('overwrite_pass')):
+            pass
+            '''
+            if(request.POST.get('secret') == "pseudo" or request.POST.get('secret') == "pseudopod"):
+                attempt = Test.objects.get(attempt_number=request.POST.get('overwrite_pass'))
+                attempt.overwrite_pass = not attempt.overwrite_pass
+                attempt.save()
+            '''
 
+                    
     firstTest = []
 
     return render(request, 'cm_db/testDetail.html', {'card': p,

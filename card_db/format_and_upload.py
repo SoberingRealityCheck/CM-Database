@@ -4,7 +4,7 @@
 # In[ ]:
 
 #this script was originally written by Alex Campbell for use on the ECON-T tests: https://github.com/SC990987/MongoDBScripts 
-#I have slightly modified it to create a seperate 'summaries' database in addition to its previous functionality - this enables faster querying 
+#I have modified it to upload via django instead of pymongo - it also now splits the data into seperate 'card' and 'test' documents for faster retrieval of commonly accessed 'summary' variables
 
 import numpy as np
 import glob
@@ -15,23 +15,12 @@ from traceback_with_variables import activate_by_import
 import os
 
 ## Grab JSON Files
-idir = "/data/www/html/django/CM-Database/card_db/imports"
-odir = "/data/www/html/django/CM-Database/media"
+idir = "/data/www/html/django/CM-Database/imports"
+odir = "/data/www/html/django/CM-Database/media/logs"
 a = f"{idir}/report*.json"
 fnames = list(np.sort(glob.glob(f"{idir}/report*.json")))
 import traceback
 
-
-'''
-## Connect to a local Database
-client = pymongo.MongoClient("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.12") # Connect to local database
-session = client.start_session()
-
-
-mydatabase = client['db'] # create new database
-mycol = mydatabase['cm_db_cm_test_result']
-fastcol = mydatabase['cm_db_cmsummary']
-'''
 def selector(input):
     if input == 'passed':
         return 1
@@ -130,50 +119,6 @@ def Create_Fresh_Card(data, fname):
         test["most_recent_date"] = date
     newcard.test_outcomes = test_outcomes
     #save test details
-    test_details = []
-    for test in data['tests']:
-        metadata = {}
-        if 'metadata' in test:
-            #print(test['metadata'])
-            if "eRX_errcounts" in test['metadata']:
-                metadata["eRX_errcounts"] = Metadata_Formatter(test['metadata'], "eRX_errcounts")
-            else:
-                metadata["eRX_errcounts"] = None
-            if "eTX_errcounts" in test['metadata']:
-                metadata["eTX_errcounts"] = Metadata_Formatter(test['metadata'], "eTX_errcounts")
-            else:
-                metadata["eTX_errcounts"] = None
-            if "eTX_bitcounts" in test['metadata']:
-                metadata["eTX_bitcounts"] = Metadata_Formatter(test['metadata'], "eTX_bitcounts")
-            else:
-                metadata["eTX_bitcounts"] = None
-            if "eTX_delays" in test['metadata']:
-                metadata["eTX_delays"] = Metadata_Formatter(test['metadata'], "eTX_delays")
-            else:
-                metadata["eTX_delays"] = None
-        test_details_temp = {
-                "test_name":f"{stringReplace(test['nodeid'].split('::')[1])}", 
-                "test_metadata": metadata if metadata!={} else None,
-                "failure_information":{
-                    "failure_mode": test['call']['traceback'][0]['message'] if 'traceback' in test['call'] and test['call']['traceback'][0]['message'] != '' else test['call']['crash']['message'],
-                    "failure_cause": test['call']['crash']['message'],
-                    "failure_code_line": test["call"]["crash"]["lineno"],
-                } if 'failed' in test['outcome'] else None
-                }
-        test_details.append(test_details_temp)
-    if test_details != []:
-        newcard.test_details = test_details 
-    #save test metadata
-    newcard.JSON_metadata = [{
-        "branch": data['branch'],
-        "commit_hash": data['commit_hash'],
-        "remote_url": data['remote_url'],
-        "status": data['status'],
-        "firmware_name": data['firmware_name'],
-        "firmware_git_desc": data['firmware_git_desc'],
-        "filename": fname
-        }]
-
     newcard.save()
 
 def Update_Existing_Card(data, fname):
@@ -296,7 +241,7 @@ def UploadTests(data, fname):
         new_test.filename = fname
         
         new_test.save()
-    print(i,"tests added to file of chip",barcode)
+    print(i+1,"tests added to file of chip",barcode)
 
 def jsonFileUploader(fname):
     ## open the JSON File
@@ -315,48 +260,27 @@ def jsonFileUploader(fname):
         Create_Fresh_Card(data, fname)
     
     UploadTests(data, fname)
-    '''
-    newcard.summary = {
-            "passed":data['summary']['passed'] if 'passed' in data['summary'] else 0, 
-            "error":data['summary']['error'] if 'error' in data['summary'] else 0,
-            "total":data['summary']['total'] if 'total' in data['summary'] else 0,
-            "collected": data['summary']['collected'] if 'collected' in data['summary'] else 0
-            }
-    '''
-'''
-newcard.JSON_metadata.branch = data['branch']
-newcard.JSON_metadata.commit_hash = data['commit_hash']
-newcard.JSON_metadata.remote_url = data['remote_url']
-newcard.JSON_metadata.status = data['status']
-newcard.JSON_metadata.firmware_name = data['firmware_name']
-newcard.JSON_metadata.firmware_git_desc = data['firmware_git_desc']
-newcard.JSON_metadata.filename = fname
-'''
-'''
-dict2 = {
-        "summary": {'passed': data['summary']['passed'], 'total':data['summary']['total'], 'collected':data['summary']['collected']},
-        "individual_test_outcomes": {
-            f"{stringReplace(test['nodeid'].split('::')[1])}": selector(test['outcome']) for test in data['tests']
-        },
-        "barcode": data['chip_number']
-        }
-'''
 ## upload all the JSON files in the database
 
 def main():
+    print("starting file upload script...")
     filename_list = list(Test.objects.values_list("filename"))
-    print(filename_list)
     #print("FILENAME LIST:",filename_list)
+    num_uploads = 0
     for i, (fname) in enumerate(fnames):
         if (fname,) not in filename_list:
             print("uploading file",i)
             jsonFileUploader(fname)
             #this is to prevent accidentally uploading two of the same file at once
             filename_list.append(fname)
+            num_uploads += 1
         else: print ("file already uploaded! skipping.")
         fname = fname[50:]
         print(fname)
         os.rename(f"{idir}/{fname}", f"{odir}/{fname}")
-
+    if num_uploads != 0: print("Script complete.", num_uploads,"files uploaded.")
+    else: 
+        print("Script complete, but 0 files uploaded. Perhaps double-check the files are in the specified import directory?")
+        print("IDIR:", idir)
 if __name__=="__main__": 
     main()

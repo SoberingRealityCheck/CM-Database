@@ -72,24 +72,33 @@
 <div class="row" style="padding-left:25px;">
     <div class="col-md-12">
         <h3>Test Runs:</h3>
-        {% for attempt, filename, attempt_number, status in attempts %}
+        {% for attempt, filename, attempt_number, status, css in attempts %}
         <br>
         <div class="row">
             <div style="float:left;width:60%">
-		    <h4 class="{{status}}">Attempt {{attempt_number}} ({{attempt.outcome}})</h4>
+		    <h4 class="{{css}}">Attempt {{attempt_number}} - {{status}}</h4>
             </div>
             <div style="float:left">
                 <form action="" method="post" id="overwrite_form">
                     {% csrf_token %}
                     <input value="" id="password" name="secret" hidden>
-                    <button onclick="submitOverwrite()" type="submit" class="btn btn-primary" value="{{attempt.pk}}" name="overwrite_pass">
-                        {% if not attempt.overwrite_pass %}
+                    <button onclick="submitOverwrite()" type="submit" class="btn btn-primary" value="{{attempt_number}}" name="overwrite_pass">
+                        {% if not attempt.override_pass %}
                         Force Pass
                         {% else %}
                         Remove Force Pass
                         {% endif %}
                     </button>
+                    <button onclick="submitOverwrite()" type="submit" class="btn btn-primary" value="{{attempt_number}}" name="overwrite_valid">
+                        {% if not attempt.valid %}
+                        Mark as Valid
+                        {% else %}
+                        Mark Invalid
+                        {% endif %}
+                    </button>
                 </form> 
+            </div>
+            
             </div>
         </div>
         <div style="padding-left:50px;">
@@ -118,7 +127,7 @@
                     </tr>
                     <tr>
                         <td><b>Log Files:</b></td>
-                        <td colspan="3"><a href="../media/{{filename}}">{{filename}}</a>
+                        <td colspan="3"><a href="../media/logs/{{filename}}">{{filename}}</a>
                                         </td>
                     </tr>
                 </tbody>
@@ -128,9 +137,9 @@
             <a href="../media/{{attempt.image}}/{{image}}"><img src="../media/{{attempt.image}}/{{image}}" style="width:10%"></a>
             {% endfor %}
             {% endif %}
-        <button class="btn btn-primary" onclick="document.getElementById('data_{{attempt.attempt_number}}').classList.toggle('hide')">Show Data</button>
-        <p style="white-space: pre-wrap;" class="hide" id="data_{{attempt.attempt_number}}"> {{data}} </p>
-        </div>
+        <button class="btn btn-primary" onclick="document.getElementById('{{attempt.eRX_errcounts}}').value.classList.toggle('hide')">Show Data</button>
+        <p style="white-space: pre-wrap;" class="hide" id="data_{{attempt.eRX_errcounts}}"> {{data}} </p>
+	</div>
         <br/>
         {% endfor %}
     </div>

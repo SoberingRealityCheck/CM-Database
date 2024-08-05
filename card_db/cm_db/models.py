@@ -255,7 +255,7 @@ class Test(models.Model):
     date_run = CharField(max_length=20, default = "null")
     outcome = CharField(max_length=10, default = "null")
     valid = models.BooleanField(default = True)
-    
+    overwrite_pass = models.BooleanField(default=False) 
     eRX_errcounts = ArrayField(
             model_container = eRX_Row,
             model_form_class = eRX_Row_Form,
