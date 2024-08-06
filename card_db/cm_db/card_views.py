@@ -10,7 +10,7 @@ import cm_db.custom.filters as filters
 from .models import CM_Card, Test
 # Create your views here.
 
-from django.utils import timezone
+from django.utils import timezone, dateformat
 from django.http import HttpResponse, Http404
 from card_db.settings import MEDIA_ROOT, CACHE_DATA 
 
@@ -203,7 +203,7 @@ def detail(request, card):
     forcedAny = False
     
     #Update Summary and Test_Outcomes values when requested
-    blanksummary = {'total':0, 'passed':0, 'collected':0, 'error':0}
+    blanksummary = {'total':0, 'passed':0, 'collected':0, 'error':0, 'css':'null','banner':'NONE'}
     p.summary = blanksummary
     new_test_outcomes = []
     for test in p.test_outcomes:
@@ -283,17 +283,19 @@ def detail(request, card):
         comment = ""
         if not p.comments == "":
             comment += "\n"
-        comment += str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute) + ": " + request.POST.get('comment')
+        timeposted = dateformat.format(timezone.localtime(), 'Y-m-d H:i')
+        comment += str(timeposted + ": " + request.POST.get('comment'))
         tempcomments = p.comments
         if not tempcomments:
             tempcomments = ""
         tempcomments += comment
         p.comments = tempcomments
-        p.save()
+        p.save() 
 
     if(request.POST.get('location_add')):      
         newloc = {"geo_loc":request.POST.get("location")}
-        newloc["date_received"] = str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute)
+        timeposted = dateformat.format(timezone.localtime(), 'Y-m-d H:i')
+        newloc["date_received"] = timeposted
         temploc = p.locations
         if not temploc:
             temploc = []
@@ -365,18 +367,33 @@ def testDetail(request, card, test):
             '''
             filename = attempt.filename
             secretlist = ['pseudo', 'pseudopod', 'myresluger']
+            #Force Pass request handling
             if request.POST.get('overwrite_pass'):
                 if int(request.POST.get('overwrite_pass')) == attempt_number:
-                    if (request.POST.get('secret') in secretlist):
+                    if (request.POST.get(f'secret_{attempt_number}') in secretlist):
                         attempt.overwrite_pass = not attempt.overwrite_pass
                         attempt.save()
-
+            #Mark Invalid request handling
             if request.POST.get('overwrite_valid'):
                 if int(request.POST.get('overwrite_valid')) == attempt_number:
-                    if (request.POST.get('secret') in secretlist):
+                    if (request.POST.get(f'secret_{attempt_number}') in secretlist):
                         attempt.valid = not attempt.valid 
                         attempt.save()
-            
+            #New Comment request handling
+            if(request.POST.get('comment_add')):
+                if int(request.POST.get('comment_number')) == attempt_number:
+                    comment = ""
+                    if not attempt.comments == "":
+                        comment += "\n"
+                    timeposted = dateformat.format(timezone.localtime(), 'Y-m-d H:i')
+                    comment += str(timeposted + " - " + request.POST.get('comment'))
+                    tempcomments = attempt.comments
+                    if not tempcomments:
+                        tempcomments = ""
+                    tempcomments += comment
+                    attempt.comments = tempcomments
+                    attempt.save()
+
             outcome = attempt.outcome
             if outcome == "passed":
                 status = "passed"
@@ -410,11 +427,11 @@ def testDetail(request, card, test):
                 data["has_eRX_errcounts"] = True
                 data["eRX_errcounts"] = parsed_array
             if attempt.eTX_errcounts:
-                parsed_array = np.frombuffer(attempt.eTX_errcounts, dtype = int).reshape(-1,5).tolist()
+                parsed_array = np.frombuffer(attempt.eTX_errcounts, dtype = int).reshape(-1,7).tolist()
                 data["has_eTX_errcounts"] = True
                 data["eTX_errcounts"] = parsed_array
             if attempt.eTX_bitcounts:
-                parsed_array = np.frombuffer(attempt.eTX_bitcounts, dtype = int).reshape(-1,5).tolist()
+                parsed_array = np.frombuffer(attempt.eTX_bitcounts, dtype = int).reshape(-1,7).tolist()
                 data["has_eTX_bitcounts"] = True
                 data["eTX_bitcounts"] = parsed_array
             if attempt.eTX_delays:
@@ -423,9 +440,16 @@ def testDetail(request, card, test):
                 data["eTX_delays"] = parsed_array
             if attempt.longrepr:
                 data["has_error_report"] = True
-                print("ORIGINAL:",attempt.longrepr)
                 data["error_report"] = attempt.longrepr
-                print("DATA:",data["error_report"])
+            if attempt.stdout:
+                data["has_stdout"] = True
+                data["stdout"] = attempt.stdout
+            if attempt.crashpath:
+                data["has_crashpath"] = True
+                data["crashpath"] = attempt.crashpath
+            if attempt.crashmsg:
+                data["has_crashmsg"] = True
+                data["crashmsg"] = attempt.crashmsg
 
             '''
             -------------------

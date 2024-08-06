@@ -138,17 +138,26 @@ class JSON_Metadata_Form(forms.ModelForm):
 
 class Test(models.Model):
     _id = models.ObjectIdField()
+    #general info
     test_name = CharField(max_length = 20, default = "NoTest")
     barcode = CharField(max_length = 20, default = "NoID")
+    tester = CharField(max_length=20, default = "unknown")
     date_run = CharField(max_length=20, default = "null")
     outcome = CharField(max_length=10, default = "null")
     valid = models.BooleanField(default = True)
     overwrite_pass = models.BooleanField(default=False) 
+    #eRX and eTX metadata
     eRX_errcounts = models.BinaryField()
     eTX_delays = models.BinaryField()
     eTX_bitcounts = models.BinaryField()
     eTX_errcounts = models.BinaryField()
+    #error log
     longrepr = models.TextField(max_length = 2000, null = True)
+    #failure logs 
+    stdout = models.TextField(max_length = 2000, null = True)
+    crashpath = models.TextField(max_length = 2000, null = True)
+    crashmsg = models.TextField(max_length = 2000, null = True)
+    #more specific test info
     filename = CharField(max_length = 50, unique = True)
     branch = CharField(max_length = 20, default = "NO_BRANCH")
     commit_hash = CharField(max_length = 30, default = "NO_COMMIT_HASH")

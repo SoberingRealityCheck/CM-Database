@@ -69,27 +69,27 @@
     </tbody>
 </table>
 
-<div class="row" style="padding-left:25px;">
+<div class="row" style="padding-left:2%;">
     <div class="col-md-12">
         <h3>Test Runs:</h3>
         {% for attempt, filename, attempt_number, status, css, data in attempts %}
         <br>
         <div class="row">
-            <div style="float:left;width:60%">
+            <div style="float:left;width:50%">
 		    <h4 class="{{css}}">Attempt {{attempt_number}} - {{status}}</h4>
             </div>
             <div style="float:left">
-                <form action="" method="post" id="overwrite_form">
+		    <form action="" method="post" id="overwrite_form_{{attempt_number}}">
                     {% csrf_token %}
-                    <input value="" id="password" name="secret" hidden>
-                    <button onclick="submitOverwrite()" type="submit" class="btn btn-primary" value="{{attempt_number}}" name="overwrite_pass">
+		    <input value="" id="password_{{attempt_number}}" name="secret_{{attempt_number}}" type="hidden">
+		    <button onclick="submitOverwrite({{attempt_number}})" type="submit" class="btn btn-primary" value="{{attempt_number}}" name="overwrite_pass">
                         {% if not attempt.override_pass %}
                         Force Pass
                         {% else %}
                         Remove Force Pass
                         {% endif %}
                     </button>
-                    <button onclick="submitOverwrite()" type="submit" class="btn btn-primary" value="{{attempt_number}}" name="overwrite_valid">
+		    <button onclick="submitOverwrite({{attempt_number}})" type="submit" class="btn btn-primary" value="{{attempt_number}}" name="overwrite_valid">
                         {% if not attempt.valid %}
                         Mark as Valid
                         {% else %}
@@ -100,12 +100,23 @@
             </div> 
            
         </div>
-        <div style="padding-left:50px;">
+        <div style="padding-left:2%;">
+	    <div style="float:right;padding-right:10%">
+	        <div class="row" align="center" style="padding-left:10px;width:90%">
+          	    <form action="" method="post" id="comment_form">
+        	    {% csrf_token %}
+        	    Add a Comment
+        	    <textarea name="comment" rows="4" cols="20" class="form-control" placeholder="Comment..." style="width:400px; height:180px;"></textarea>
+        	    <input type="submit" class="btn btn-primary" value="Submit" name="comment_add">
+		    <input type="hidden" name="comment_number" value="{{attempt_number}}">
+    		    </form>
+	        </div>
+	    </div>
             <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:60%;">
                 <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
                     <tr>
-                        <th>Name</th>
-                        <th>Date</th>
+                        <th>Tester Name</th>
+                        <th>Date Run</th>
                         <th>Valid</th>
 			<th>Forced</th>
                     </tr>
@@ -119,7 +130,7 @@
                     </tr>
                     <tr>
                         <td><b>Comments:</b></td>
-                        <td colspan="3"> {{attempt.comments | default:"None"}} </td>
+			<td colspan="3"> {{attempt.comments | default:"None" |linebreaks}} </td>
                     </tr>
                     <tr>
                         <td><b>Image:</b></td> 
@@ -139,12 +150,28 @@
             {% endfor %}
             {% endif %}
 	<button class="btn btn-primary" onclick="document.getElementById('data_{{attempt_number}}').classList.toggle('hide')">Show Data</button>
-	<div style = "padding-left:50px; font-size:15px;" class="hide" id='data_{{attempt_number}}'>
+	<div style = "padding-left:2%; font-size:15px;" class="hide" id='data_{{attempt_number}}'>
 	    <h5> Test Metadata: </h5>
 	    <p style="white-space: pre-wrap;">{{data.str}}</p>
+	    {% if data.has_error_report %}
+	    <h5> Error Log: </h5>
+	    <pre style="background-color: #2a2a2a; width: 81%;"> {{data.error_report}} </pre>
+	    {% endif %}
+	    {% if data.has_stdout %}
+	    <h5> Failure Stdout: </h5>
+	    <pre style="background-color: #2a2a2a; width: 81%;"> {{data.stdout}} </pre>
+	    {% endif %}
+	    {% if data.has_crashpath %}
+	    <h5> Crash Path: </h5>
+	    <pre style="background-color: #2a2a2a; width: 81%;"> {{data.crashpath}} </pre>
+	    {% endif %}
+	    {% if data.has_crashmsg %}
+	    <h5> Crash Message: </h5>
+	    <pre style="background-color: #2a2a2a; width: 81%;"> {{data.crashmsg}} </pre>
+	    {% endif %}
 	    {% if data.has_eRX_errcounts %}
 	    <h5>eRX_errcounts</h5>
-	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:30%;">
+	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:35%;">
 		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
 		         <tr>
 	     		     <th>eRX1</th>
@@ -171,7 +198,7 @@
 	    {% endif %}
 	    {% if data.has_eTX_errcounts %}
 	    <h5>eTX_errcounts</h5>
-	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:30%;">
+	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:35%;">
 		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
 		         <tr>
 	     		     <th>eTX1</th>
@@ -179,6 +206,8 @@
 			     <th>eTX3</th>
 			     <th>eTX4</th>
 			     <th>eTX5</th>
+			     <th>eTX6</th>
+			     <th>eTX7</th>
 			 </tr>
 		     </thead>
 		     <tbody>
@@ -189,6 +218,8 @@
 			     <td> {{row.2}} </td>
 			     <td> {{row.3}} </td>
 			     <td> {{row.4}} </td>
+			     <td> {{row.5}} </td>
+			     <td> {{row.6}} </td>
 		         </tr>
 			 {% endfor %}
 		     </tbody>
@@ -196,7 +227,7 @@
 	    {% endif %}
 	    {% if data.has_eTX_bitcounts %}
 	    <h5>eTX_bitcounts</h5>
-	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:30%;">
+	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:35%;">
 		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
 		         <tr>
 	     		     <th>eTX1</th>
@@ -204,6 +235,8 @@
 			     <th>eTX3</th>
 			     <th>eTX4</th>
 			     <th>eTX5</th>
+			     <th>eTX6</th>
+			     <th>eTX7</th>
 			 </tr>
 		     </thead>
 		     <tbody>
@@ -214,6 +247,8 @@
 			     <td> {{row.2}} </td>
 			     <td> {{row.3}} </td>
 			     <td> {{row.4}} </td>
+			     <td> {{row.5}} </td>
+			     <td> {{row.6}} </td>
 		         </tr>
 			 {% endfor %}
 		     </tbody>
@@ -221,7 +256,7 @@
 	    {% endif %}
 	    {% if data.has_eTX_delays %}
 	    <h5>eTX_delays</h5>
-	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:30%;">
+	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:5%">
 		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
 		         <tr>
 	     		     <th>delays</th>
@@ -230,15 +265,11 @@
 		     <tbody>
 		         {% for row in data.eTX_delays %}
 			 <tr>
-		             <td> {{row}} </td>
+		             <td> {{row.0}} </td>
 		         </tr>
 			 {% endfor %}
 		     </tbody>
 		</table>
-	    {% endif %}
-	    {% if data.has_error_report %}
-	    <h5> Error Log: </h5>
-	    <pre style="background-color: #2a2a2a; width: 81%;"> {{data.error_report}} </pre>
 	    {% endif %}
 	</div>
 	</div>
@@ -248,10 +279,13 @@
 </div>
 <br/>
 <script>
-function submitOverwrite(){
-    var pass = window.prompt("Tell me a secret:","Secret...");
-    document.getElementById("password").value = pass;
-    document.getElementById("overwrite_form").submit();
+
+function submitOverwrite(attemptnumber){
+    pass = window.prompt("Tell me a secret:","Secret...");
+    var passid = "password_"+attemptnumber
+    document.getElementById(passid).value = pass;
+    var formid = "overwrite_form_"+attemptnumber
+    document.getElementById(formid).submit();
 }
 </script>
 {% endblock %}

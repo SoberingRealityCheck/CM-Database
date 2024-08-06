@@ -217,6 +217,16 @@ def UploadTests(data, fname):
             } if 'failed' in test['outcome'] else None
         if 'longrepr' in test['setup']:
             new_test.longrepr = test['setup']['longrepr']
+        if 'call' in test:
+            if 'longrepr' in test['call']:
+                new_test.failurerepr = test['call']['longrepr']
+            if 'stdout' in test['call']:
+                new_test.stdout = test['call']['stdout']
+            if 'crash' in test['call']:
+                if 'path' in test['call']['crash']:
+                    new_test.crashpath = test['call']['crash']['path']
+                if 'message' in test['call']['crash']:
+                    new_test.crashmsg = test['call']['crash']['message']
         #save test metadata
         new_test.branch = data['branch']
         new_test.commit_hash = data['commit_hash']
