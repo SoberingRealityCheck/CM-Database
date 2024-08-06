@@ -72,7 +72,7 @@
 <div class="row" style="padding-left:25px;">
     <div class="col-md-12">
         <h3>Test Runs:</h3>
-        {% for attempt, filename, attempt_number, status, css in attempts %}
+        {% for attempt, filename, attempt_number, status, css, data in attempts %}
         <br>
         <div class="row">
             <div style="float:left;width:60%">
@@ -97,9 +97,8 @@
                         {% endif %}
                     </button>
                 </form> 
-            </div>
-            
-            </div>
+            </div> 
+           
         </div>
         <div style="padding-left:50px;">
             <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:60%;">
@@ -108,6 +107,7 @@
                         <th>Name</th>
                         <th>Date</th>
                         <th>Valid</th>
+			<th>Forced</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,6 +115,7 @@
                         <td> {{attempt.tester}} </td>
                         <td> {{attempt.date_run}} </td>
                         <td> {{attempt.valid}} </td>
+			<td> {{attempt.overwrite_pass}} </td>
                     </tr>
                     <tr>
                         <td><b>Comments:</b></td>
@@ -137,8 +138,109 @@
             <a href="../media/{{attempt.image}}/{{image}}"><img src="../media/{{attempt.image}}/{{image}}" style="width:10%"></a>
             {% endfor %}
             {% endif %}
-        <button class="btn btn-primary" onclick="document.getElementById('{{attempt.eRX_errcounts}}').value.classList.toggle('hide')">Show Data</button>
-        <p style="white-space: pre-wrap;" class="hide" id="data_{{attempt.eRX_errcounts}}"> {{data}} </p>
+	<button class="btn btn-primary" onclick="document.getElementById('data_{{attempt_number}}').classList.toggle('hide')">Show Data</button>
+	<div style = "padding-left:50px; font-size:15px;" class="hide" id='data_{{attempt_number}}'>
+	    <h5> Test Metadata: </h5>
+	    <p style="white-space: pre-wrap;">{{data.str}}</p>
+	    {% if data.has_eRX_errcounts %}
+	    <h5>eRX_errcounts</h5>
+	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:30%;">
+		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
+		         <tr>
+	     		     <th>eRX1</th>
+			     <th>eRX2</th>
+			     <th>eRX3</th>
+			     <th>eRX4</th>
+			     <th>eRX5</th>
+			     <th>eRX6</th>
+			 </tr>
+		     </thead>
+		     <tbody>
+		         {% for row in data.eRX_errcounts %}
+			 <tr>
+		             <td> {{row.0}} </td>
+			     <td> {{row.1}} </td>
+			     <td> {{row.2}} </td>
+			     <td> {{row.3}} </td>
+			     <td> {{row.4}} </td>
+			     <td> {{row.5}} </td>
+		         </tr>
+			 {% endfor %}
+		     </tbody>
+		</table>
+	    {% endif %}
+	    {% if data.has_eTX_errcounts %}
+	    <h5>eTX_errcounts</h5>
+	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:30%;">
+		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
+		         <tr>
+	     		     <th>eTX1</th>
+			     <th>eTX2</th>
+			     <th>eTX3</th>
+			     <th>eTX4</th>
+			     <th>eTX5</th>
+			 </tr>
+		     </thead>
+		     <tbody>
+		         {% for row in data.eTX_errcounts %}
+			 <tr>
+		             <td> {{row.0}} </td>
+			     <td> {{row.1}} </td>
+			     <td> {{row.2}} </td>
+			     <td> {{row.3}} </td>
+			     <td> {{row.4}} </td>
+		         </tr>
+			 {% endfor %}
+		     </tbody>
+		</table>
+	    {% endif %}
+	    {% if data.has_eTX_bitcounts %}
+	    <h5>eTX_bitcounts</h5>
+	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:30%;">
+		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
+		         <tr>
+	     		     <th>eTX1</th>
+			     <th>eTX2</th>
+			     <th>eTX3</th>
+			     <th>eTX4</th>
+			     <th>eTX5</th>
+			 </tr>
+		     </thead>
+		     <tbody>
+		         {% for row in data.eTX_bitcounts %}
+			 <tr>
+		 	     <td> {{row.0}}</td>
+			     <td> {{row.1}} </td>
+			     <td> {{row.2}} </td>
+			     <td> {{row.3}} </td>
+			     <td> {{row.4}} </td>
+		         </tr>
+			 {% endfor %}
+		     </tbody>
+		</table>
+	    {% endif %}
+	    {% if data.has_eTX_delays %}
+	    <h5>eTX_delays</h5>
+	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:30%;">
+		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
+		         <tr>
+	     		     <th>delays</th>
+			 </tr>
+		     </thead>
+		     <tbody>
+		         {% for row in data.eTX_delays %}
+			 <tr>
+		             <td> {{row}} </td>
+		         </tr>
+			 {% endfor %}
+		     </tbody>
+		</table>
+	    {% endif %}
+	    {% if data.has_error_report %}
+	    <h5> Error Log: </h5>
+	    <pre style="background-color: #2a2a2a; width: 81%;"> {{data.error_report}} </pre>
+	    {% endif %}
+	</div>
 	</div>
         <br/>
         {% endfor %}

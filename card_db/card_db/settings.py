@@ -27,7 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
 	'localhost',
-        'hep03.baylor.edu',
+    'hep03.baylor.edu',
+    'hep03',
+    '192.168.1.3',
 ]
 
 # Application definition

@@ -4,7 +4,7 @@ from django.views import generic
 import datetime
 from os import listdir, path
 import json
-
+import numpy as np
 #from .models import CM_Card, Tester, Test, Attempt, Location, CMShuntParams 
 import cm_db.custom.filters as filters
 from .models import CM_Card, Test
@@ -364,8 +364,7 @@ def testDetail(request, card, test):
                     data = tempDict["ResultStrings"][attempt.test_name.abbreviation]
             '''
             filename = attempt.filename
-            filename = filename[50:]
-            secretlist = ['pseudo', 'pseudopod', 'physics is hard']
+            secretlist = ['pseudo', 'pseudopod', 'myresluger']
             if request.POST.get('overwrite_pass'):
                 if int(request.POST.get('overwrite_pass')) == attempt_number:
                     if (request.POST.get('secret') in secretlist):
@@ -392,14 +391,52 @@ def testDetail(request, card, test):
                 status += " - FORCED"
                 css = "forced"
                 if not attempt.valid:
-                    status = outcome + " - INVALID - FORCE PASS OVERRIDEN"
+                    status = outcome + " - INVALID - FORCE PASS OVERRIDDEN"
                     css = None
             elif not attempt.valid:
                 status += " - INVALID"
                 css = None
-            
+            data = {}
+            data["str"] = ""
+            data["str"] += "---------------------------------------\n \n"
+            data["str"]+= f"Branch: {attempt.branch} \n \n"
+            data["str"] += f"Commit Hash: {attempt.commit_hash} \n \n"
+            data["str"] += f"Remote URL: {attempt.remote_url} \n \n"
+            data["str"] += f"Status: {attempt.status} \n \n"
+            data["str"]+= f"Firmware Name: {attempt.firmware_name} \n \n"
+            data["str"] += f"Firmware Git Desc: {attempt.firmware_git_desc} \n \n"
+            if attempt.eRX_errcounts:
+                parsed_array = np.frombuffer(attempt.eRX_errcounts, dtype = int).reshape(-1,6).tolist()
+                data["has_eRX_errcounts"] = True
+                data["eRX_errcounts"] = parsed_array
+            if attempt.eTX_errcounts:
+                parsed_array = np.frombuffer(attempt.eTX_errcounts, dtype = int).reshape(-1,5).tolist()
+                data["has_eTX_errcounts"] = True
+                data["eTX_errcounts"] = parsed_array
+            if attempt.eTX_bitcounts:
+                parsed_array = np.frombuffer(attempt.eTX_bitcounts, dtype = int).reshape(-1,5).tolist()
+                data["has_eTX_bitcounts"] = True
+                data["eTX_bitcounts"] = parsed_array
+            if attempt.eTX_delays:
+                parsed_array = np.frombuffer(attempt.eTX_delays, dtype = int).reshape(-1,1).tolist()
+                data["has_eTX_delays"] = True
+                data["eTX_delays"] = parsed_array
+            if attempt.longrepr:
+                data["has_error_report"] = True
+                print("ORIGINAL:",attempt.longrepr)
+                data["error_report"] = attempt.longrepr
+                print("DATA:",data["error_report"])
 
-        attemptData.append((attempt, filename, attempt_number, status, css))
+            '''
+            -------------------
+            Error Info (if applicable):
+            eRX_errcounts: {{attempt.eRX_errcounts}} \n
+            eTX_errcounts: {{attempt.eTX_errcounts}} \n
+            eTX_bitcounts: {{attempt.eTX_bitcounts}} \n
+            eTX_delays: {{attempt.eTX_delays}} \n
+            '''
+            
+        attemptData.append((attempt, filename, attempt_number, status, css, data))
          
         if(request.POST.get('overwrite_pass')):
             pass

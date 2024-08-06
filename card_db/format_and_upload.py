@@ -56,27 +56,9 @@ def Metadata_Formatter(metadata, metadata_type):
         if metadata_type in metadata:
             #print("metadata located in input!")
             old_list = metadata[metadata_type]
-            labeled_list = []
-            nested = any(isinstance(sub, list) for sub in old_list)
-            if nested:
-                for row in old_list:
-                    #print("row:",row)
-                    rowdict = {}
-                    for i, value in enumerate(row):
-                        rowdict[f'{metadata_type[:3]}{i+1}'] = row[i]
-                    #print("rowdict:",rowdict)
-                    labeled_list.append(rowdict)
-                #print("metadata output:",labeled_list)
-                return labeled_list
-            else:
-                #print("row:",old_list)
-                rowdict = {}
-                for i, value in enumerate(old_list):
-                    rowdict[f'{metadata_type[:3]}{i+1}'] = old_list[i]
-                #print("rowdict:",rowdict)
-                labeled_list.append(rowdict)
-                #print("metadata output:",labeled_list)
-                return labeled_list
+            new_list = np.array(old_list)
+            serialized = new_list.tobytes()
+            return serialized
         else:
             return
     else:
@@ -197,9 +179,11 @@ def UploadTests(data, fname):
         new_test = Test.objects.create()
         new_test.test_name = f"{stringReplace(test['nodeid'].split('::')[1])}"
         new_test.barcode = barcode
-        date = str(fname[62:][:10])
-        hour = int(fname[73:][:2])
-        minute = str(int(fname[76:][:2]))
+        short_fname =f"{fname}".replace(f"{idir}/","")
+        #print(short_fname)
+        date = str(short_fname[12:][:10])
+        hour = int(short_fname[23:][:2])
+        minute = str(int(short_fname[26:][:2]))
         if minute == '0':
             minute = '00'
         if hour > 12:
@@ -231,6 +215,8 @@ def UploadTests(data, fname):
                 "failure_cause": test['call']['crash']['message'],
                 "failure_code_line": test["call"]["crash"]["lineno"],
             } if 'failed' in test['outcome'] else None
+        if 'longrepr' in test['setup']:
+            new_test.longrepr = test['setup']['longrepr']
         #save test metadata
         new_test.branch = data['branch']
         new_test.commit_hash = data['commit_hash']
@@ -238,7 +224,7 @@ def UploadTests(data, fname):
         new_test.status = data['status']
         new_test.firmware_name = data['firmware_name']
         new_test.firmware_git_desc = data['firmware_git_desc']
-        new_test.filename = fname
+        new_test.filename = short_fname
         
         new_test.save()
     print(i+1,"tests added to file of chip",barcode)
@@ -275,9 +261,9 @@ def main():
             filename_list.append(fname)
             num_uploads += 1
         else: print ("file already uploaded! skipping.")
-        fname = fname[50:]
-        print(fname)
-        os.rename(f"{idir}/{fname}", f"{odir}/{fname}")
+        short_fname =f"{fname}".replace(f"{idir}/","")
+        print(short_fname)
+        os.rename(f"{idir}/{short_fname}", f"{odir}/{short_fname}")
     if num_uploads != 0: print("Script complete.", num_uploads,"files uploaded.")
     else: 
         print("Script complete, but 0 files uploaded. Perhaps double-check the files are in the specified import directory?")
