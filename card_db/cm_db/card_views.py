@@ -143,14 +143,14 @@ def summary(request):
         overall = list(Overall_Summary.objects.all())[0]
         tests = []
         for a in overall.test_types:
-            tests.append(a["test_name"])
+            tests.append({"name":a["test_name"],"required":a['required']})
         print("Loaded Attempts")
         print("Getting States!")
         cardStat = filters.getCardTestStates(cards, tests, attempts)
         print("Got 'em!")
         for card in cards: 
             UpdateCardSummary(card.barcode)
-    return render(request, 'cm_db/summary.html', {'cards': cards, 'tests': tests})
+    return render(request, 'cm_db/summary.html', {'cards': cardStat})
 
 
 def calibration(request, card):

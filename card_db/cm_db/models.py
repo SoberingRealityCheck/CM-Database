@@ -180,7 +180,7 @@ class Test_Type(models.Model):
     number_passed = IntegerField()
     number_failed = IntegerField()
     number_total = IntegerField()
-    
+    required = models.BooleanField(default = True) 
     class Meta:
         abstract = True
 

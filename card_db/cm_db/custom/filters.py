@@ -1,3 +1,7 @@
+#These filters are exactly the same as the old QIE site used them. I had them all commented out until recently.
+#They are involved in the construction of the Summary page.
+
+
 #from ..models import QieCard, Tester, Test, Attempt, Location
 
 def attemptTotalState(attempts):
@@ -143,27 +147,26 @@ def getCardTestStates(cards, tests, attempts):
     testsToInd = {}
 
     for i in range(numTests):
-        testsToInd[tests[i].pk] = i
+        testsToInd[tests[i]["name"]] = i
 
     state = {}
 
     for card in cards:
-        state[card.pk] = {}
-        state[card.pk]["states"] = [0] * numTests
-        state[card.pk]["forced"] = False
+        state[card.barcode] = {}
+        state[card.barcode]["states"] = [0] * numTests
+        state[card.barcode]["forced"] = False
     
     for attempt in attempts:
-        testInd = testsToInd[attempt.test_type_id]
-        if not attempt.revoked and not state[attempt.card_id]["states"][testInd] == 2:
-
+        testInd = testsToInd[attempt.test_name]
+        if attempt.valid and not state[attempt.barcode]["states"][testInd] == 2:
             if attempt.overwrite_pass:
-                state[attempt.card_id]["states"][testInd] = 1
+                state[attempt.barcode]["states"][testInd] = 1
                 if tests[testInd].required:
-                    state[attempt.card_id]["forced"] = True
-            elif not attempt.num_failed == 0:
-                state[attempt.card_id]["states"][testInd] = 2
-            elif not attempt.num_passed == 0:
-                state[attempt.card_id]["states"][testInd] = 1
+                    state[attempt.barcode]["forced"] = True
+            elif attempt.outcome == "failed":
+                state[attempt.barcode]["states"][testInd] = 2
+            elif attempt.outcome == "passed":
+                state[attempt.barcode]["states"][testInd] = 1
 
     cardStat = []
 
@@ -175,25 +178,25 @@ def getCardTestStates(cards, tests, attempts):
         tempDict = {}
         tempDict["num_passed"] = 0                # number of passed required tests
         tempDict["num_failed"] = 0                # number of failed required tests
-        curState = state[card.pk]["states"]
+        curState = state[card.barcode]["states"]
 
         for j in range(numTests):
             if curState[j] == 0:
-                curRem.append(tests[j].name)
+                curRem.append(tests[j]["name"])
             elif curState[j] == 1:
-                curPass.append(tests[j].name)
-                if tests[j].required:
+                curPass.append(tests[j]["name"])
+                if tests[j]["required"]:
                     tempDict["num_passed"] += 1
             elif curState[j] == 2:
-                curFail.append(tests[j].name)
-                if tests[j].required:
+                curFail.append(tests[j]["name"])
+                if tests[j]["required"]:
                     tempDict["num_failed"] += 1
         
         tempDict['barcode'] = card.barcode
         tempDict['failed'] = curFail
         tempDict['passed'] = curPass
         tempDict['remaining'] = curRem
-        tempDict['forced'] = state[card.pk]["forced"]
+        tempDict['forced'] = state[card.barcode]["forced"]
         cardStat.append(tempDict)
     return cardStat
 
