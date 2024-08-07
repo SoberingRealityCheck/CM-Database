@@ -206,7 +206,7 @@ def getRemCardStates(cards, tests, attempts):
     
     testStat = {}
     for test in tests:
-        testStat[test.name] = []
+        testStat[test["name"]] = []
 
     for i in range(len(cardStates)):
         barcode = cardStates[i]['barcode']
@@ -229,26 +229,26 @@ def getFailedCardStats(cards, tests, attempts):
     cardsToInd = {}
 
     for i in range(numCards):
-        cardsToInd[cards[i].pk] = i
+        cardsToInd[cards[i].barcode] = i
 
     failed = {}
 
     for test in tests:
-        failed[test.pk] = [False] * numCards
+        failed[test["test_name"]] = [False] * numCards
     
     for attempt in attempts:
-        if not attempt.revoked:
-            cardInd = cardsToInd[attempt.card_id]
-            if not attempt.num_failed == 0:
-                failed[attempt.test_type_id][cardInd] = True
+        if attempt.valid:
+            cardInd = cardsToInd[attempt.barcode]
+            if attempt.outcome == "failed":
+                failed[attempt.test_name][cardInd] = True
 
     testStat = []
 
     for i in range(len(tests)):
-        tempStat = {"name": tests[i].name}
+        tempStat = {"name": tests[i]["test_name"]}
         failCards = []
         for j in range(len(cards)):
-            if failed[tests[i].pk][j]:
+            if failed[tests[i]["test_name"]][j]:
                 failCards.append(cards[j].barcode)
         tempStat["cards"] = failCards
         tempStat["number"] = len(failCards)
@@ -259,7 +259,8 @@ def getFailedCardStats(cards, tests, attempts):
     
 def getPassedCardStats(cards, tests, attempts):
     """ Returns a list of cards which passed all tests """
-    
+    for test in tests:
+        test["name"] = test["test_name"]
     cardStates = getCardTestStates(cards, tests, attempts)
     
     cardStats = {}

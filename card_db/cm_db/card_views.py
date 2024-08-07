@@ -257,10 +257,15 @@ def stats(request):
         statistics = json.load(infile)
     else:
         attempts = []
-        tests = list(Test.objects.filter(required=True))
+        overall = list(Overall_Summary.objects.all())[0]
+        tests = []
+        for test in overall.test_types:
+            if test["required"]:
+                tests.append(test)
         
         for test in tests:
-            attempts.extend(list(test.attempt_set.all())) 
+            relevant_runs = list(Test.objects.filter(test_name=test["test_name"]))
+            attempts.extend(relevant_runs) 
                 
         cards = list(CM_Card.objects.all().order_by("barcode"))
 
