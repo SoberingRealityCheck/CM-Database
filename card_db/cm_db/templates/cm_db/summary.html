@@ -34,12 +34,12 @@
 		</thead>
 		<tbody>
 			{% if cards %}
-			{% for stats in cards %}
+			{% for card in cards %}
 			<tr style="background-color: #F6F6F6">
-				<td> <a href="{{stats.barcode}}/">{{stats.barcode}}</a></td>
+				<td> <a href="{{card.barcode}}/">{{card.barcode}}</a></td>
 				<td><ul class="splitColumns">
-					{% for test in stats.remaining %}
-					<li> <a href="{{stats.barcode}}/{{test}}">{{test}}</a></li>
+					{% for test in tests %}
+					<li> <a href="{{card.barcode}}/{{test}}">{{test}}</a></li>
 					{% endfor %}
 				</ul></td>
 				<td><ul class="splitColumns">

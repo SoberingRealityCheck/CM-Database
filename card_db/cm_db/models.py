@@ -7,9 +7,10 @@ COMMENT_LENGTH = 1000
 
 
 class Summary(models.Model):
-    passed = IntegerField(default = 0)
     total = IntegerField(default = 0)
+    passed = IntegerField(default = 0)
     error = IntegerField(default = 0)
+    failed = IntegerField(default = 0)
     banner = CharField(max_length = 10, default = "NULL")
     css = CharField(max_length = 10, default = "null")
 
@@ -66,7 +67,7 @@ class CM_Card(models.Model):
     ECOND = CharField(max_length = 20, default = "NoEconD")
     ECONT = CharField(max_length = 20, default = "NoEconT")
     #Quick Test summary for easy fast data. Updated by site when card is requested. Might be good to make a manual update script too.
-    summary = EmbeddedField(model_container = Summary, null = True)
+    summary = EmbeddedField(model_container = Summary)
     #1 for passed, 0 for failed, -1 for skipped
     test_outcomes = ArrayField(
             model_container = Test_Outcome,
@@ -78,7 +79,7 @@ class CM_Card(models.Model):
     locations = ArrayField(
             model_container = Location,
             model_form_class = Location_Form, 
-            null = True)
+            default = [])
     
     objects = DjongoManager()
 
@@ -165,7 +166,8 @@ class Test(models.Model):
     status = CharField(max_length = 50, default = "NO_STATUS")
     firmware_name = CharField(max_length = 30, default = "NO_FIRMWARE_NAME")
     firmware_git_desc =  CharField(max_length = 20, default = "NO_GIT_DESC")
-     
+    ECON_TYPE = CharField(max_length=10, default = "Unknown")
+
     comments = CharField(max_length=COMMENT_LENGTH, null = True)
     
     objects = DjongoManager()
@@ -173,12 +175,25 @@ class Test(models.Model):
     class Meta:
         ordering = ('date_run',)
 
-
-class Card_States(models.Model):
-    barcode = CharField(max_length = 20, default = "NoID")
-    passed = IntegerField(default = 0)
-    failed = IntegerField(default = 0)
-    banner = CharField(max_length = 10, default = "NULL")
-    css = CharField(max_length = 10, default = "null")
+class Test_Type(models.Model):
+    test_name = CharField(max_length = 30, default = "")
+    number_passed = IntegerField()
+    number_failed = IntegerField()
+    number_total = IntegerField()
     
-    objects = DjongoManager
+    class Meta:
+        abstract = True
+
+class Test_Type_Form(forms.ModelForm):
+    class Meta:
+        model = Test_Type
+        fields = ('test_name','number_passed','number_failed','number_total')
+
+class Overall_Summary(models.Model):
+    _id = models.ObjectIdField()
+    test_types = ArrayField(model_container = Test_Type, model_form_class = Test_Type_Form)
+    passedcards = IntegerField()
+    failedcards = IntegerField()
+    totalcards = IntegerField()
+    
+    objects = DjongoManager()

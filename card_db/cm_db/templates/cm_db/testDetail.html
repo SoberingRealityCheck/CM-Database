@@ -1,5 +1,5 @@
 {% extends "cm_db/base.html" %}
-
+{% load filters %}
 {% block title %}{{card.barcode}}{% endblock %}
 {% block head %}
 <style>
@@ -106,7 +106,7 @@
           	    <form action="" method="post" id="comment_form">
         	    {% csrf_token %}
         	    Add a Comment
-        	    <textarea name="comment" rows="4" cols="20" class="form-control" placeholder="Comment..." style="width:400px; height:180px;"></textarea>
+        	    <textarea name="comment" rows="4" cols="20" class="form-control" placeholder="Comment..." style="width:330px; height:80px;"></textarea>
         	    <input type="submit" class="btn btn-primary" value="Submit" name="comment_add">
 		    <input type="hidden" name="comment_number" value="{{attempt_number}}">
     		    </form>
@@ -173,24 +173,32 @@
 	    <h5>eRX_errcounts</h5>
 	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:35%;">
 		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
-		         <tr>
-	     		     <th>eRX1</th>
-			     <th>eRX2</th>
-			     <th>eRX3</th>
-			     <th>eRX4</th>
-			     <th>eRX5</th>
-			     <th>eRX6</th>
+			 <tr>
+			     {% if attempt.ECON_TYPE == "T" %}
+		       	     {% for number in data.ECON_T_eRX_shape %}
+			     <th>eRX{{number| add:"1"}}</th>
+			     {% endfor %}
+			     {% endif %}
+			     {% if attempt.ECON_TYPE == "D" %}
+		       	     {% for number in data.ECON_D_eRX_shape %}
+			     <th>eRX{{number| add:"1"}}</th>
+			     {% endfor %}
+			     {% endif %}
 			 </tr>
 		     </thead>
 		     <tbody>
 		         {% for row in data.eRX_errcounts %}
 			 <tr>
-		             <td> {{row.0}} </td>
-			     <td> {{row.1}} </td>
-			     <td> {{row.2}} </td>
-			     <td> {{row.3}} </td>
-			     <td> {{row.4}} </td>
-			     <td> {{row.5}} </td>
+			     {% if attempt.ECON_TYPE == "T" %}
+		       	     {% for number in data.ECON_T_eRX_shape %}
+			     <td>{{row|return_item:number}}</td>
+			     {% endfor %}
+			     {% endif %}
+			     {% if attempt.ECON_TYPE == "D" %}
+		       	     {% for number in data.ECON_D_eRX_shape %}
+			     <th>{{row|return_item:number}}</th>
+			     {% endfor %}
+			     {% endif %}
 		         </tr>
 			 {% endfor %}
 		     </tbody>
@@ -200,26 +208,32 @@
 	    <h5>eTX_errcounts</h5>
 	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:35%;">
 		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
-		         <tr>
-	     		     <th>eTX1</th>
-			     <th>eTX2</th>
-			     <th>eTX3</th>
-			     <th>eTX4</th>
-			     <th>eTX5</th>
-			     <th>eTX6</th>
-			     <th>eTX7</th>
+			 <tr>
+			     {% if attempt.ECON_TYPE == "T" %}
+		       	     {% for number in data.ECON_T_eTX_shape %}
+			     <th>eTX{{number| add:"1"}}</th>
+			     {% endfor %}
+			     {% endif %}
+			     {% if attempt.ECON_TYPE == "D" %}
+			     {% for number in data.ECON_D_eTX_shape %}
+			     <th>eTX{{number| add:"1"}}</th>
+			     {% endfor %}
+			     {% endif %}
 			 </tr>
 		     </thead>
 		     <tbody>
 		         {% for row in data.eTX_errcounts %}
 			 <tr>
-		             <td> {{row.0}} </td>
-			     <td> {{row.1}} </td>
-			     <td> {{row.2}} </td>
-			     <td> {{row.3}} </td>
-			     <td> {{row.4}} </td>
-			     <td> {{row.5}} </td>
-			     <td> {{row.6}} </td>
+			     {% if attempt.ECON_TYPE == "T" %}
+		       	     {% for number in data.ECON_T_eTX_shape %}
+			     <td>{{row|return_item:number}}</td>
+			     {% endfor %}
+			     {% endif %}
+			     {% if attempt.ECON_TYPE == "D" %}
+		       	     {% for number in data.ECON_D_eTX_shape %}
+			     <th>{{row|return_item:number}}</th>
+			     {% endfor %}
+			     {% endif %}
 		         </tr>
 			 {% endfor %}
 		     </tbody>
@@ -229,26 +243,32 @@
 	    <h5>eTX_bitcounts</h5>
 	        <table id="testsummary" class="table table-bordered" cellspacing="0" style="width:35%;">
 		     <thead class="thead-default" style="color:#2C3E50;background-color:#ECF0F1">
-		         <tr>
-	     		     <th>eTX1</th>
-			     <th>eTX2</th>
-			     <th>eTX3</th>
-			     <th>eTX4</th>
-			     <th>eTX5</th>
-			     <th>eTX6</th>
-			     <th>eTX7</th>
+			 <tr>
+			     {% if attempt.ECON_TYPE == "T" %}
+		       	     {% for number in data.ECON_T_eTX_shape %}
+			     <th>eTX{{number|add:"1"}}</th>
+			     {% endfor %}
+			     {% endif %}
+			     {% if attempt.ECON_TYPE == "D" %}
+		       	     {% for number in data.ECON_D_eTX_shape %}
+			     <th>eTX{{number|add:"1"}}</th>
+			     {% endfor %}
+			     {% endif %}
 			 </tr>
 		     </thead>
 		     <tbody>
 		         {% for row in data.eTX_bitcounts %}
 			 <tr>
-		 	     <td> {{row.0}}</td>
-			     <td> {{row.1}} </td>
-			     <td> {{row.2}} </td>
-			     <td> {{row.3}} </td>
-			     <td> {{row.4}} </td>
-			     <td> {{row.5}} </td>
-			     <td> {{row.6}} </td>
+			     {% if attempt.ECON_TYPE == "T" %}
+		       	     {% for number in data.ECON_T_eTX_shape %}
+			     <td>{{row|return_item:number}}</td>
+			     {% endfor %}
+			     {% endif %}
+			     {% if attempt.ECON_TYPE == "D" %}
+		       	     {% for number in data.ECON_D_eTX_shape %}
+			     <th>{{row|return_item:number}}</th>
+			     {% endfor %}
+			     {% endif %}
 		         </tr>
 			 {% endfor %}
 		     </tbody>
