@@ -1,15 +1,19 @@
 from djongo import models
 from django import forms
-from djongo.models import CharField, EmbeddedField, ArrayField, DjongoManager
+from djongo.models import CharField, EmbeddedField, ArrayField, IntegerField, DjongoManager
 
 LOCATION_LENGTH = 100
-MAX_COMMENT_LENGTH = 1000
+COMMENT_LENGTH = 1000
 
 
 class Summary(models.Model):
-    passed = CharField(max_length = 3)
-    total = CharField(max_length = 3)
-    error = CharField(max_length = 3)
+    total = IntegerField(default = 0)
+    passed = IntegerField(default = 0)
+    error = IntegerField(default = 0)
+    failed = IntegerField(default = 0)
+    banner = CharField(max_length = 10, default = "NULL")
+    css = CharField(max_length = 10, default = "null")
+
     def __getitem__(self, name):
         return getattr(self, name)
     
@@ -42,7 +46,7 @@ class Test_Outcome_Form(forms.ModelForm):
 
 class Location(models.Model):
     date_received = CharField(max_length = 30, null = True)
-    geo_loc = CharField(max_length=40, null = False)
+    geo_loc = CharField(max_length=LOCATION_LENGTH, null = False)
         
     objects = DjongoManager()
 
@@ -63,145 +67,30 @@ class CM_Card(models.Model):
     ECOND = CharField(max_length = 20, default = "NoEconD")
     ECONT = CharField(max_length = 20, default = "NoEconT")
     #Quick Test summary for easy fast data. Updated by site when card is requested. Might be good to make a manual update script too.
-    summary = EmbeddedField(model_container = Summary, null = True)
+    summary = EmbeddedField(model_container = Summary)
     #1 for passed, 0 for failed, -1 for skipped
     test_outcomes = ArrayField(
             model_container = Test_Outcome,
             model_form_class = Test_Outcome_Form,
             null = True)
     
-    comments = CharField(max_length=1000, null = True)
+    comments = CharField(max_length=COMMENT_LENGTH, null = True)
     
     locations = ArrayField(
             model_container = Location,
             model_form_class = Location_Form, 
-            null = True)
+            default = [])
     
     objects = DjongoManager()
 
-
-class eTX_Row(models.Model):
-    #_id = models.ObjectIdField()
-    eTX1 = CharField(max_length = 6, null = True) 
-    eTX2 = CharField(max_length = 6, null = True)
-    eTX3 = CharField(max_length = 6, null = True)
-    eTX4 = CharField(max_length = 6, null = True)
-    eTX5 = CharField(max_length = 6, null = True)
-    eTX6 = CharField(max_length = 6, null = True)
-    eTX7 = CharField(max_length = 6, null = True)
-    eTX8 = CharField(max_length = 6, null = True)
-    eTX9 = CharField(max_length = 6, null = True)
-    eTX10 = CharField(max_length = 6, null = True)
-    eTX11 = CharField(max_length = 6, null = True)
-    eTX12 = CharField(max_length = 6, null = True) 
-    eTX13 = CharField(max_length = 6, null = True) 
-    eTX14 = CharField(max_length = 6, null = True) 
-    eTX15 = CharField(max_length = 6, null = True) 
-    eTX16 = CharField(max_length = 6, null = True)
-    eTX17 = CharField(max_length = 6, null = True)
-    eTX18 = CharField(max_length = 6, null = True)
-    eTX19 = CharField(max_length = 6, null = True)
-    eTX20 = CharField(max_length = 6, null = True)
-    eTX21 = CharField(max_length = 6, null = True)
-    eTX22 = CharField(max_length = 6, null = True)
-    eTX23 = CharField(max_length = 6, null = True)
-    eTX24 = CharField(max_length = 6, null = True)
-    eTX25 = CharField(max_length = 6, null = True)
-    eTX26 = CharField(max_length = 6, null = True)
-    eTX27 = CharField(max_length = 6, null = True)
-    eTX28 = CharField(max_length = 6, null = True)
-    eTX29 = CharField(max_length = 6, null = True)
-    eTX30 = CharField(max_length = 6, null = True)
-    eTX31 = CharField(max_length = 6, null = True)
-    eTX32 = CharField(max_length = 6, null = True)
-    eTX33 = CharField(max_length = 6, null = True)
-    eTX34 = CharField(max_length = 6, null = True)
-    eTX35 = CharField(max_length = 6, null = True)
-    eTX36 = CharField(max_length = 6, null = True)
-    eTX37 = CharField(max_length = 6, null = True)
-    eTX38 = CharField(max_length = 6, null = True)
-    eTX39 = CharField(max_length = 6, null = True)
-    eTX40 = CharField(max_length = 6, null = True)
-    eTX41 = CharField(max_length = 6, null = True)
-    eTX42 = CharField(max_length = 6, null = True)
-    eTX43 = CharField(max_length = 6, null = True)
-    eTX44 = CharField(max_length = 6, null = True)
-    eTX45 = CharField(max_length = 6, null = True)
-    eTX46 = CharField(max_length = 6, null = True)
-    eTX47 = CharField(max_length = 6, null = True)
-    eTX48 = CharField(max_length = 6, null = True) 
-    eTX49 = CharField(max_length = 6, null = True) 
-    eTX50 = CharField(max_length = 6, null = True) 
-    eTX51 = CharField(max_length = 6, null = True)
-    eTX52 = CharField(max_length = 6, null = True)
-    eTX53 = CharField(max_length = 6, null = True)
-    eTX54 = CharField(max_length = 6, null = True)
-    eTX55 = CharField(max_length = 6, null = True)
-    eTX56 = CharField(max_length = 6, null = True)
-    eTX57 = CharField(max_length = 6, null = True)
-    eTX58 = CharField(max_length = 6, null = True)
-    eTX59 = CharField(max_length = 6, null = True)
-    eTX60 = CharField(max_length = 6, null = True)
-    eTX61 = CharField(max_length = 6, null = True)
-    eTX62 = CharField(max_length = 6, null = True)
-    eTX63 = CharField(max_length = 6, null = True)
-    #eTX64= CharField(max_length = 6, null = True)
-    class Meta:
-        abstract = True
-
-
-class eTX_Row_Form(forms.ModelForm):
-    class Meta:
-        model = eTX_Row
-        fields = ('eTX1','eTX2','eTX3','eTX4','eTX5','eTX6','eTX7','eTX8','eTX9','eTX10','eTX11','eTX12')
-
-
-class eRX_Row(models.Model):
-    _id = models.ObjectIdField
-    eRX1 = CharField(max_length = 6, null = True) 
-    eRX2 = CharField(max_length = 6, null = True)
-    eRX3 = CharField(max_length = 6, null = True)
-    eRX4 = CharField(max_length = 6, null = True)
-    eRX5 = CharField(max_length = 6, null = True)
-    eRX6 = CharField(max_length = 6, null = True)
-    eRX7 = CharField(max_length = 6, null = True)
-    eRX8 = CharField(max_length = 6, null = True)
-    eRX9 = CharField(max_length = 6, null = True)
-    eRX10 = CharField(max_length = 6, null = True)
-    eRX11 = CharField(max_length = 6, null = True)
-    eRX12 = CharField(max_length = 6, null = True)
-
-    class Meta:
-        abstract = True
-
-class eRX_Row_Form(forms.ModelForm):
-    class Meta:
-        model = eRX_Row
-        fields = ('eRX1','eRX2','eRX3','eRX4','eRX5','eRX6','eRX7','eRX8','eRX9','eRX10','eRX11','eRX12')
-
-
 class Test_Metadata(models.Model):
-    eRX_errcounts = ArrayField(
-            model_container = eRX_Row,
-            model_form_class = eRX_Row_Form,
-            blank = True
-            )
-    eTX_delays =  ArrayField(
-            model_container = eTX_Row,
-            model_form_class = eTX_Row_Form,
-            blank = True
-            )
-    eTX_bitcounts =  ArrayField(
-            model_container = eTX_Row,
-            model_form_class = eTX_Row_Form,
-            blank = True
-            )
-    eTX_errcounts =  ArrayField(
-            model_container = eTX_Row,
-            model_form_class = eTX_Row_Form,
-            blank = True
-            )
-   
+
+    eRX_errcounts = models.BinaryField()
+    eTX_errcounts = models.BinaryField()
+    eTX_delays = models.BinaryField()
+    eTX_bitcounts = models.BinaryField()
+
+
     def __getitem__(self,name):
         return getattr(self,name)
 
@@ -250,33 +139,26 @@ class JSON_Metadata_Form(forms.ModelForm):
 
 class Test(models.Model):
     _id = models.ObjectIdField()
+    #general info
     test_name = CharField(max_length = 20, default = "NoTest")
     barcode = CharField(max_length = 20, default = "NoID")
+    tester = CharField(max_length=20, default = "unknown")
     date_run = CharField(max_length=20, default = "null")
     outcome = CharField(max_length=10, default = "null")
     valid = models.BooleanField(default = True)
     overwrite_pass = models.BooleanField(default=False) 
-    eRX_errcounts = ArrayField(
-            model_container = eRX_Row,
-            model_form_class = eRX_Row_Form,
-            blank = True
-            )
-    eTX_delays =  ArrayField(
-            model_container = eTX_Row,
-            model_form_class = eTX_Row_Form,
-            blank = True
-            )
-    eTX_bitcounts =  ArrayField(
-            model_container = eTX_Row,
-            model_form_class = eTX_Row_Form,
-            blank = True
-            )
-    eTX_errcounts =  ArrayField(
-            model_container = eTX_Row,
-            model_form_class = eTX_Row_Form,
-            blank = True
-            )
-    
+    #eRX and eTX metadata
+    eRX_errcounts = models.BinaryField()
+    eTX_delays = models.BinaryField()
+    eTX_bitcounts = models.BinaryField()
+    eTX_errcounts = models.BinaryField()
+    #error log
+    longrepr = models.TextField(max_length = 2000, null = True)
+    #failure logs 
+    stdout = models.TextField(max_length = 2000, null = True)
+    crashpath = models.TextField(max_length = 2000, null = True)
+    crashmsg = models.TextField(max_length = 2000, null = True)
+    #more specific test info
     filename = CharField(max_length = 50, unique = True)
     branch = CharField(max_length = 20, default = "NO_BRANCH")
     commit_hash = CharField(max_length = 30, default = "NO_COMMIT_HASH")
@@ -284,10 +166,34 @@ class Test(models.Model):
     status = CharField(max_length = 50, default = "NO_STATUS")
     firmware_name = CharField(max_length = 30, default = "NO_FIRMWARE_NAME")
     firmware_git_desc =  CharField(max_length = 20, default = "NO_GIT_DESC")
-     
-    comments = CharField(max_length=1000, null = True)
+    ECON_TYPE = CharField(max_length=10, default = "Unknown")
+
+    comments = CharField(max_length=COMMENT_LENGTH, null = True)
     
     objects = DjongoManager()
     
     class Meta:
         ordering = ('date_run',)
+
+class Test_Type(models.Model):
+    test_name = CharField(max_length = 30, default = "")
+    number_passed = IntegerField()
+    number_failed = IntegerField()
+    number_total = IntegerField()
+    
+    class Meta:
+        abstract = True
+
+class Test_Type_Form(forms.ModelForm):
+    class Meta:
+        model = Test_Type
+        fields = ('test_name','number_passed','number_failed','number_total')
+
+class Overall_Summary(models.Model):
+    _id = models.ObjectIdField()
+    test_types = ArrayField(model_container = Test_Type, model_form_class = Test_Type_Form)
+    passedcards = IntegerField()
+    failedcards = IntegerField()
+    totalcards = IntegerField()
+    
+    objects = DjongoManager()

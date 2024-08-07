@@ -4,16 +4,96 @@ from django.views import generic
 import datetime
 from os import listdir, path
 import json
-
+import numpy as np
 #from .models import CM_Card, Tester, Test, Attempt, Location, CMShuntParams 
 import cm_db.custom.filters as filters
-from .models import CM_Card, Test
+from .models import CM_Card, Test, Overall_Summary
 # Create your views here.
 
-from django.utils import timezone
+from django.utils import timezone, dateformat
 from django.http import HttpResponse, Http404
 from card_db.settings import MEDIA_ROOT, CACHE_DATA 
 
+def UpdateCardSummary(barcode):
+    print("updating card summary")
+    card = list(CM_Card.objects.filter(barcode=barcode))[0]
+    #resetting global summary values to account for changes in test validity
+    overall = list(Overall_Summary.objects.all())[0]
+    if card.summary['banner']:
+        if card.summary['banner'] == "Passed":
+            overall.passedcards -= 1
+        elif card.summary['banner'] == "Failed":
+            print("failed")
+            overall.failedcards -= 1
+    #now assigning blank summary to card
+    card.summary = {'total':0,'passed':0,'error':0,'failed':0,'banner':'None','css':'null'}
+    #Update Summary and Test_Outcomes values when requested
+    new_test_outcomes = []
+    for test in card.test_outcomes:
+        test_name = test["test_name"]
+        print(test_name)
+        test = {'test_name':test_name, 'passed':0, 'total':0, 'failed':0, 'anyFailed':0, 'anyForced':0, 'result':'Incomplete', 'get_css_class':'warn', 'required':1, 'most_recent_date':'0'}
+        matchingtests = list(Test.objects.filter(test_name=test_name,barcode=barcode))
+        print("matching tests:", matchingtests)
+        for realTest in matchingtests:
+            print(realTest,"REAL TEST")
+            if realTest.valid:
+                test['total'] += 1
+                if realTest.outcome == "passed":
+                    test['passed'] += 1
+                if realTest.outcome == "failed":
+                    test['failed'] += 1
+                    test['anyFailed'] = 1
+            oldTestDate = int(''.join(filter(str.isdigit, test["most_recent_date"])))
+            newTestDate = int(''.join(filter(str.isdigit, realTest.date_run)))
+            if oldTestDate < newTestDate:
+                test['most_recent_date'] = realTest.date_run
+        new_test_outcomes.append(test)
+    card.test_outcomes = new_test_outcomes
+
+    for test in card.test_outcomes:
+        totalrun = test['total']
+        totalpassed = test['passed']
+        card.summary['total'] += 1
+        if totalrun == totalpassed:
+            test["result"] = "Passed"
+            test["get_css_class"] = "okay"
+            card.summary['passed'] += 1
+        elif test["anyForced"] != 0:
+            forcedAny = True
+            test["result"] = "Forced"
+            test["get_css_class"] = "forced"
+        elif test["anyFailed"] != 0:
+            failedAny = True
+            test["result"] = "Failed"
+            test["get_css_class"] = "bad"
+            card.summary['failed'] += 1
+        else:
+            test["result"] = "Incomplete"
+            test["get_css_class"] = "warn"
+    if card.summary['failed'] == 0:
+        if card.summary['error'] == 0:
+            if card.summary['passed'] == card.summary['total']:
+                if card.summary['total'] > 0:
+                    card.summary['banner'] = "Passed"
+                    card.summary['css'] = "okay"
+                    overall.passedcards += 1
+                else:
+                    card.summary['banner'] = "No Tests"
+                    card.summary['css'] = "null"
+            else:
+                card.summary['banner'] = "Unknown Test Outcomes"
+                card.summary['css'] = "warn"
+        else:
+            card.summary['banner'] = "Errors"
+            card.summary['css'] = "warn"
+    else:
+        card.summary['banner'] = "Failed"
+        card.summary['css'] = "bad"
+        overall.failedcards += 1
+    print(card.summary)
+    card.save()
+    overall.save()
 
 class CatalogView(generic.ListView):
     """ This displays a list of all CM cards """
@@ -22,6 +102,9 @@ class CatalogView(generic.ListView):
     context_object_name = 'barcode_list'
     #cards = CM_Card.objects.all().order_by('barcode')
     cards = CM_Card.objects.values_list("barcode",flat = True)
+    for card in cards:
+        print(card)
+        UpdateCardSummary(card)
     #num_cards = len(cards)
     def get_queryset(self):
         return self.cards
@@ -33,7 +116,9 @@ def catalog(request):
     cards = CM_Card.objects.values_list('barcode', flat=True).distinct()
     print(cards)
     count = len(cards)
-
+    for card in cards:
+        print(card)
+        UpdateCardSummary(card)
     return render(request, 'cm_db/catalog.html', {'barcode_list': cards,
                                                       'total_count': count})
 
@@ -52,16 +137,20 @@ def summary(request):
         cards = list(CM_Card.objects.all().order_by('barcode'))
         print("Loaded Cards")
         print("Loading Tests")
-        tests = list(Test.objects.all())
+        attempts = list(Test.objects.all())
         print("Loaded Tests")
         print("Loading Attempts")
-        attempts = list(Attempt.objects.all())
+        overall = list(Overall_Summary.objects.all())[0]
+        tests = []
+        for a in overall.test_types:
+            tests.append(a["test_name"])
         print("Loaded Attempts")
         print("Getting States!")
         cardStat = filters.getCardTestStates(cards, tests, attempts)
         print("Got 'em!")
-    
-    return render(request, 'cm_db/summary.html', {'cards': cardStat})
+        for card in cards: 
+            UpdateCardSummary(card.barcode)
+    return render(request, 'cm_db/summary.html', {'cards': cards, 'tests': tests})
 
 
 def calibration(request, card):
@@ -202,51 +291,8 @@ def detail(request, card):
     failedAny = False
     forcedAny = False
     
-    #Update Summary and Test_Outcomes values when requested
-    blanksummary = {'total':0, 'passed':0, 'collected':0, 'error':0}
-    p.summary = blanksummary
-    new_test_outcomes = []
-    for test in p.test_outcomes:
-        test_name = test["test_name"]
-        test = {'test_name':test_name, 'passed':0, 'total':0, 'failed':0, 'anyFailed':0, 'anyForced':0, 'result':'Incomplete', 'get_css_class':'warn', 'required':1, 'most_recent_date':'0'}
-        matchingtests = list(Test.objects.filter(test_name=test_name,barcode=card))
-        print("matching tests:", matchingtests)
-        for realTest in matchingtests:
-            print(realTest,"REAL TEST")
-            if realTest.valid:
-                test['total'] += 1
-                if realTest.outcome == "passed":
-                    test['passed'] += 1
-                if realTest.outcome == "failed":
-                    test['failed'] += 1
-                    test['anyFailed'] = 1
-            oldTestDate = int(''.join(filter(str.isdigit, test["most_recent_date"])))
-            newTestDate = int(''.join(filter(str.isdigit, realTest.date_run)))
-            if oldTestDate < newTestDate:
-                test['most_recent_date'] = realTest.date_run
-        new_test_outcomes.append(test)
-    p.test_outcomes = new_test_outcomes
-
+    
     card_test_outcomes = p.test_outcomes         
-    for test in card_test_outcomes:
-        p.summary["total"] += 1
-        totalrun = test['total']
-        totalpassed = test['passed']
-        if totalrun == totalpassed:
-            p.summary["passed"] += 1
-            test["result"] = "Passed"
-            test["get_css_class"] = "okay"
-        elif test["anyForced"] != 0:
-            forcedAny = True
-            test["result"] = "Forced"
-            test["get_css_class"] = "forced"
-        elif test["anyFailed"] != 0:
-            failedAny = True
-            test["result"] = "Failed"
-            test["get_css_class"] = "bad"
-        else:
-            test["result"] = "Incomplete"
-            test["get_css_class"] = "warn"
     ''' 
     attemptList = attempts[nodeid==test].order_by("attempt_number")
     if attemptList:
@@ -263,37 +309,25 @@ def detail(request, card):
     else:
         attempts.append({"attempt":test.test_name, "valid": False, "required": test.required})
         '''
-    status["total"] = p.summary["total"]
-    status["passed"] = p.summary["passed"]
-    if status["total"] == status["passed"]:
-        if forcedAny:
-            status["banner"] = "GOOD (FORCED)"
-            status["css"] = "forced"
-        else:
-            status["banner"] = "GOOD"
-            status["css"] = "okay"
-    elif failedAny:
-        status["banner"] = "FAILED"
-        status["css"] = "bad"
-    else:
-        status["banner"] = "INCOMPLETE"
-        status["css"] = "warn"
-
+    
+    status = p.summary
     if(request.POST.get('comment_add')):
         comment = ""
-        if not p.comments == "":
+        if p.comments:
             comment += "\n"
-        comment += str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute) + ": " + request.POST.get('comment')
+        timeposted = dateformat.format(timezone.localtime(), 'Y-m-d H:i')
+        comment += str(timeposted + ": " + request.POST.get('comment'))
         tempcomments = p.comments
         if not tempcomments:
             tempcomments = ""
         tempcomments += comment
         p.comments = tempcomments
-        p.save()
+        p.save() 
 
     if(request.POST.get('location_add')):      
         newloc = {"geo_loc":request.POST.get("location")}
-        newloc["date_received"] = str(timezone.now().date()) + " " + str(timezone.now().hour) + "." + str(timezone.now().minute)
+        timeposted = dateformat.format(timezone.localtime(), 'Y-m-d H:i')
+        newloc["date_received"] = timeposted
         temploc = p.locations
         if not temploc:
             temploc = []
@@ -364,20 +398,34 @@ def testDetail(request, card, test):
                     data = tempDict["ResultStrings"][attempt.test_name.abbreviation]
             '''
             filename = attempt.filename
-            filename = filename[50:]
-            secretlist = ['pseudo', 'pseudopod', 'physics is hard']
+            secretlist = ['pseudo', 'pseudopod', 'myresluger']
+            #Force Pass request handling
             if request.POST.get('overwrite_pass'):
                 if int(request.POST.get('overwrite_pass')) == attempt_number:
-                    if (request.POST.get('secret') in secretlist):
+                    if (request.POST.get(f'secret_{attempt_number}') in secretlist):
                         attempt.overwrite_pass = not attempt.overwrite_pass
                         attempt.save()
-
+            #Mark Invalid request handling
             if request.POST.get('overwrite_valid'):
                 if int(request.POST.get('overwrite_valid')) == attempt_number:
-                    if (request.POST.get('secret') in secretlist):
+                    if (request.POST.get(f'secret_{attempt_number}') in secretlist):
                         attempt.valid = not attempt.valid 
                         attempt.save()
-            
+            #New Comment request handling
+            if(request.POST.get('comment_add')):
+                if int(request.POST.get('comment_number')) == attempt_number:
+                    comment = ""
+                    if not attempt.comments == "":
+                        comment += "\n"
+                    timeposted = dateformat.format(timezone.localtime(), 'Y-m-d H:i')
+                    comment += str(timeposted + " - " + request.POST.get('comment'))
+                    tempcomments = attempt.comments
+                    if not tempcomments:
+                        tempcomments = ""
+                    tempcomments += comment
+                    attempt.comments = tempcomments
+                    attempt.save()
+
             outcome = attempt.outcome
             if outcome == "passed":
                 status = "passed"
@@ -392,27 +440,79 @@ def testDetail(request, card, test):
                 status += " - FORCED"
                 css = "forced"
                 if not attempt.valid:
-                    status = outcome + " - INVALID - FORCE PASS OVERRIDEN"
+                    status = outcome + " - INVALID - FORCE PASS OVERRIDDEN"
                     css = None
             elif not attempt.valid:
                 status += " - INVALID"
                 css = None
+            data = {}
+            data["str"] = ""
+            data["str"] += "---------------------------------------\n \n"
+            data["str"]+= f"Branch: {attempt.branch} \n \n"
+            data["str"] += f"Commit Hash: {attempt.commit_hash} \n \n"
+            data["str"] += f"Remote URL: {attempt.remote_url} \n \n"
+            data["str"] += f"Status: {attempt.status} \n \n"
+            data["str"]+= f"Firmware Name: {attempt.firmware_name} \n \n"
+            data["str"] += f"Firmware Git Desc: {attempt.firmware_git_desc} \n \n"
+            ECON_D_eRX_shape = (-1,6)
+            data["ECON_D_eRX_shape"] = range(ECON_D_eRX_shape[1])
+            ECON_D_eTX_shape = (-1,2)
+            data["ECON_D_eTX_shape"] = range(ECON_D_eTX_shape[1])
+            ECON_T_eRX_shape = (-1,12)
+            data["ECON_T_eRX_shape"] = range(ECON_T_eRX_shape[1])
+            ECON_T_eTX_shape = (-1,5)
+            data["ECON_T_eTX_shape"] = range(ECON_T_eTX_shape[1])
+            if attempt.eRX_errcounts:
+                if attempt.ECON_TYPE == "D":
+                    parsed_array = np.frombuffer(attempt.eRX_errcounts, dtype = int).reshape(ECON_D_eRX_shape).tolist()
+                    print(parsed_array)
+                if attempt.ECON_TYPE == "T":
+                    parsed_array = np.frombuffer(attempt.eRX_errcounts, dtype = int).reshape(ECON_T_eRX_shape).tolist()
+                data["has_eRX_errcounts"] = True
+                data["eRX_errcounts"] = parsed_array
+            if attempt.eTX_errcounts:
+                if attempt.ECON_TYPE == "D":
+                    parsed_array = np.frombuffer(attempt.eTX_errcounts, dtype = int).reshape(ECON_D_eTX_shape).tolist()
+                if attempt.ECON_TYPE == "T":
+                    parsed_array = np.frombuffer(attempt.eTX_errcounts, dtype = int).reshape(ECON_T_eTX_shape).tolist()
+                data["has_eTX_errcounts"] = True
+                data["eTX_errcounts"] = parsed_array
+            if attempt.eTX_bitcounts:
+                if attempt.ECON_TYPE == "D":
+                    parsed_array = np.frombuffer(attempt.eTX_bitcounts, dtype = int).reshape(ECON_D_eTX_shape).tolist()
+                if attempt.ECON_TYPE == "T":
+                    parsed_array = np.frombuffer(attempt.eTX_bitcounts, dtype = int).reshape(ECON_T_eTX_shape).tolist()
+                data["has_eTX_bitcounts"] = True
+                data["eTX_bitcounts"] = parsed_array
+            if attempt.eTX_delays:
+                parsed_array = np.frombuffer(attempt.eTX_delays, dtype = int).reshape(-1,1).tolist()
+                data["has_eTX_delays"] = True
+                data["eTX_delays"] = parsed_array
+            if attempt.longrepr:
+                data["has_error_report"] = True
+                data["error_report"] = attempt.longrepr
+            if attempt.stdout:
+                data["has_stdout"] = True
+                data["stdout"] = attempt.stdout
+            if attempt.crashpath:
+                data["has_crashpath"] = True
+                data["crashpath"] = attempt.crashpath
+            if attempt.crashmsg:
+                data["has_crashmsg"] = True
+                data["crashmsg"] = attempt.crashmsg
+
+            '''
+            -------------------
+            Error Info (if applicable):
+            eRX_errcounts: {{attempt.eRX_errcounts}} \n
+            eTX_errcounts: {{attempt.eTX_errcounts}} \n
+            eTX_bitcounts: {{attempt.eTX_bitcounts}} \n
+            eTX_delays: {{attempt.eTX_delays}} \n
+            '''
             
-
-        attemptData.append((attempt, filename, attempt_number, status, css))
-         
-        if(request.POST.get('overwrite_pass')):
-            pass
-            '''
-            if(request.POST.get('secret') == "pseudo" or request.POST.get('secret') == "pseudopod"):
-                attempt = Test.objects.get(attempt_number=request.POST.get('overwrite_pass'))
-                attempt.overwrite_pass = not attempt.overwrite_pass
-                attempt.save()
-            '''
-
+        attemptData.append((attempt, filename, attempt_number, status, css, data))
                     
-    firstTest = []
-
+    print(attemptData)
     return render(request, 'cm_db/testDetail.html', {'card': p,
                                                          'test': test,
                                                          'attempts': attemptData
@@ -421,18 +521,12 @@ def testDetail(request, card, test):
 
 def fieldView(request):
     """ This displays details about tests on a card """ 
-    options = ["barcode",
-               "readout_module",
-               "calibration_unit",
-               "uid",
-               "bridge_major_ver",
-               "bridge_minor_ver",
-               "bridge_other_ver",
-               "igloo_major_ver",
-               "igloo_minor_ver",
-               "comments",
-               "last location",
-               "Card Status"]
+    options = ["Barcode",
+               "Comments",
+               "Last Location",
+               "Card Status",
+               "No. of Tests Failed",
+               "No. of Tests Run",]
     
     fields = []
     for i in range(5):
@@ -445,35 +539,52 @@ def fieldView(request):
     cards = list(CM_Card.objects.all().order_by("barcode"))
     items = []
     # Info for "Card Status"
+    '''
     cache = path.join(MEDIA_ROOT, "cached_data/summary.json")
     infile = open(cache, "r")
     cardStat = json.load(infile)
-    num_required = len(Test.objects.filter(required=True))
     infile.close()
-    
+    '''
+    num_required = "PLACEHOLDER"
     for i in range(len(cards)):
         card = cards[i]
         item = {}
-        item["id"] = card.pk
+        item["id"] = card.barcode
         item["fields"] = []
         for field in fields:
-            if field == "last location":
-                loc_list = card.location_set.all()
-                if len(loc_list) == 0:
+            if field == "Barcode":
+                item['fields'].append(card.barcode)
+            elif field == "Comments":
+                item['fields'].append(card.comments)
+            elif field == "Last Location":
+                loc_list = card.locations
+                if loc_list == None:
+                    item["fields"].append("No Locations Recorded")
+                elif len(loc_list) == 0:
                     item["fields"].append("No Locations Recorded")
                 else:
                     #item["fields"].append(len(card.location_set.all()))
-                    item["fields"].append(card.location_set.all().order_by("date_received").reverse()[0].geo_loc)
+                    loc_list = sorted(loc_list, key= lambda d:d['date_received'])
+                    item["fields"].append(str(loc_list[0]["geo_loc"]+ ": " + loc_list[0]['date_received']))
             elif field == "Card Status":
-                if cardStat[i]["num_failed"] != 0:
+                item["fields"].append(card.summary["banner"])
+                item["css"] = card.summary["css"]
+                '''
+                if cardStat["failed"] != 0:
                     item["fields"].append("FAILED")
                 elif cardStat[i]["num_passed"] == num_required:
-                    if cardStat[i]["forced"]:
+                    if cardStat["forced"]:
                         item["fields"].append("GOOD (FORCED)")
                     else:
                         item["fields"].append("GOOD")
                 else:
                     item["fields"].append("INCOMPLETE")
+                '''
+            elif field == "No. of Tests Failed":
+                item["fields"].append(card.summary["failed"]) 
+            elif field == "No. of Tests Run":
+                item["fields"].append(card.summary["total"])
+
             else:
                 item["fields"].append(getattr(card, field))
 
