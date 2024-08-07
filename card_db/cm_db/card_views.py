@@ -363,11 +363,22 @@ def error(request):
 
 class PlotView(generic.ListView):
     """ This displays various plots of data """
-    
+   #getting these plots working seems to require some understanding of javascript that i do not have the time to obtain. 
+   #Currently it is sending the html page a list of tuples in the form ("test_name", [all test runs of that name])
+   #this seems to be a format it is unhappy with. It's also possible it is trying to read from a nonexistent prerendered file to 
+   #display these, as a lot of the previous site features worked like that. I have tried to minimize reliance on non-MongoDB data.
     template_name = 'cm_db/plots.html'
     context_object_name= 'tests'
     def get_queryset(self):
-        return list(Test.objects.all())
+        tests = []
+        testnames = []
+        overall = list(Overall_Summary.objects.all())[0]
+        for test in overall.test_types:
+            testnames.append(test["test_name"])
+        for test_name in testnames:
+            relevant_attempts = Test.objects.filter(test_name=test_name)
+            tests.append((test_name, relevant_attempts))
+        return tests
 
 def testDetail(request, card, test):
     """ This displays details about a specific test for a card """
