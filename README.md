@@ -13,8 +13,7 @@ sqlparse          0.4.2
 
 Current status:
 -
-Accessing sql database & statics works while settings.py is set to ```Debug=True``` and the server is run via ```python .../CM-Database/manage.py runserver```.
-
+pretty much functional. Stats screen and Testers/ Test Details TBD
 ```Debug=False``` and ```systemctl start httpd``` passes that functionality to the Apache service. This only works when run on HEP11 as it is the only machine configured to work properly with our code (for now).
 
 IMPORTANT:
