@@ -14,6 +14,7 @@ sqlparse          0.4.2
 Current status:
 -
 pretty much functional. Stats screen and Testers/ Test Details TBD
+
 ```Debug=False``` and ```systemctl start httpd``` passes that functionality to the Apache service. This only works when run on HEP11 as it is the only machine configured to work properly with our code (for now).
 
 IMPORTANT:
