@@ -71,16 +71,16 @@ class CM_Card(models.Model):
     #1 for passed, 0 for failed, -1 for skipped
     test_outcomes = ArrayField(
             model_container = Test_Outcome,
-            model_form_class = Test_Outcome_Form,
             null = True)
     
     comments = CharField(max_length=COMMENT_LENGTH, null = True)
     
     locations = ArrayField(
             model_container = Location,
-            model_form_class = Location_Form, 
             default = [])
-    
+    def status(self):
+        return self.summary["banner"]
+
     objects = DjongoManager()
 
 class Test_Metadata(models.Model):
@@ -196,4 +196,20 @@ class Overall_Summary(models.Model):
     failedcards = IntegerField()
     totalcards = IntegerField()
     
+    objects = DjongoManager()
+
+class Tester(models.Model):
+    _id = models.ObjectIdField()
+    name = CharField(max_length=40)
+    email = CharField(max_length=50)
+    affiliation = CharField(max_length=40)
+
+    objects = DjongoManager()
+
+class Test_Details(models.Model):
+    _id = models.ObjectIdField()
+    name = CharField(max_length = 100)
+    description = CharField(max_length = 1000)
+    required = models.BooleanField()
+
     objects = DjongoManager()

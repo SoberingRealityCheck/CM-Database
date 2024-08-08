@@ -1,6 +1,6 @@
 from django.contrib import admin
 #from .models import QieCard, Attempt, Tester, Test, Location, ReadoutModule, QieShuntParams, RMBiasVoltage, CalibrationUnit, SipmControlCard
-from .models import CM_Card
+from .models import CM_Card, Test, Overall_Summary, Tester, Test_Details
 # This file describes the layout of the admin pages.
 
 '''
@@ -134,3 +134,8 @@ admin.site.register(QieShuntParams)
 admin.site.register(Tester)
 admin.site.register(RMBiasVoltage)
 '''
+@admin.register(CM_Card)
+class TestAdmin(admin.ModelAdmin):
+    list_display = ('barcode','status')
+    ordering = ('barcode',)
+    searchFields = ('barcode')

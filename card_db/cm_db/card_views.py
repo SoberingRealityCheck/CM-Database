@@ -23,7 +23,6 @@ def UpdateCardSummary(barcode):
         if card.summary['banner'] == "Passed":
             overall.passedcards -= 1
         elif card.summary['banner'] == "Failed":
-            print("failed")
             overall.failedcards -= 1
     #now assigning blank summary to card
     card.summary = {'total':0,'passed':0,'error':0,'failed':0,'banner':'None','css':'null'}
@@ -31,12 +30,9 @@ def UpdateCardSummary(barcode):
     new_test_outcomes = []
     for test in card.test_outcomes:
         test_name = test["test_name"]
-        print(test_name)
         test = {'test_name':test_name, 'passed':0, 'total':0, 'failed':0, 'anyFailed':0, 'anyForced':0, 'result':'Incomplete', 'get_css_class':'warn', 'required':1, 'most_recent_date':'0'}
         matchingtests = list(Test.objects.filter(test_name=test_name,barcode=barcode))
-        print("matching tests:", matchingtests)
         for realTest in matchingtests:
-            print(realTest,"REAL TEST")
             if realTest.valid:
                 test['total'] += 1
                 if realTest.outcome == "passed":
@@ -91,7 +87,6 @@ def UpdateCardSummary(barcode):
         card.summary['banner'] = "Failed"
         card.summary['css'] = "bad"
         overall.failedcards += 1
-    print(card.summary)
     card.save()
     overall.save()
 
@@ -103,7 +98,6 @@ class CatalogView(generic.ListView):
     #cards = CM_Card.objects.all().order_by('barcode')
     cards = CM_Card.objects.values_list("barcode",flat = True)
     for card in cards:
-        print(card)
         UpdateCardSummary(card)
     #num_cards = len(cards)
     def get_queryset(self):
@@ -114,10 +108,8 @@ class CatalogView(generic.ListView):
 def catalog(request):
     """ This displays a list of all CM cards """
     cards = CM_Card.objects.values_list('barcode', flat=True).distinct()
-    print(cards)
     count = len(cards)
     for card in cards:
-        print(card)
         UpdateCardSummary(card)
     return render(request, 'cm_db/catalog.html', {'barcode_list': cards,
                                                       'total_count': count})
@@ -280,12 +272,12 @@ def stats(request):
     return render(request, 'cm_db/stats.html', statistics)
 
 def detail(request, card):
-    print(card)
+    #print(card)
     """ This displays the overview of tests for a card """
     try:
         #p_results = CM_Card.objects.get(barcode__endswith=card)
         p = CM_Card.objects.all().filter(barcode = card)[0]
-        print("p results:",p) 
+        #print("p results:",p) 
     except CM_Card.DoesNotExist:
         #raise Http404("CM card with barcode " + str(card) + " does not exist")
         return render(request, 'cm_db/error.html')
@@ -392,7 +384,7 @@ def testDetail(request, card, test):
         raise Http404("CM card does not exist")
     
     attemptList = list(curTest)
-    print(attemptList)
+    #print(attemptList)
     attemptData = []
     for attempt_number, attempt in enumerate(attemptList):
         data = ""
@@ -481,7 +473,7 @@ def testDetail(request, card, test):
             if attempt.eRX_errcounts:
                 if attempt.ECON_TYPE == "D":
                     parsed_array = np.frombuffer(attempt.eRX_errcounts, dtype = int).reshape(ECON_D_eRX_shape).tolist()
-                    print(parsed_array)
+                    #print(parsed_array)
                 if attempt.ECON_TYPE == "T":
                     parsed_array = np.frombuffer(attempt.eRX_errcounts, dtype = int).reshape(ECON_T_eRX_shape).tolist()
                 data["has_eRX_errcounts"] = True
@@ -528,7 +520,6 @@ def testDetail(request, card, test):
             
         attemptData.append((attempt, filename, attempt_number, status, css, data))
                     
-    print(attemptData)
     return render(request, 'cm_db/testDetail.html', {'card': p,
                                                          'test': test,
                                                          'attempts': attemptData
